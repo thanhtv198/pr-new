@@ -1,0 +1,44 @@
+ul.dropdown-menu.dropdown-user{
+    margin-left:5px;
+    z-index: 50;
+    background: white;
+}
+#dropdown-top {
+    z-index: 50;
+    background: white;
+}
+
+#li-top {
+    float: right;
+    height: 50px;
+}
+
+.thanh-ban-top {
+    margin: 0 auto;
+    height: 60px;
+    margin-bottom: 3px;
+    border: none !important;
+    margin-top: 50px;
+}
+#thanh-header-top{
+    background: whitesmoke;
+    position: fixed;
+    height: 50px;
+    z-index: 100;
+    width: 100%;
+}
+.clear {
+    clear: both;
+}
+#thanh_top_nav_left{
+    width: 100%!important;
+}
+
+#drop-search{
+    margin: 0 auto;
+    width: 40%;
+}
+#thanh-input-group{
+    margin: 0 auto;
+    margin-top: 11px;
+}
