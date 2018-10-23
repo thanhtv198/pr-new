@@ -149,3 +149,66 @@ $(document).ready(function () {
         $('#custom-prop').show();
     });
 });
+
+
+
+//show more post
+// $(document).ready(
+//     function () {
+//         let showChar = 300;
+//         var ellipsestext = "...";
+//         var moretext = "Show more";
+//         var lesstext = "Show less";
+//
+//         $('.content-post').each(function () {
+//             var content = $(this).html();
+//             if (content.length > showChar) {
+//                 var c = content.substr(0, showChar);
+//                 var h = content.substr(showChar, content.length - showChar);
+//                 var html = c +
+//                     '<span class="moreellipses">'
+//                     + ellipsestext +
+//                     '&nbsp;</span><span class="morecontent"><span>'
+//                     + h +
+//                     '</span>&nbsp;&nbsp;<a href="" class="morelink">'
+//                     + moretext +
+//                     '</a></span>';
+//
+//                 $(this).html(html);
+//             }
+//
+//         });
+//
+//         $(".morelink").click(function () {
+//             if ($(this).hasClass("less")) {
+//                 $(this).removeClass("less");
+//                 $(this).html(moretext);
+//             } else {
+//                 $(this).addClass("less");
+//                 $(this).html(lesstext);
+//             }
+//
+//             $(this).parent().prev().toggle();
+//             $(this).prev().toggle();
+//             return false;
+//         });
+//     });
+//
+// //select2
+// $(document).ready(function(){
+//     $(".select2").select2({
+//         tags: true,
+//         tokenSeparators: [',', ' ']
+//     });
+// });//document ready
+//
+// var header = document.getElementById("header-scroll");
+// var sticky = header.offsetTop;
+//
+// function myFunction() {
+//     if (window.pageYOffset > sticky) {
+//         header.classList.add("sticky");
+//     } else {
+//         header.classList.remove("sticky");
+//     }
+// }

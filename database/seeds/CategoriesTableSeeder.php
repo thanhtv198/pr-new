@@ -17,19 +17,23 @@ class CategoriesTableSeeder extends Seeder
 
         DB::table('categories')->insert([
             'name' => 'Samsung',
+            'parent_id' => 1,
         ]);
 
         DB::table('categories')->insert([
             'name' => 'Xiaomi',
+            'parent_id' => 1,
         ]);
 
         DB::table('categories')->insert([
             'name' => 'Oppo',
+            'parent_id' => 2,
         ]);
 
         DB::table('categories')->insert([
             'name' => 'Meizu',
         ]);
+
         DB::table('categories')->insert([
             'name' => 'Sony',
         ]);

@@ -51,33 +51,40 @@ class ProductController extends Controller
      * @param CommentRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postAddComment(CommentRequest $request)
+    public function comment(Request $request, $id)
     {
         $request->merge([
             'user_id' => Auth::user()->id,
-            'status' => 1,
+            'commentable_id' => $id,
+            'commentable_type' => 'product',
         ]);
 
-        Comment::create($request->all());
+        $comment = Comment::create($request->all());
 
-        return back();
+        return $comment;
     }
 
     /**
      * @param CommentRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postAddReply(CommentRequest $request)
+    public function reply(Request $request, $id)
     {
         $request->merge([
-            'user_id' => Auth::user()->id,
-            'status' => 1,
+            'user_id' => auth()->user()->id,
+            'commentable_id' => $id,
+            'commentable_type' => 'product',
             'parent_id' => $request->comment_id,
+            'content' => $request->repContent,
         ]);
 
-        Comment::create($request->all());
+        $replies = Comment::create($request->all());
 
-        return back();
+        return [
+            'replies' => $replies,
+            'name' => auth()->user()->name,
+            'time' => $replies->created_at->diffForHumans(),
+        ];
     }
 
     /**

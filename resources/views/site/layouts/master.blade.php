@@ -26,6 +26,7 @@
     <link href="{{ asset('source/site/css/custom-banner.css') }}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{{ asset('source/site/css/custom-header.css') }}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{{ asset('source/site/css/custom-container.css') }}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{{ asset('source/site/css/custom-footer.css') }}" rel="stylesheet" type="text/css" media="all"/>
     <!--//pop-up-box-->
     <!-- price range -->
     <link rel="stylesheet" type="text/css" href="{{ asset('source/site/css/jquery-ui1.css') }}">

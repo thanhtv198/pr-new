@@ -45,9 +45,9 @@ class User extends Authenticatable
         return $this->belongsTo(Level::class);
     }
 
-    public function local()
+    public function city()
     {
-        return $this->belongsTo(Local::class);
+        return $this->belongsTo(City::class);
     }
 
     public function products()

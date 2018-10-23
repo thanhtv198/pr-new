@@ -26,7 +26,7 @@
             <div class="news">
                 <div class="image">
                     <a href="{{ route('news_detail', $row->id) }}">
-                        <img src="{{ url(config('app.newsUrl')) }}/{{ $row->avatar }}" width="50px">
+                        <img src="{{ url(config('app.newsUrl')) }}/{{ $row->image }}" width="50px">
                     </a>
                 </div>
                 <div class="info">

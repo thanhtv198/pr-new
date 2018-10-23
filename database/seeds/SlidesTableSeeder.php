@@ -15,7 +15,7 @@ class SlidesTableSeeder extends Seeder
         for ($i = 1; $i < $limit; $i++) {
             DB::table('slides')->insert([
                 'title' => 'điện thoại iPhone 8 64GB chính hãng ',
-                'avatar' => 'banner'.$i.'.jpg',
+                'image' => 'banner'.$i.'.jpg',
             ]);
         }
     }

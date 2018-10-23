@@ -12,3 +12,32 @@
     font-size: 15px!important;
     height: 50px!important;
 }
+
+.tittle-w3l{
+    margin-top: 50px;
+}
+
+.image-bot{
+    margin-top: 10px;
+    width: 450px;
+}
+.image-bot-container{
+    float: left;
+}
+
+.seller_info{
+    margin-top: 20px;
+}
+
+.description-product{
+    line-height: 1.8em;
+    margin-top: 10px;
+}
+
+.product-new-top{
+    background: #FF5722!important;
+}
+
+#replies-box{
+    margin-left: 50px;
+}

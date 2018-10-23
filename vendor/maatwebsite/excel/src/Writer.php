@@ -2,6 +2,7 @@
 
 namespace Maatwebsite\Excel;
 
+use PhpOffice\PhpSpreadsheet\Cell\Cell;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use Maatwebsite\Excel\Concerns\WithTitle;
@@ -10,12 +11,15 @@ use Maatwebsite\Excel\Concerns\WithCharts;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\BeforeExport;
 use Maatwebsite\Excel\Events\BeforeWriting;
+use Maatwebsite\Excel\Concerns\MapsCsvSettings;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
+use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
+use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 
 class Writer
 {
-    use DelegatedMacroable, HasEventBus;
+    use DelegatedMacroable, HasEventBus, MapsCsvSettings;
 
     /**
      * @var Spreadsheet
@@ -35,36 +39,6 @@ class Writer
     /**
      * @var string
      */
-    protected $delimiter = ',';
-
-    /**
-     * @var string
-     */
-    protected $enclosure = '"';
-
-    /**
-     * @var string
-     */
-    protected $lineEnding = PHP_EOL;
-
-    /**
-     * @var bool
-     */
-    protected $useBom = false;
-
-    /**
-     * @var bool
-     */
-    protected $includeSeparatorLine = false;
-
-    /**
-     * @var bool
-     */
-    protected $excelCompatibility = false;
-
-    /**
-     * @var string
-     */
     protected $file;
 
     /**
@@ -74,14 +48,14 @@ class Writer
     {
         $this->tmpPath = config('excel.exports.temp_path', sys_get_temp_dir());
         $this->applyCsvSettings(config('excel.exports.csv', []));
+
+        $this->setDefaultValueBinder();
     }
 
     /**
      * @param object $export
      * @param string $writerType
      *
-     * @throws \PhpOffice\PhpSpreadsheet\Exception
-     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      * @return string
      */
     public function export($export, string $writerType): string
@@ -110,12 +84,16 @@ class Writer
         $this->exportable = $export;
 
         if ($export instanceof WithEvents) {
-            static::registerListeners($export->registerEvents());
+            $this->registerListeners($export->registerEvents());
         }
 
         $this->exportable  = $export;
         $this->spreadsheet = new Spreadsheet;
         $this->spreadsheet->disconnectWorksheets();
+
+        if ($export instanceof WithCustomValueBinder) {
+            Cell::setValueBinder($export);
+        }
 
         $this->raise(new BeforeExport($this, $this->exportable));
 
@@ -261,11 +239,21 @@ class Writer
     }
 
     /**
+     * @return $this
+     */
+    public function setDefaultValueBinder()
+    {
+        Cell::setValueBinder(new DefaultValueBinder);
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function tempFile(): string
     {
-        return tempnam($this->tmpPath, 'laravel-excel');
+        return $this->tmpPath . DIRECTORY_SEPARATOR . 'laravel-excel-' . str_random(16);
     }
 
     /**
@@ -277,19 +265,6 @@ class Writer
     public function getSheetByIndex(int $sheetIndex)
     {
         return new Sheet($this->getDelegate()->getSheet($sheetIndex));
-    }
-
-    /**
-     * @param array $config
-     */
-    public function applyCsvSettings(array $config)
-    {
-        $this->delimiter            = array_get($config, 'delimiter', $this->delimiter);
-        $this->enclosure            = array_get($config, 'enclosure', $this->enclosure);
-        $this->lineEnding           = array_get($config, 'line_ending', $this->lineEnding);
-        $this->useBom               = array_get($config, 'use_bom', $this->useBom);
-        $this->includeSeparatorLine = array_get($config, 'include_separator_line', $this->includeSeparatorLine);
-        $this->excelCompatibility   = array_get($config, 'excel_compatibility', $this->excelCompatibility);
     }
 
     /**

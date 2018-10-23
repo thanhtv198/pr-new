@@ -16,6 +16,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use App\Models\Respond;
 use App\Http\Requests\RespondRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Input;
 
 class InteractionController extends Controller implements FromCollection, WithHeadings
 {
@@ -137,7 +138,20 @@ class InteractionController extends Controller implements FromCollection, WithHe
      */
     public function exportFile()
     {
-        return Excel::download(new InteractionController(), 'orders.xlsx');
+        return Excel::download(new InteractionController(), 'orders.csv');
+    }
+
+    public function importFile()
+    {
+        if(Input::hasFile('file')){
+            $path = Input::file('file')->getRealPath();
+            $csv = file_get_contents($path);
+            $data = array_map("str_getcsv", explode("\n", $csv));
+            foreach ($data as $key => $value) {
+                $arr[] = ['title' => $value->title, 'description' => $value->description];
+            }
+            dd($array);
+        }
     }
 
     /**

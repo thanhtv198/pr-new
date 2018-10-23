@@ -23,7 +23,7 @@
                     @endif
             >
                 @php $i++ ; @endphp
-                <img class="img_slide" src="{{ url(config('app.slideUrl')) }}/{{ $slide->avatar }}"/>
+                <img class="img_slide" src="{{ url(config('app.slideUrl')) }}/{{ $slide->image }}"/>
             </div>
         @endforeach
     </div>

@@ -42,3 +42,25 @@ ul.dropdown-menu.dropdown-user{
     margin: 0 auto;
     margin-top: 11px;
 }
+
+#li-category {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.hover-li-top {
+    height: 50px;
+}
+
+#thanh-menu-header{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.nav-icon{
+    margin-right: 5px;
+}
+
+.search-button-header{
+    background: #FF5722;
+}

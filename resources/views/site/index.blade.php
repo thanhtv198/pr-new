@@ -28,7 +28,7 @@
                                 <div class="men-pro-item simpleCart_shelfItem box-pro">
                                     <div class="men-thumb-item">
                                         <img src="{{ url(config('app.productUrl')) }}/{{$row->id}}/{{ $row->images[0]['image'] }}"
-                                             alt="{{ $row->name }}" width="220px">
+                                             alt="{{ $row->name }}" width="220px" height="250px">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
                                                 <a href="{{ route('detail_product', $row->id) }}"
@@ -93,7 +93,7 @@
                                 <div class="men-pro-item simpleCart_shelfItem box-pro">
                                     <div class="men-thumb-item">
                                         <img src="{{ url(config('app.productUrl')) }}/{{$row->id}}/{{ $row->images[0]['image'] }}"
-                                             alt="{{ $row->name }}  " class="pro_img">
+                                             alt="{{ $row->name }}" class="pro_img" width="220px" height="250px">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
                                                 <a href=" {{ route('detail_product', $row->id) }}"
@@ -102,9 +102,9 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="compare_count">
-                                            <a href="{{ route('add_compare', $row->id) }}"
-                                               class="product-new-top fa fa-balance-scale" id="compare"></a>
+                                        <div class="compare_count product-new-top">
+                                            <a href="{{ route('add_compare', $row->id) }}" onclick="addCompare()"
+                                               class="fa fa-balance-scale" id="compare"></a>
                                         </div>
                                     </div>
                                     <div class="item-info-product ">

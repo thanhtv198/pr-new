@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Local;
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -32,9 +32,9 @@ class AccountController extends Controller
     {
         $level = Level::pluck('role', 'id');
 
-        $local = Local::pluck('name', 'id');
+        $city = City::pluck('name', 'id');
 
-        return view('admin.account.member.add', compact('level', 'local'));
+        return view('admin.account.member.add', compact('level', 'city'));
     }
 
     /**
@@ -63,9 +63,9 @@ class AccountController extends Controller
 
         $level = Level::pluck('role', 'id');
 
-        $local = Local::pluck('name', 'id');
+        $city = City::pluck('name', 'id');
 
-        return view('admin/account/member/edit', compact('level', 'user', 'local'));
+        return view('admin/account/member/edit', compact('level', 'user', 'city'));
     }
 
     /**
@@ -157,9 +157,9 @@ class AccountController extends Controller
     {
         $level = Level::pluck('role', 'id');
 
-        $local = Local::pluck('name', 'id');
+        $city = city::pluck('name', 'id');
 
-        return view('admin.account.manager.add', compact('level', 'local'));
+        return view('admin.account.manager.add', compact('level', 'city'));
     }
 
     /**
@@ -188,9 +188,9 @@ class AccountController extends Controller
 
         $level = Level::pluck('role', 'id');
 
-        $local = Local::pluck('name', 'id');
+        $city = city::pluck('name', 'id');
 
-        return view('admin/account/manager/edit', compact('level', 'user', 'local'));
+        return view('admin/account/manager/edit', compact('level', 'user', 'city'));
     }
 
     /**

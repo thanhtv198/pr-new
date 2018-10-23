@@ -12,7 +12,7 @@ use App\Models\Product;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\SignInRequest;
 use App\Models\News;
-use App\Models\Local;
+use App\Models\City;
 use Cart;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -111,7 +111,7 @@ class HomeController extends Controller
             return redirect()->back()->with('message', 'Choose location');
         }
 
-        $local = Local::where('id', $id)->first();
+        $local = City::where('id', $id)->first();
 
         if ($local == null) {
             $products = array();
@@ -119,7 +119,7 @@ class HomeController extends Controller
             return view('site.result', compact('products'));
         }
 
-        $users = User::where('local_id', $id)->get();
+        $users = User::where('city_id', $id)->get();
 
         if (count($users) == 0) {
             $products = array();
@@ -174,7 +174,7 @@ class HomeController extends Controller
      */
     public function getSignUp()
     {
-        $local = Local::pluck('name', 'id');
+        $local = City::pluck('name', 'id');
 
         return view('site.account.sign_up', compact('local'));
     }

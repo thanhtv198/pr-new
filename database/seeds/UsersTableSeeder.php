@@ -17,9 +17,8 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '0982682632',
             'birthday' => '1994-12-12',
             'address' => 'nam ha',
-            'local_id' => 2,
-            'level_id' => 1,
-            'remove' => 0,
+            'city_id' => 2,
+            'role_id' => 1,
             'password' => bcrypt('123456'),
         ]);
         DB::table('users')->insert([
@@ -28,9 +27,8 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '0982682632',
             'birthday' => '1994-12-12',
             'address' => 'nam ha',
-            'local_id' => 3,
-            'level_id' => 2,
-            'remove' => 0,
+            'city_id' => 3,
+            'role_id' => 2,
             'password' => bcrypt('123456'),
         ]);
         DB::table('users')->insert([
@@ -39,9 +37,8 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '0982682632',
             'birthday' => '1994-12-12',
             'address' => 'nam ha',
-            'local_id' => 4,
-            'level_id' => 2,
-            'remove' => 0,
+            'city_id' => 4,
+            'role_id' => 2,
             'password' => bcrypt('123456'),
         ]);
         DB::table('users')->insert([
@@ -50,9 +47,8 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '0982682632',
             'birthday' => '1994-12-12',
             'address' => 'nam ha',
-            'local_id' => 6,
-            'level_id' => 3,
-            'remove' => 0,
+            'city_id' => 6,
+            'role_id' => 3,
             'password' => bcrypt('123456'),
         ]);
         DB::table('users')->insert([
@@ -61,9 +57,8 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '0982682632',
             'birthday' => '1994-12-12',
             'address' => 'nam ha',
-            'local_id' => 2,
-            'level_id' => 3,
-            'remove' => 0,
+            'city_id' => 2,
+            'role_id' => 3,
             'password' => bcrypt('123456'),
         ]);
         DB::table('users')->insert([
@@ -72,9 +67,8 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '0982682632',
             'birthday' => '1994-12-12',
             'address' => 'nam ha',
-            'local_id' => 5,
-            'level_id' => 3,
-            'remove' => 0,
+            'city_id' => 5,
+            'role_id' => 3,
             'password' => bcrypt('123456'),
         ]);
         DB::table('users')->insert([
@@ -83,9 +77,8 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '0982682632',
             'birthday' => '1994-12-12',
             'address' => 'nam ha',
-            'local_id' => 4,
-            'level_id' => 3,
-            'remove' => 0,
+            'city_id' => 4,
+            'role_id' => 3,
             'password' => bcrypt('123456'),
         ]);
         DB::table('users')->insert([
@@ -94,9 +87,8 @@ class UsersTableSeeder extends Seeder
             'phone_number' => '0982682632',
             'birthday' => '1994-12-12',
             'address' => 'nam ha',
-            'local_id' => 5,
-            'level_id' => 3,
-            'remove' => 0,
+            'city_id' => 5,
+            'role_id' => 3,
             'password' => bcrypt('123456'),
         ]);
 

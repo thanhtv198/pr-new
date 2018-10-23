@@ -1,0 +1,49 @@
+/*footer*/
+[view=footer] {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+    background: rgb(25, 25, 29);
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+[view=footer] .main {
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+
+[view=footer] .main > :not(:first-child) {
+    margin-left: 8px;
+}
+
+[view=footer] .main > :not(:last-child) {
+    margin-right: 8px;
+}
+
+[view=footer] .main .col {
+    width: 23%;
+    margin-left: 10px;
+}
+
+[view=footer] h4 {
+    color: orange;
+    font-family: Lato !important;
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+[view=footer] h4 span {
+    font-family: Material Icons;
+    font-size: 24px;
+}
+
+[view=footer] p {
+    color: white;
+    font-family: Arial !important;
+    font-size: 14px;
+}

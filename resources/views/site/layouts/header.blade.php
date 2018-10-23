@@ -18,26 +18,16 @@
 
             @if(!Auth::check())
                 <li id="li-top">
-                    <a href="#" data-toggle="modal" id="hover-li-top" style="height:50px" data-target="#myModal1">
+                    <a href="#" data-toggle="modal" class="hover-li-top" data-target="#myModal1">
                         <span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In </a>
                 </li>
                 <li id="li-top">
-                    <a href="#" data-toggle="modal" data-target="#myModal2">
+                    <a href="#" data-toggle="modal" class="hover-li-top" data-target="#myModal2">
                         <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Sign Up </a>
                 </li>
             @else
-                <li id="li-top">
-                    <a href="javascript:;">
-                        <i class="nav-icon fa fa-bell-o"></i>
-                    </a>
-                </li>
-                <li id="li-top">
-                    <a class="" href="">
-                        <i class="nav-icon fa fa-pencil"></i>
-                    </a>
-                </li>
-                <li class="dropdown" id="li-top">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+                <li class="dropdown" id="li-top" >
+                    <a class="dropdown-toggle hover-li-top" data-toggle="dropdown" data-target="#" href="javascript:;">
                         <i class="nav-icon fa fa-user"></i>
                         {{ auth()->user()->name }}
                     </a>
@@ -49,16 +39,9 @@
                     </ul>
                 </li>
                 <li id="li-top">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-                        <i class="nav-icon"></i>
-                        Language
+                    <a href="javascript:;" class="hover-li-top">
+                        <i class="nav-icon fa fa-bell-o"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user" id="dropdown-top">
-                        <li class="user-icon"><a href=""><i class="nav-icon fa fa-user"></i>Timeline</a></li>
-                        <li class="user-icon"><a href=""><i class="nav-icon fa fa-cog"></i>My Account</a></li>
-                        <li class="user-icon"><a href="{{ route('logout') }}"><i class="nav-icon fa fa-sign-out"></i>Logout</a>
-                        </li>
-                    </ul>
                 </li>
             @endif
         </ul>
@@ -174,42 +157,32 @@
                         </div>
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav menu__list" style="width: 100%">
+                            <ul class="nav navbar-nav menu__list" id="thanh-menu-header">
                                 <li class="active">
                                     <a class="nav-stylehead" href="index.html">Home
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
-                                <li class="">
-                                    <a class="nav-stylehead" href="about.html">About Us</a>
-                                </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown"
-                                       role="button" aria-haspopup="true" aria-expanded="false">Kitchen
+                                       role="button" aria-haspopup="true" aria-expanded="false">
+                                        Categories
                                         <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu multi-column columns-3">
                                         <div class="agile_inner_drop_nav_info">
-                                            <div class="col-sm-4 multi-gd-img">
-                                                <ul class="multi-column-dropdown">
-                                                    <li>
-                                                        <a href="product.html">Bakery</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-4 multi-gd-img">
-                                                <ul class="multi-column-dropdown">
-                                                    <li>
-                                                        <a href="product.html">Pickles</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product.html">Pasta & Noodles</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product.html">Rice, Flour & Pulses</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            @foreach($categoriesHeader as $row)
+                                                    <div class="col-sm-4 multi-gd-img">
+                                                        <h2>{{ $row->name }}</h2>
+                                                        <ul class="multi-column-dropdown">
+                                                            @foreach($row->subCategory as $sub)
+                                                                <li>
+                                                                    <a href="product.html">{{ $sub->name }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                            @endforeach
                                             <div class="col-sm-4 multi-gd-img">
                                                 <img src="images/nav.png" alt="">
                                             </div>
@@ -218,26 +191,27 @@
                                     </ul>
                                 </li>
                                 <li class="dropdown">
-                                    <a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
+                                    <a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">
+                                        Write Post
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu agile_short_dropdown">
-                                        <li>
-                                            <a href="icons.html">Web Icons</a>
+                                        <li id="li-category">
+                                            <a href="icons.html">Sell product</a>
                                         </li>
-                                        <li>
-                                            <a href="typography.html">Typography</a>
+                                        <li id="li-category">
+                                            <a href="typography.html">Discuss</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="">
-                                    <a class="nav-stylehead" href="contact.html">Contact</a>
+                                    <a class="nav-stylehead" href="contact.html">Forums</a>
                                 </li>
                                 <li class="dropdown" id="drop-search">
                                     <div class="input-group" id="thanh-input-group">
                                         <input type="text" class="form-control">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-success reply-button">
+                                            <button class="btn search-button-header">
                                                 Search
                                             </button>
                                         </span>

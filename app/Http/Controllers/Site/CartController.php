@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Models\Local;
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Cart;
@@ -83,9 +83,9 @@ class CartController extends Controller
      */
     public function checkOut()
     {
-        $local = Local::pluck('name', 'id');
+        $city = City::pluck('name', 'id');
 
-        return view('site.cart.checkout', compact('local', 'city'));
+        return view('site.cart.checkout', compact('city', 'city'));
     }
 
     /**

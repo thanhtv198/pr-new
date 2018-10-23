@@ -29,13 +29,14 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        if (count($product->orderDetails) == 0) {
+//        if (count($product->orderDetails) == 0) {
             $product->delete();
-        } else {
-            $product->update([
-                'remove' => '1',
-            ]);
-        }
+//        } else
+//            {
+//            $product->update([
+//                'remove' => '1',
+//            ]);
+//        }
 
         return redirect('admin/product/index')->with('success', trans('common.with.delete_success'));
     }
@@ -91,13 +92,14 @@ class ProductController extends Controller
         for ($i = 0; $i < count($request->check); $i++) {
             $product = Product::findOrFail($request->check[$i]);
 
-            if (count($product->orderDetails) == 0) {
+//            if (count($product->orderDetails) == 0) {
                 $product->delete();
-            } else {
-                $product->update([
-                    'remove' => '1',
-                ]);
-            }
+//            }
+//            else {
+//                $product->update([
+//                    'remove' => '1',
+//                ]);
+//            }
         }
 
         return redirect('admin/product/index')->with('success', trans('common.with.delete_success'));

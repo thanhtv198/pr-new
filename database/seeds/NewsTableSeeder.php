@@ -28,7 +28,8 @@ class NewsTableSeeder extends Seeder
                  quà tặng hấp dẫn Điện thoại Apple iPhone 8 64GB được phân phối chính hãng bởi FPTShop với 
                  nhiều quà tặng hấp dẫnĐiện thoại Apple iPhone 8 64GB được phân phối chính hãng bởi FPTShop
                  với nhiều quà tặng hấp dẫn',
-                'avatar' => $i . '.jpg',
+                'image' => $i . '.jpg',
+                'view' => $i,
             ]);
         }
     }

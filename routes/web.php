@@ -132,8 +132,11 @@ Route::group(['namespace' => 'Site'], function () {
     //product comment rating
     Route::group(['prefix' => 'product'], function () {
         Route::get('/{id}', 'ProductController@getDetailProduct')->name('detail_product');
-        Route::post('/comment/add', 'ProductController@postAddComment')->name('cmt_add')->middleware('require_login');;
-        Route::post('/reply/add', 'ProductController@postAddReply')->name('reply_add')->middleware('require_login');;
+        //comment products
+        Route::post('/{id}/comments', 'ProductController@comment')->name('products.comment');
+        Route::post('/{id}/replies', 'ProductController@reply')->name('products.reply');
+//        Route::post('/comment/add', 'ProductController@postAddComment')->name('cmt_add')->middleware('require_login');;
+//        Route::post('/reply/add', 'ProductController@postAddReply')->name('reply_add')->middleware('require_login');;
         Route::post('/rating/{id}', 'ProductController@rating')->name('rating')->middleware('require_login');;
     });
 
@@ -160,6 +163,7 @@ Route::group(['namespace' => 'Site'], function () {
 
         //export file excel
         Route::get('/export', 'InteractionController@exportFile')->name('export');
+        Route::post('/import', 'InteractionController@importFile')->name('import');
 
         // user send respond
         Route::get('/respond', 'InteractionController@respond')->name('respond');

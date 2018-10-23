@@ -10,8 +10,9 @@ class Comment extends Model
 
     protected $fillable = [
         'id',
-        'product_id',
         'user_id',
+        'commentable_type',
+        'commentable_id',
         'content',
         'parent_id',
         'status',
@@ -36,6 +37,6 @@ class Comment extends Model
 
     public function scopeGetById($query, $id)
     {
-        return $query->where('product_id', $id)->get();
+        return $query->where('commentable_id', $id)->where('commentable_type', 'product')->get();
     }
 }

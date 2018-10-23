@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Models\Local;
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -20,9 +20,9 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $local = Local::pluck('name', 'id');
+        $city = City::pluck('name', 'id');
 
-        return view('site.profile.info', compact('local', 'user'));
+        return view('site.profile.info', compact('city', 'user'));
     }
 
     /**
