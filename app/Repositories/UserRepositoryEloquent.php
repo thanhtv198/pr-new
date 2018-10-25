@@ -81,6 +81,8 @@ class UserRepositoryEloquent extends AbstractRepositoryEloquent implements UserR
                 'email' => $data['email'],
                 'birthday' => $data['birthday'],
                 'avatar' => $data['avatar'],
+                'address' => $data['address'],
+                'phone_number' => $data['phone_number'],
                 'password' => $oldPass,
             ]);
         }
@@ -89,6 +91,8 @@ class UserRepositoryEloquent extends AbstractRepositoryEloquent implements UserR
             'name' => $data['name'],
             'email' => $data['email'],
             'birthday' => $data['birthday'],
+            'phone_number' => $data['phone_number'],
+            'address' => $data['address'],
             'avatar' => $data['avatar'],
             'password' => bcrypt($newPass),
         ]);

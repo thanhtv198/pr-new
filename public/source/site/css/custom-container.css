@@ -88,3 +88,13 @@
     margin-top: 15px;
     margin-bottom: 25px;
 }
+
+/*post index*/
+.morecontent span {
+    display: none;
+}
+
+.morelink {
+    display: block;
+    color: blue !important;
+}

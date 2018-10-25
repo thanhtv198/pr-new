@@ -14,14 +14,18 @@ class DatabaseSeeder extends Seeder
         \App\Models\Tag::query()->truncate();
         \App\Models\Question::query()->truncate();
         \App\Models\Post::query()->truncate();
+        \App\Models\Role::query()->truncate();
         \App\Models\Topic::query()->truncate();
+        \App\Models\Respond::query()->truncate();
         \App\Models\News::query()->truncate();
         \App\Models\OrderDetail::query()->truncate();
+        \App\Models\Image::query()->truncate();
         \App\Models\User::query()->truncate();
         \App\Models\Order::query()->truncate();
         \App\Models\City::query()->truncate();
         \App\Models\Slide::query()->truncate();
         \App\Models\Category::query()->truncate();
+        \App\Models\Manufacture::query()->truncate();
         \App\Models\Product::query()->truncate();
         \App\Models\CustomizeProduct::query()->truncate();
 

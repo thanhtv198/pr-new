@@ -36,7 +36,17 @@
                 <div id="menu1" class="tab-pane fade">
                     <h3>{{ trans('common.time_line.disscus') }}</h3>
                     @foreach($discuss as $row)
-                        <p>Some content in menu 1.</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h4>
+                                    <a href="{{ route('detail_product', $row->id) }}">{{ $row->title }}</a>
+                                </h4>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="content-post">{!! $row->content !!}</p>
+                            </div>
+                        </div>
+                        <hr>
                     @endforeach
                 </div>
 

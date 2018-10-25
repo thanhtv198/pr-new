@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Contracts\Repositories\PostRepository;
+use App\Contracts\Repositories\UserRepository;
 use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Http\Controllers\Auth\AuthController;
 use App\Models\User;
+use Auth;
 use App\Http\Requests\UserRequest;
 
 class ProfileController extends Controller
 {
+    protected $repository;
+
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -33,21 +42,31 @@ class ProfileController extends Controller
     public function postProfile($id, UserRequest $request)
     {
         $user = User::findOrFail($id);
+//
+//        $passOld = $user->password;
+//
+//        if ($request->password == $passOld) {
+//            $passNew = $passOld;
+//        } else {
+//            $passNew = bcrypt($request->password);
+//        }
+//
+//        $request->merge([
+//            'password' => $passNew,
+//            'remove' => config('page.user.remove.active'),
+//        ]);
 
-        $passOld = $user->password;
+//        $user->update($request->all());
 
-        if ($request->password == $passOld) {
-            $passNew = $passOld;
-        } else {
-            $passNew = bcrypt($request->password);
-        }
+        $file = $request->file('image');
+
+        $fileName = $this->uploadFile($file);
 
         $request->merge([
-            'password' => $passNew,
-            'remove' => config('page.user.remove.active'),
+            'avatar' => $fileName,
         ]);
 
-        $user->update($request->all());
+        $this->repository->updateUser($id, $request->password, $request->all());
 
         return redirect()->route('get_profile', $id)->with('success', trans('common.with.edit_success'));
     }
@@ -56,7 +75,7 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail($id);
         $sellings = $user->products;
-        $discuss = [];
+        $discuss = $user->posts;
 
         return view('site.profile.time_line', compact('sellings', 'discuss'));
     }

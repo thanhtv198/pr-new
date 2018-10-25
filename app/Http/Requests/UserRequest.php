@@ -27,6 +27,9 @@ class UserRequest extends FormRequest
             'email' => 'required|email',
             'password' => 'required|min:6',
             'name' => 'required|max:255',
+            'phone_number' => 'required|max:255',
+            'address' => 'required|max:255',
+            'birthday' => 'required|max:255',
         ];
     }
 
@@ -36,6 +39,8 @@ class UserRequest extends FormRequest
             'name.required' => trans('en.validate.name'),
             'email.required' => trans('en.validate.email'),
             'email.email' => trans('en.validate.valid_email'),
+            'phone_number.required' => trans('en.validate.phone_number'),
+            'address.required' => trans('en.validate.address'),
             'password.required' => trans('en.validate.password'),
             'password.min' => trans('en.validate.valid_password'),
         ];
