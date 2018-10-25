@@ -16,7 +16,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->level_id == 1 || Auth::user() && Auth::user()->level_id == 2) {
+        if (Auth::user() && Auth::user()->role_id == 1 || Auth::user() && Auth::user()->role_id == 2) {
             return $next($request);
         } else {
             return redirect('admin/login');

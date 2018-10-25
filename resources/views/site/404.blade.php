@@ -17,3 +17,47 @@
     DB_USERNAME=joxssaerxscnsy
     DB_PASSWORD=c4a7769282ceaeb80e3fed6f6b95db61ce58bc658ec456f2e76c1f708b287cd7
 @endsection
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fa fa-sticky-note-o"></i>
+        <p>
+            {{ trans('en.sidebar.topic') }}
+            <span class="right badge badge-danger">2</span>
+        </p>
+    </a>
+</li>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fa fa-sticky-note-o"></i>
+        <p>
+            {{ trans('en.sidebar.post') }}
+            <span class="right badge badge-danger">2</span>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ route('admin.posts.index') }}" class="nav-link">
+                <i class="fa fa-edit"></i>
+                <p>{{ trans('en.sidebar.all_post') }}</p>
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fa fa-question-circle"></i>
+        <p>
+            {{ trans('en.sidebar.question') }}
+            <span class="right badge badge-danger">3</span>
+        </p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fa fa-tag"></i>
+        <p>
+            {{ trans('en.sidebar.tag') }}
+            <span class="right badge badge-danger">2</span>
+        </p>
+    </a>
+</li>

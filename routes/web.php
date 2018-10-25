@@ -86,6 +86,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admi
         Route::get('/search', 'InteractionController@searchRespond')->name('search_respond');
         Route::get('/check/{id}', 'InteractionController@check')->name('check_respond');
     });
+
+    //route resource post
+    Route::group(['as' => 'admin.'], function () {
+        Route::resource('posts', 'PostController');
+    });
+    //route status post
+    Route::post('posts/active/{id}', 'PostController@activePost')->name('admin.posts.active');
+    Route::post('posts/inactive/{id}', 'PostController@inActivePost')->name('admin.posts.inactive');
 });
 
 Route::namespace('Auth')->group(function () {
@@ -145,6 +153,7 @@ Route::group(['namespace' => 'Site'], function () {
         Route::get('/{id}', 'ProfileController@getProfile')->name('get_profile');
         Route::post('/{id}', 'ProfileController@postProfile')->name('post_profile');
         Route::get('/sell', 'ProfileController@getSell')->name('get_sell');
+        Route::get('/time-line/{id}', 'ProfileController@timeLine')->name('time_line');
     });
 
     // user interaction
@@ -185,6 +194,10 @@ Route::group(['namespace' => 'Site'], function () {
 });
 
 Route::view('/{any?}', 'site.404');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

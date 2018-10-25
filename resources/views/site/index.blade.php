@@ -4,7 +4,8 @@
     <!-- top Products -->
     @include('site/notice')
     <div class="ads-grid">
-        <div class="container" id="thanh-container">
+        <div class="container"
+        >
             <!-- tittle heading -->
             <h3 class="tittle-w3l">
                 {{ trans('common.home_page.head') }}

@@ -42,6 +42,11 @@ class Post extends Model
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
+    public function block()
+    {
+        return $this->hasOne(Block::class, 'blockable_id');
+    }
+
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');

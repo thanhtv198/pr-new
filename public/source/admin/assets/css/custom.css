@@ -154,3 +154,22 @@
         margin: 7px 26px 0px;
         transform: scale(1.5);
     }
+
+    div.dataTables_wrapper div.dataTables_length select{
+        height: 40px!important;
+    }
+
+    div.dataTables_wrapper div.dataTables_filter input{
+        height: 40px!important;
+        border-radius:5px;
+    }
+
+    /*post index*/
+    .morecontent span {
+        display: none;
+    }
+
+    .morelink {
+        display: block;
+        color: blue !important;
+    }

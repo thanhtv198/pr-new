@@ -110,6 +110,49 @@
                     </li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="">
+                    <i class="fa fa-newspaper-o"></i>
+                    <span>{{ trans('common.tag.aside_admin_toppic') }}</span>
+                    <span class="pull-right-container">
+                        <span class="label label-primary pull-right">2</span>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-sticky-note-o"></i>
+                                {{ trans('en.sidebar.topic') }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="">
+                    <i class="nav-icon fa fa-sticky-note-o"></i>
+                        {{ trans('en.sidebar.post') }}
+                        <span class="right badge badge-danger">2</span>
+                    <span class="pull-right-container">
+                        <span class="label label-primary pull-right">2</span>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{{ route('admin.posts.index') }}" class="nav-link">
+                            <i class="fa fa-edit"></i>
+                            {{ trans('en.sidebar.all_post') }}
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.posts.index') }}" class="nav-link">
+                            <i class="nav-icon fa fa-question-circle"></i>
+                            {{ trans('en.sidebar.all_question') }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>

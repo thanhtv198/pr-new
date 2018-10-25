@@ -253,7 +253,12 @@ return [
         'introduce' => 'Introduction',
         'profile' => 'Profile',
         'sell_product' => 'Posted for sale',
-        'sign_out' => 'Sign out',
+        'logout' => 'Logout',
+        'notify' => 'Notifications',
+        'wishlist' => 'Wishlist',
+        'transaction' => 'Transaction',
+        'my_account' => 'Account',
+        'time_line' => 'Timeline',
     ],
     //aside_content
     'aside' => [
@@ -293,6 +298,13 @@ return [
         'order' => 'View your order',
         'info_config' => 'Edit your profile',
     ],
+
+    //timeline
+    'time_line' => [
+        'title' => 'Your Timeline',
+    ],
+
+
     //sell
     'sell' => [
         'your_product' => 'Your pruduct',

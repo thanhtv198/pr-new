@@ -41,3 +41,50 @@
 #replies-box{
     margin-left: 50px;
 }
+
+.compare {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 70px;
+}
+
+#title-compare {
+    margin-bottom: 40px;
+}
+
+.news {
+    margin-bottom: 20px;
+}
+
+[view=cart] {
+    min-height: 500px;
+}
+
+.time-line {
+    min-height: 500px;
+}
+
+.time-line-head {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 70px;
+}
+
+[view=info] {
+    position: relative;
+    margin: 0 auto;
+}
+
+.account {
+    margin-top: 50px;
+}
+
+[view=time-line] {
+    min-height: 700px;
+}
+
+[view=time-line] h3 {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}

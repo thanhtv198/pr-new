@@ -51,5 +51,14 @@ class ProfileController extends Controller
 
         return redirect()->route('get_profile', $id)->with('success', trans('common.with.edit_success'));
     }
+
+    public function timeLine($id)
+    {
+        $user = User::findOrFail($id);
+        $sellings = $user->products;
+        $discuss = [];
+
+        return view('site.profile.time_line', compact('sellings', 'discuss'));
+    }
 }
 

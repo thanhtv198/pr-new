@@ -5,7 +5,7 @@
         <!-- header-bot -->
 
         <!-- header lists -->
-        <ul class="list-inline col-md-6 pull-left">
+        <ul class="list-inline pull-left">
             <li>
                 <a><img src="{{ asset('source/site/images/vietnam.png') }}"></a>
             </li>
@@ -13,35 +13,75 @@
                 <a><img src="{{ asset('source/site/images/english.png') }}"></a>
             </li>
         </ul>
-        <ul class="list-inline col-md-6 nav navbar-nav menu__list pull-right" view="header">
+        <ul class="list-inline nav navbar-nav menu__list pull-right ul-top" view="header">
             <!-- cart details -->
 
             @if(!Auth::check())
-                <li id="li-top">
-                    <a href="#" data-toggle="modal" class="hover-li-top" data-target="#myModal1">
-                        <span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In </a>
+                <li class="li-top">
+                    <a href="{{ route('cart') }}" class="hover-li-top">
+                        <span class="fa fa-cart-arrow-down" aria-hidden="true"></span>
+                        {{ trans('common.header.cart') }}(<span
+                                id="count_cart">{{ Cart::instance('default')->count() }}</span>)
+                    </a>
                 </li>
-                <li id="li-top">
+                <li class="li-top">
+                    <a view="compare" href="{{ route('get_compare') }}" class="hover-li-top">
+                        <span class="fa fa-balance-scale" aria-hidden="true"></span>
+                        {{ trans('common.header.compare') }}(<span
+                                id="count_compare">{{ Cart::instance('compare')->count() }}</span>)
+                    </a>
+                </li>
+                <li class="li-top">
+                    <a href="#" data-toggle="modal" class="hover-li-top" data-target="#myModal1">
+                        <span class="fa fa-unlock-alt" aria-hidden="true"></span> {{ trans('common.header.sign_in') }} </a>
+                </li>
+                <li class="li-top">
                     <a href="#" data-toggle="modal" class="hover-li-top" data-target="#myModal2">
-                        <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Sign Up </a>
+                        <span class="fa fa-pencil-square-o" aria-hidden="true"></span> {{ trans('common.header.sign_up') }} </a>
                 </li>
             @else
-                <li class="dropdown" id="li-top" >
+                <li class="li-top">
+                    <a href="{{ route('cart') }}" class="hover-li-top" >
+                        <span class="fa fa-cart-arrow-down" aria-hidden="true"></span>
+                        {{ trans('common.header.cart') }}
+                        (<span id="count_cart">{{ Cart::instance('default')->count() }}</span>)
+                    </a>
+                </li>
+                <li class="li-top">
+                    <a href="javascript:;" class="hover-li-top" aria-hidden="true">
+                        <i class="nav-icon fa fa-heart-o">
+                            {{ trans('common.header.wishlist') }}
+                            (<span id="count_wishlist"></span>)
+                        </i>
+                    </a>
+                </li>
+                <li class="li-top">
+                    <a view="compare" href="{{ route('get_compare') }}" class="hover-li-top" aria-hidden="true">
+                        <span class="fa fa-balance-scale" aria-hidden="true"></span>
+                        {{ trans('common.header.compare') }}
+                        (<span id="count_compare">{{ Cart::instance('compare')->count() }}</span>)
+                    </a>
+                </li>
+                <li class="li-top">
+                    <a href="javascript:;" class="hover-li-top" aria-hidden="true">
+                        <i class="nav-icon fa fa-bell-o">
+                            {{ trans('common.header.notify') }}
+                            (<span id="count_notify"></span>)
+                        </i>
+                    </a>
+                </li>
+                <li class="dropdown" class="li-top" >
                     <a class="dropdown-toggle hover-li-top" data-toggle="dropdown" data-target="#" href="javascript:;">
                         <i class="nav-icon fa fa-user"></i>
                         {{ auth()->user()->name }}
                     </a>
                     <ul class="dropdown-menu dropdown-user" id="dropdown-top">
-                        <li class="user-icon"><a href=""><i class="nav-icon fa fa-user"></i>Timeline</a></li>
-                        <li class="user-icon"><a href=""><i class="nav-icon fa fa-cog"></i>My Account</a></li>
-                        <li class="user-icon"><a href="{{ route('logout') }}"><i class="nav-icon fa fa-sign-out"></i>Logout</a>
+                        <li class="user-icon"><a href="{{ route('time_line', Auth::user()->id) }}"><i class="nav-icon fa fa-user"></i>{{ trans('common.header.time_line') }}</a></li>
+                        <li class="user-icon"><a href="{{ route('get_profile', Auth::user()->id) }}"><i class="nav-icon fa fa-user"></i>{{ trans('common.header.transaction') }}</a></li>
+                        <li class="user-icon"><a href="{{ route('get_profile', Auth::user()->id) }}"><i class="nav-icon fa fa-cog"></i>{{ trans('common.header.my_account') }}</a></li>
+                        <li class="user-icon"><a href="{{ route('logout') }}"><i class="nav-icon fa fa-sign-out"></i>{{ trans('common.header.logout') }}</a>
                         </li>
                     </ul>
-                </li>
-                <li id="li-top">
-                    <a href="javascript:;" class="hover-li-top">
-                        <i class="nav-icon fa fa-bell-o"></i>
-                    </a>
                 </li>
             @endif
         </ul>
@@ -124,9 +164,6 @@
                         </div>
                         <input type="submit" value="Sign Up">
                     </form>
-                    <p>
-                        <a href="#">By clicking register, I agree to your terms</a>
-                    </p>
                 </div>
             </div>
         </div>
@@ -159,7 +196,7 @@
                         <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav menu__list" id="thanh-menu-header">
                                 <li class="active">
-                                    <a class="nav-stylehead" href="index.html">Home
+                                    <a class="nav-stylehead" href="{{ route('home_page') }}">Home
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
@@ -177,7 +214,7 @@
                                                         <ul class="multi-column-dropdown">
                                                             @foreach($row->subCategory as $sub)
                                                                 <li>
-                                                                    <a href="product.html">{{ $sub->name }}</a>
+                                                                    <a href="{{ route('site_category', $row->id) }}">{{ $sub->name }}</a>
                                                                 </li>
                                                             @endforeach
                                                         </ul>

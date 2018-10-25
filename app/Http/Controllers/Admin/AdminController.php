@@ -40,12 +40,12 @@ class AdminController extends Controller
         if (Auth::attempt([
                 'email' => $email,
                 'password' => $password,
-                'level_id' => config('page.user.role.super_admin'),
+                'role_id' => config('page.user.role.super_admin'),
             ])
             || Auth::attempt([
                 'email' => $email,
                 'password' => $password,
-                'level_id' => config('page.user.role.manager'),
+                'role_id' => config('page.user.role.manager'),
             ])) {
             return redirect('admin/home')->with('success', trans('common.login.success'));
         } else {
@@ -58,7 +58,7 @@ class AdminController extends Controller
      */
     public function logOut()
     {
-        if (Auth::user() && Auth::user()->level_id == config('page.user.role.manager')) {
+        if (Auth::user() && Auth::user()->role_id == config('page.user.role.manager')) {
 
             Auth::logout();
         }

@@ -24,15 +24,14 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'required'
+            'content' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'content.required' => trans('common.validate.content'),
+            'content.required' => trans('en.validate.content'),
         ];
     }
 }
-

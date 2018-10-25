@@ -1,4 +1,4 @@
-<div view="footer">
+<div view="footer" class="container footer">
     <div class="respond">
         <span>{{ trans('common.respond.respond') }}</span>
         <a href="{{ route('respond') }}">

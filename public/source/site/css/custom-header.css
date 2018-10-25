@@ -8,7 +8,7 @@ ul.dropdown-menu.dropdown-user{
     background: white;
 }
 
-#li-top {
+.li-top {
     float: right;
     height: 50px;
 }
@@ -16,9 +16,9 @@ ul.dropdown-menu.dropdown-user{
 .thanh-ban-top {
     margin: 0 auto;
     height: 60px;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
     border: none !important;
-    margin-top: 50px;
+    margin-top: 60px;
 }
 #thanh-header-top{
     background: whitesmoke;
@@ -63,4 +63,18 @@ ul.dropdown-menu.dropdown-user{
 
 .search-button-header{
     background: #FF5722;
+}
+
+@media screen and (max-width: 768px){
+    #thanh-header-top {
+        position: static;
+    }
+
+    .ul-top {
+        width: 100%;
+    }
+
+    .li-top {
+        width: 100%;
+    }
 }

@@ -235,7 +235,7 @@ class HomeController extends Controller
 
         Cart::instance('compare')->destroy();
 
-        return redirect('login');
+        return redirect()->route('home_page');
     }
 }
 

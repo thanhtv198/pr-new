@@ -1,12 +1,12 @@
 <div class="range">
     <h3 class="agileits-sear-head">{{ trans('common.aside.search_price') }}</h3>
     <div view="sidebar">
-        <div class="input">
-            {!! Form::number('from', null, ['placeholder' => trans('common.aside.from'), 'id' => 'from']) !!}
+        <div class="input" style="display: inline-block">
+            {!! Form::number('from', null, ['placeholder' => trans('common.aside.from'), 'id' => 'from', 'size' => 2]) !!}
             <div class="bottom-line"></div>
         </div>
-        <div class="input">
-            {!! Form::number('to', null, ['placeholder' => trans('common.aside.to'), 'id' => 'to']) !!}
+        <div class="input" style="display: inline-block">
+            {!! Form::number('to', null, ['placeholder' => trans('common.aside.to'), 'id' => 'to', 'size' => 2]) !!}
         </div>
         {!! Form::button(trans('common.tag.search'), ['type' => 'submit', 'class' => 'search_price']) !!}
     </div>
@@ -24,21 +24,15 @@
     <ul>
         @foreach($newsSidebar as $row)
             <div class="news">
-                <div class="image">
-                    <a href="{{ route('news_detail', $row->id) }}">
-                        <img src="{{ url(config('app.newsUrl')) }}/{{ $row->image }}" width="50px">
-                    </a>
-                </div>
+                {{--<div class="image">--}}
+                    {{--<a href="{{ route('news_detail', $row->id) }}">--}}
+                        {{--<img src="{{ url(config('app.newsUrl')) }}/{{ $row->image }}" width="50px">--}}
+                    {{--</a>--}}
+                {{--</div>--}}
                 <div class="info">
                     <div class="em">
                         <a href="{{ route('news_detail', $row->id) }}">
                             {{ $row->title }}
-                        </a>
-                    </div>
-
-                    <div>
-                        <a href="{{ route('news_detail', $row->id) }}" style="height: 2em">
-                            <button>{{ trans('common.tag.view_news') }}</button>
                         </a>
                     </div>
                 </div>
