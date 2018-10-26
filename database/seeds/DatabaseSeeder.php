@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Manufacture::query()->truncate();
         \App\Models\Product::query()->truncate();
         \App\Models\CustomizeProduct::query()->truncate();
+        \App\Models\Wishlist::query()->truncate();
 
         $this->call(TopicsTableSeeder::class);
         $this->call(TagsTableSeeder::class);
@@ -43,5 +44,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ImagesTableSeeder::class);
         $this->call(RespondsTableSeeder::class);
         $this->call(NewsTableSeeder::class);
+        $this->call(WishlistsTableSeeder::class);
     }
 }

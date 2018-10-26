@@ -25,17 +25,30 @@ class InteractionController extends Controller implements FromCollection, WithHe
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
+
+    public function getInteract($id)
+    {
+        $orderBoughts = $this->getOrderBought();
+        $orderSolds = $this->getOrderSold();
+        $responds = $this->getRespond();
+
+        return view('site.profile.interact', compact('orderBoughts', 'orderSolds', 'responds'));
+    }
+
+    public function getRespond()
+    {
+        $responds = Respond::where('user_id', Auth::user()->id)->get();
+
+        return $responds;
+    }
+
     public function getOrderBought()
     {
         $id = Auth::user()->id;
 
         $orders = Order::getBuyer($id);
 
-        if (count($orders) == 0) {
-            return redirect()->route('get_profile', $id)->with('message', trans('common.with.no_product_bought'));
-        } else {
-            return view('site.interaction.order_bought', compact('orders'));
-        }
+        return $orders;
     }
 
     /**
@@ -84,18 +97,20 @@ class InteractionController extends Controller implements FromCollection, WithHe
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function getOrderSold(Request $request)
+    public function getOrderSold()
     {
-        $id = Auth::user()->id;
+
         $orderdetails = OrderDetail::getSold();
 
-        if (count($orderdetails) == 0) {
-            return redirect()->route('get_profile', $id)->with('message', trans('common.with.no_order'));
-        }
+        return $orderdetails;
 
-        \App\Models\Notification::where('notifiable_id', '>', 0)->update(['read_at' => Carbon::now()]);
-
-        return view('site.interaction.order_sold', compact('orderdetails'));
+//        if (count($orderdetails) == 0) {
+//            return redirect()->route('get_profile', $id)->with('message', trans('common.with.no_order'));
+//        }
+//
+//        \App\Models\Notification::where('notifiable_id', '>', 0)->update(['read_at' => Carbon::now()]);
+//
+//        return view('site.interaction.order_sold', compact('orderdetails'));
     }
 
     /**
@@ -150,7 +165,6 @@ class InteractionController extends Controller implements FromCollection, WithHe
             foreach ($data as $key => $value) {
                 $arr[] = ['title' => $value->title, 'description' => $value->description];
             }
-            dd($array);
         }
     }
 

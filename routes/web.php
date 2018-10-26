@@ -159,6 +159,7 @@ Route::group(['namespace' => 'Site'], function () {
     // user interaction
     Route::group(['prefix' => 'interact', 'middleware' => 'require_login'], function () {
         //bought orders of user
+        Route::get('/interact/{id}', 'InteractionController@getInteract')->name('get_interact');
         Route::get('/bought', 'InteractionController@getOrderBought')->name('get_order_bought');
         Route::get('/bought/detail/{id}', 'InteractionController@getOrderBoughtDetail')->name('get_order_bought_detail');
         Route::get('/bought/delete/{id}', 'InteractionController@deleteOrderBought')->name('delete_order_bought');

@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
 class OrderDetail extends Model
 {
+    use SoftDeletes;
 
     protected $fillable = [
         'id',
@@ -16,10 +18,11 @@ class OrderDetail extends Model
         'quantity',
         'price',
         'status',
-        'remove',
         'created_at',
         'updated_at'
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function order()
     {
@@ -34,7 +37,7 @@ class OrderDetail extends Model
     public function scopeGetSold($query)
     {
         return $query->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')
-            ->where('remove', config('page.order_detail.remove.active'))
+            ->where('deleted_at', null)
             ->get();
     }
 
@@ -59,8 +62,7 @@ class OrderDetail extends Model
 
     public function scopeDeleteOrderDetail($query, $id)
     {
-        return $query->where('id', $id)
-            ->update(['remove' => config('page.order_detail.remove.inactive')]);
+
     }
 }
 

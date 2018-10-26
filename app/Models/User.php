@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
@@ -10,7 +11,7 @@ use willvincent\Rateable\Rateable;
 class User extends Authenticatable
 {
     use Rateable;
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -36,6 +37,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $dates = ['deleted_at'];
+
     protected $hidden = [
         'password',
         'remember_token',

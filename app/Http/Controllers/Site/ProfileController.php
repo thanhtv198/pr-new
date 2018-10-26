@@ -57,16 +57,17 @@ class ProfileController extends Controller
 //        ]);
 
 //        $user->update($request->all());
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
 
-        $file = $request->file('image');
+            $fileName = $this->uploadFile($file);
 
-        $fileName = $this->uploadFile($file);
+            $request->merge([
+                'avatar' => $fileName,
+            ]);
 
-        $request->merge([
-            'avatar' => $fileName,
-        ]);
-
-        $this->repository->updateUser($id, $request->password, $request->all());
+            $this->repository->updateUser($id, $request->password, $request->all());
+        }
 
         return redirect()->route('get_profile', $id)->with('success', trans('common.with.edit_success'));
     }

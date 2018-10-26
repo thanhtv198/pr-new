@@ -77,8 +77,8 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user" id="dropdown-top">
                         <li class="user-icon"><a href="{{ route('time_line', Auth::user()->id) }}"><i class="nav-icon fa fa-user"></i>{{ trans('common.header.time_line') }}</a></li>
-                        <li class="user-icon"><a href="{{ route('get_profile', Auth::user()->id) }}"><i class="nav-icon fa fa-user"></i>{{ trans('common.header.transaction') }}</a></li>
-                        <li class="user-icon"><a href="{{ route('get_profile', Auth::user()->id) }}"><i class="nav-icon fa fa-cog"></i>{{ trans('common.header.my_account') }}</a></li>
+                        <li class="user-icon"><a href="{{ route('get_profile', Auth::user()->id) }}"><i class="nav-icon fa fa-user"></i>{{ trans('common.header.my_account') }}</a></li>
+                        <li class="user-icon"><a href="{{ route('get_interact', Auth::user()->id) }}"><i class="nav-icon fa fa-cog"></i>{{ trans('common.header.interact') }}</a></li>
                         <li class="user-icon"><a href="{{ route('logout') }}"><i class="nav-icon fa fa-sign-out"></i>{{ trans('common.header.logout') }}</a>
                         </li>
                     </ul>

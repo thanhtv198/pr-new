@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'orders';
 
     protected $fillable = [
@@ -18,10 +21,11 @@ class Order extends Model
         'address',
         'total',
         'note',
-        'remove',
         'created_at',
         'updated_at'
     ];
+
+    protected $dates = ['deleted_at'];
 
     public function orderdetails()
     {
@@ -42,7 +46,7 @@ class Order extends Model
     {
         return $query->where('buyer_id', $id)
             ->orderBy('id', 'DESC')
-            ->where('remove', config('page.order.remove.active'))
+            ->where('deleted_at', null)
             ->get();
     }
 
@@ -55,8 +59,8 @@ class Order extends Model
 
     public function scopeDeleteOrder($query, $id)
     {
-        return $query->where('id', $id)
-            ->update(['remove' => config('page.order.remove.inactive')]);
+//        return $query->where('id', $id)
+//            ->update(['deleted_at'=> null]);
     }
 }
 
