@@ -105,7 +105,7 @@ class TopicRepositoryEloquent extends AbstractRepositoryEloquent implements Topi
      */
     public function getPostById($id)
     {
-        return $this->model()->findBySlugOrFail($id)->posts;
+        return $this->model()->FindOrFail($id)->posts;
     }
 
     /**
@@ -117,5 +117,10 @@ class TopicRepositoryEloquent extends AbstractRepositoryEloquent implements Topi
     public function getNameById($id)
     {
         return $this->model()->findBySlugOrFail($id)->name;
+    }
+
+    public function pluck()
+    {
+        return $this->model()->pluck('name', 'id');
     }
 }

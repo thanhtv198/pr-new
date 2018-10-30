@@ -146,7 +146,7 @@ $(document).ready(function () {
 //add product
 $(document).ready(function () {
     $('.plus-custom').click(function () {
-        $('#custom-prop').show();
+        $('#custom-prop').toggle();
     });
 });
 
@@ -291,27 +291,26 @@ $(document).ready(
         });
     });
 
-//select2
-$(document).ready(function(){
-    $(".select2").select2({
-        tags: true,
-        tokenSeparators: [',', ' ']
-    });
-});//document ready
+// //select2
+// $(document).ready(function(){
+//     $(".select2").select2({
+//         tags: true,
+//         tokenSeparators: [',', ' ']
+//     });
+// });//document ready
 
-//header scroll
-window.onscroll = function () {
-    myFunction()
-};
-
-var header = document.getElementById("header-scroll");
-var sticky = header.offsetTop;
-
-function myFunction() {
-    if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
-    } else {
-        header.classList.remove("sticky");
-    }
-}
+// $(document).ready(function(){
+//     $('.value-plus').on('click', function () {
+//         alert(5);
+//         //        var divUpd = $(this).parent().find('.value'),
+//         //            newVal = parseInt(divUpd.text(), 10) + 1;
+//         //        divUpd.text(newVal);
+//     });
+//
+//     $('.value-minus').on('click', function () {
+//         var divUpd = $(this).parent().find('.value'),
+//             newVal = parseInt(divUpd.text(), 10) - 1;
+//         if (newVal >= 1) divUpd.text(newVal);
+//     });
+// });
 

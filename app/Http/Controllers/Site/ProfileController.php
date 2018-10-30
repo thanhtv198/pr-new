@@ -42,21 +42,7 @@ class ProfileController extends Controller
     public function postProfile($id, UserRequest $request)
     {
         $user = User::findOrFail($id);
-//
-//        $passOld = $user->password;
-//
-//        if ($request->password == $passOld) {
-//            $passNew = $passOld;
-//        } else {
-//            $passNew = bcrypt($request->password);
-//        }
-//
-//        $request->merge([
-//            'password' => $passNew,
-//            'remove' => config('page.user.remove.active'),
-//        ]);
-
-//        $user->update($request->all());
+        $odlAvatar = $user->avatar;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
 
@@ -65,9 +51,13 @@ class ProfileController extends Controller
             $request->merge([
                 'avatar' => $fileName,
             ]);
-
-            $this->repository->updateUser($id, $request->password, $request->all());
+        } else {
+            $request->merge([
+                'avatar' => $odlAvatar,
+            ]);
         }
+
+        $this->repository->updateUser($id, $request->password, $request->all());
 
         return redirect()->route('get_profile', $id)->with('success', trans('common.with.edit_success'));
     }

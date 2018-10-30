@@ -127,6 +127,15 @@ Route::group(['namespace' => 'Site'], function () {
     Route::resource('sell', 'SellingController', ['except' => ['destroy', 'edit']])->middleware('require_login');
     Route::get('/sell/delete/{id}', 'SellingController@delete')->name('delete_sell_product')->middleware('require_login');;
 
+    //post user
+    //route resource post
+    Route::resource('posts', 'PostController');
+
+    //comment posts
+    Route::post('posts/{id}/comments', 'PostController@comment')->name('posts.comment');
+    Route::post('posts/{id}/replies', 'PostController@reply')->name('posts.reply');
+
+
     //route cart
     Route::group(['prefix' => 'cart'], function () {
         Route::get('/cart', 'CartController@viewCart')->name('cart');
@@ -141,10 +150,8 @@ Route::group(['namespace' => 'Site'], function () {
     Route::group(['prefix' => 'product'], function () {
         Route::get('/{id}', 'ProductController@getDetailProduct')->name('detail_product');
         //comment products
-        Route::post('/{id}/comments', 'ProductController@comment')->name('products.comment');
-        Route::post('/{id}/replies', 'ProductController@reply')->name('products.reply');
-//        Route::post('/comment/add', 'ProductController@postAddComment')->name('cmt_add')->middleware('require_login');;
-//        Route::post('/reply/add', 'ProductController@postAddReply')->name('reply_add')->middleware('require_login');;
+        Route::post('/{id}/comments', 'ProductController@comment')->name('products.comment')->middleware('require_login');;
+        Route::post('/{id}/replies', 'ProductController@reply')->name('products.reply')->middleware('require_login');;
         Route::post('/rating/{id}', 'ProductController@rating')->name('rating')->middleware('require_login');;
     });
 
@@ -180,6 +187,7 @@ Route::group(['namespace' => 'Site'], function () {
         Route::post('/respond', 'InteractionController@postRespond')->name('post_respond');
     });
 
+    
     //compare product
     Route::group(['prefix' => 'compare'], function () {
         Route::get('/compare', 'CompareController@index')->name('get_compare');

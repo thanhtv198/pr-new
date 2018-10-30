@@ -83,7 +83,7 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
 
     public function edit($id)
     {
-        return $this->model()->findBySlugOrFail($id);
+        return $this->model()->findOrFail($id);
     }
 
     /**

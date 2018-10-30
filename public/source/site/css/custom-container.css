@@ -98,3 +98,26 @@
     display: block;
     color: blue !important;
 }
+
+.submit-info {
+    padding: 12px 25px;
+    letter-spacing: 1px;
+    background: #1accfd;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    outline: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    margin-top: 20px;
+    width: 100%;
+    margin-bottom: 50px;
+
+}
+
+.h2-edit-sell {
+    margin-bottom: 20px;
+}

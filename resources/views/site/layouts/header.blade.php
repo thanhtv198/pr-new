@@ -77,8 +77,8 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user" id="dropdown-top">
                         <li class="user-icon"><a href="{{ route('time_line', Auth::user()->id) }}"><i class="nav-icon fa fa-user"></i>{{ trans('common.header.time_line') }}</a></li>
-                        <li class="user-icon"><a href="{{ route('get_profile', Auth::user()->id) }}"><i class="nav-icon fa fa-user"></i>{{ trans('common.header.my_account') }}</a></li>
                         <li class="user-icon"><a href="{{ route('get_interact', Auth::user()->id) }}"><i class="nav-icon fa fa-cog"></i>{{ trans('common.header.interact') }}</a></li>
+                        <li class="user-icon"><a href="{{ route('get_profile', Auth::user()->id) }}"><i class="nav-icon fa fa-user"></i>{{ trans('common.header.my_account') }}</a></li>
                         <li class="user-icon"><a href="{{ route('logout') }}"><i class="nav-icon fa fa-sign-out"></i>{{ trans('common.header.logout') }}</a>
                         </li>
                     </ul>
@@ -146,7 +146,7 @@
                 <div class="modal_body_left modal_body_left1">
                     <h3 class="agileinfo_sign">Sign Up</h3>
                     <p>
-                        Come join the Grocery Shoppy! Let's set up your Account.
+                        Come join the Grocery Shoppy! Lets set up your Account.
                     </p>
                     <form action="#" method="post">
                         <div class="styled-input agile-styled-input-top">
@@ -234,10 +234,10 @@
                                     </a>
                                     <ul class="dropdown-menu agile_short_dropdown">
                                         <li id="li-category">
-                                            <a href="icons.html">Sell product</a>
+                                            <a href="{{ route('sell.index') }}">Sell product</a>
                                         </li>
                                         <li id="li-category">
-                                            <a href="typography.html">Discuss</a>
+                                            <a href="{{ route('posts.index')}}">Discuss</a>
                                         </li>
                                     </ul>
                                 </li>

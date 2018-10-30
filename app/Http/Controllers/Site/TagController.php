@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Site;
 
 use App\Contracts\Repositories\TagRepository;
 use Illuminate\Http\Request;

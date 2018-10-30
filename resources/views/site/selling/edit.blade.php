@@ -4,9 +4,19 @@
         @include('site/notice')
     </section>
     <!-- Main content -->
-    <section class="content">
+        <h3 class="tittle-w3l">
+            {{ trans('common.sell.edit') }}
+            <span class="heading-style">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
+        </h3>
+        <div class="ads-grid">
+        <div class="container">
         <div class="require">
-            <h2>Requires the product to be accepted</h2>
+            <h2 class="h2-edit-sell">Requires the product to be accepted</h2>
+            <hr>
             <ol>
                 <li><span>{{ trans('common.sell.correct_photo') }}</span></li>
                 <li><span>{{ trans('common.sell.resonable_price') }}</span></li>
@@ -14,6 +24,7 @@
                 <li><span>{{ trans('common.sell.resonable_name') }}</span></li>
             </ol>
         </div>
+        <br>
         <div class="cart" view="sell">
             {!! Form::open(['route' => ['sell.update', $product->id], 'method' => 'put', 'class' => 'form-horizontal', 'files' => true]) !!}
             <fieldset>
@@ -57,7 +68,7 @@
                     </div>
                 </div>
                 <hr>
-                <h2>{{ trans('common.product.config') }}</h2>
+                <h2 class="h2-edit-sell">{{ trans('common.product.config') }}</h2>
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="product_name_fr">{{ trans('common.product.os') }}</label>
                     <div class="col-md-4">
@@ -174,7 +185,8 @@
             </fieldset>
             {!! Form::close() !!}
         </div>
-    </section>
+    </div>
+</div>
     <script type="text/javascript">
         $(document).ready(function () {
             CKEDITOR.replace( 'description' );

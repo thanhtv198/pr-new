@@ -36,7 +36,7 @@
                                         </div>
                                         <div class="form-group">
                                             <h3>{{ trans('common.form.city') }}</h3>
-                                            {!! Form::select('local_id', $local, isset(Auth::user()->local_id) ? Auth::user()->local->id  :'', ['class' => 'my-colorpicker1colorpicker-element select-checkout']) !!}
+                                            {!! Form::select('city_id', $city, isset(Auth::user()->city_id) ? Auth::user()->city->id  :'', ['class' => 'my-colorpicker1colorpicker-element select-checkout']) !!}
                                         </div>
                                         <div class="form-group">
                                             <h3>{{ trans('common.form.address') }}</h3>

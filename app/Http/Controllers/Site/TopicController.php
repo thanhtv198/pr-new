@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Site;
 
 use App\Contracts\Repositories\TopicRepository;
 use App\Http\Controllers\Controller;

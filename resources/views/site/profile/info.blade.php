@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="form-group">
                                     <h3>{{ trans('common.form.city') }}</h3>
-                                    {!! Form::select('local_id', $city, "$user->city_id", ['class' => 'my-colorpicker1colorpicker-element select-info']) !!}
+                                    {!! Form::select('city_id', $city, "$user->city_id", ['class' => 'my-colorpicker1colorpicker-element select-info']) !!}
                                 </div>
                                 <div class="form-group">
                                     <h3>{{ trans('common.form.address') }}</h3>
@@ -64,7 +64,7 @@
                                 <div class="clear"></div>
                             </div>
                         </div>
-                        <p>{!! Form::button(trans('common.button.save'), ['type' => 'submit', 'class' => 'check-out']) !!}<p>
+                        <p>{!! Form::button(trans('common.button.save'), ['type' => 'submit', 'class' => 'submit-info']) !!}</p>
                     </div>
 
                 </div>

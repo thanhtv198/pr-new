@@ -26,6 +26,7 @@
                                 <th>{{ trans('common.product.qty') }}</th>
                                 <th>{{ trans('common.product.price') }}</th>
                                 <th>{{ trans('common.form.action') }}</th>
+                                <th>{{ trans('common.form.action') }}</th>
                             </tr>
                             </thead>
                             <tbody id="cart_table">
@@ -37,7 +38,8 @@
                                         </a>
                                     </td>
                                     <td class="invert">
-                                        <input type="number" id="number-in-cart" min="1" name="qty{{ $row->rowId }}" value={{ $row->qty }} required/>
+                                        <input type="number" class="number-in-cart" min="1" name="qty{{ $row->rowId }}" value={{ $row->qty }} required/>
+                                        <input type="hidden" class="row-cart" id="row-cart{{$row->id}}" value="{{ $row->rowId }}"/>
                                     </td>
                                     <td class="invert">{{ number_format(($row->price) * $row->qty) }}</td>
                                     <td class="invert">
@@ -48,7 +50,18 @@
                                             </a>
                                         </div>
                                     </td>
-                                </tr>
+                                    {{--<td class="invert">--}}
+                                        {{--<div class="quantity">--}}
+                                            {{--<div class="quantity-select">--}}
+                                                {{--<div class="entry value-minus">&nbsp;</div>--}}
+                                                {{--<div class="entry value">--}}
+                                                    {{--<span>1</span>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="entry value-plus active" data-url="{{ url('cart/update') }}">&nbsp;</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</td>--}}
+                                {{--</tr>--}}
                             @endforeach
                             </tbody>
                         </table>
@@ -72,3 +85,34 @@
         </div>
     </div>
 @endsection
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.value-plus').on('click', function () {
+                    var divUpd = $(this).parent().find('.value'),
+                        newVal = parseInt(divUpd.text(), 10) + 1;
+                    divUpd.text(newVal);
+                var row = $('.row-cart').attr('id');
+            alert(row);
+//                var href = $(this).attr('data-url');
+alert(href);
+//            $.ajax({
+//                type: 'POST',
+//                url: href,
+//                data: {quantity: row},
+//                dataType: "json",
+//                success: function (data) {
+//
+//                }
+//            });
+        });
+    });
+
+    $(document).ready(function(){
+        $('.value-minus').on('click', function () {
+            var divUpd = $(this).parent().find('.value'),
+                newVal = parseInt(divUpd.text(), 10) - 1;
+            if (newVal >= 1) divUpd.text(newVal);
+        });
+    });
+</script>

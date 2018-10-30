@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Site;
 
 use App\Contracts\Repositories\PostRepository;
 use App\Contracts\Repositories\TagRepository;
 use App\Contracts\Repositories\UserRepository;
+use App\Contracts\Repositories\TopicRepository;
 use App\Events\NotifyWelcome;
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\PostRequest;
@@ -23,15 +24,19 @@ class PostController extends Controller
 
     protected $userRepository;
 
+    protected $topicRepository;
+
     public function __construct(
         PostRepository $repository,
         TagRepository $tagRepository,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        TopicRepository $topicRepository
     )
     {
         $this->repository = $repository;
         $this->tagRepository = $tagRepository;
         $this->userRepository = $userRepository;
+        $this->topicRepository = $topicRepository;
     }
 
     /**
@@ -41,9 +46,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data = $this->repository->paginate();
+        $posts = $this->repository->paginate();
 
-        return view('frontend.post.index', compact('data'));
+        return view('site.post.index', compact('posts'));
     }
 
     /**
@@ -54,8 +59,9 @@ class PostController extends Controller
     public function create()
     {
         $tags = $this->tagRepository->pluck();
+        $topic = $this->topicRepository->pluck();
 
-        return view('frontend.post.create', compact('tags'));
+        return view('site.post.add', compact('tags', 'topic'));
     }
 
     /**
@@ -95,7 +101,7 @@ class PostController extends Controller
 
         $comments = Comment::getById($id);
 
-        return view('frontend.post.detail', compact('post', 'tags', 'comments'));
+        return view('site.post.detail', compact('post', 'tags', 'comments'));
     }
 
     /**
@@ -107,8 +113,9 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = $this->repository->edit($id);
+        $topic = $this->topicRepository->pluck();
 
-        return view('frontend.post.edit', compact('post'));
+        return view('site.post.edit', compact('post', 'topic'));
     }
 
     /**
