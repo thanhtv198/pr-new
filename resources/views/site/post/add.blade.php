@@ -12,49 +12,40 @@
                     <i></i>
                 </span>
         </h3>
-        <div class="ads-grid">
-        <div class="container">
-        <div class="post" view="post">
-            {!! Form::open(['route' => ['posts.store'], 'method' => 'put', 'class' => 'form-horizontal', 'files' => true]) !!}
-            <fieldset>
-                <!-- Form Name -->
-                <h2 class="tittle">{{ trans('common.post.info') }}</h2>
-                <hr>
+    <div class="container">
+        <div class="" style="width: 90%; margin-left: 5%">
+            {!! Form::open(['route' => ['posts.store'] , 'method' => 'POST', 'files' => true]) !!}
+            <div>
+                <h2>Write your new post </h2>
+                Content
+                {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => trans('en.form.title')]) !!}
+                Toppic
+                {!! Form::text('toppic', null, ['class' => 'form-control', 'placeholder' => trans('en.form.title')]) !!}
+                <br>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="post_name">{{ trans('common.post.name') }}*</label>
-                    <div class="col-md-9">
-                        {!! Form::text('name', null, ['class' => 'form-control input-md', 'placeholder' => trans('common.post.name') ])!!}
-                    </div>
+                    <label>{{ trans('common.form.role') }}</label>
+                    {!! Form::select('tags[]', $tags, null, ['class' => 'form-control select2', 'id' => 'tag', 'multiple' => true]) !!}
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="post_categorie">{{ trans('common.post.category') }}</label>
-                    <div class="col-md-9">
-                        {!! Form::select('topic_id', $topic, null, ['class' => 'form-control select2 select2-hidden-accessible']) !!}
-                    </div>
-                </div>
-        
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="post_description">{{ trans('common.post.description') }}</label>
-                    <div class="col-md-9">
-                        {!! Form::textarea('content', null, ['class' => 'form-control input-md', 'placeholder' => trans('common.post.description')]) !!}
-                    </div>
-                </div>
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="singlebutton"></label>
-                    <div class="col-md-3">
-                        {!! Form::button(trans('common.button.save'), ['type' => 'submit', 'class' => 'submit-info']) !!}
-                    </div>
-                </div>
-            </fieldset>
+            </div>
+            <br>
+            <div id="ckeditor-content">
+                {!! Form::textarea('content', null, ['class' => 'ckeditor', 'id' => 'editor-post']) !!}
+            </div>
+            {!! Form::submit(trans('en.button.save'), ['class' =>'btn btn-primary']) !!}
             {!! Form::close() !!}
-        </div>
-    </div>
-</div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            CKEDITOR.replace( 'description' );
-        });
-    </script>
-@endsection
 
+            <hr>
+        </div>
+        </div>
+    <div class="clearfix"></div>
+
+    {{--<script>--}}
+        {{--$(document).ready(function () {--}}
+            {{--CKEDITOR.replace( 'description' );--}}
+        {{--});--}}
+    {{--</script>--}}
+
+@endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+{{--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />--}}
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>--}}

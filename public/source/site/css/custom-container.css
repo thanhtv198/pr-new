@@ -121,3 +121,23 @@
 .h2-edit-sell {
     margin-bottom: 20px;
 }
+.thanh-product-detail {
+    width: 30%;
+    display: inline-block!important;
+}
+.thanh-detail {
+    width: 100%!important;
+}
+
+.button-wishlist {
+    background: red;
+}
+
+.button-compare {
+    background: orangered;
+}
+
+.wishlist-index {
+    border: 1px solid black;
+    height: 120%;
+}

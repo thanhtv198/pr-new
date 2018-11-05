@@ -48,10 +48,10 @@
                     </a>
                 </li>
                 <li class="li-top">
-                    <a href="javascript:;" class="hover-li-top" aria-hidden="true">
+                    <a href="{{ route('get_wishlist') }}" class="hover-li-top" aria-hidden="true">
                         <i class="nav-icon fa fa-heart-o">
                             {{ trans('common.header.wishlist') }}
-                            (<span id="count_wishlist"></span>)
+                            (<span id="count_wishlist">{{ $wishlistHeader }}</span>)
                         </i>
                     </a>
                 </li>
@@ -227,22 +227,24 @@
                                         </div>
                                     </ul>
                                 </li>
-                                <li class="dropdown">
-                                    <a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">
-                                        Write Post
-                                        <b class="caret"></b>
-                                    </a>
-                                    <ul class="dropdown-menu agile_short_dropdown">
-                                        <li id="li-category">
-                                            <a href="{{ route('sell.index') }}">Sell product</a>
-                                        </li>
-                                        <li id="li-category">
-                                            <a href="{{ route('posts.index')}}">Discuss</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                @if(Auth::check())
+                                    <li class="dropdown">
+                                        <a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">
+                                            Write Post
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu agile_short_dropdown">
+                                            <li id="li-category">
+                                                <a href="{{ route('sell.index') }}">Sell product</a>
+                                            </li>
+                                            <li id="li-category">
+                                                <a href="{{ route('posts.user', Auth::user()->id)}}">Discuss</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                @endif
                                 <li class="">
-                                    <a class="nav-stylehead" href="contact.html">Forums</a>
+                                    <a class="nav-stylehead" href="{{ route('posts.index')}}">Forums</a>
                                 </li>
                                 <li class="dropdown" id="drop-search">
                                     <div class="input-group" id="thanh-input-group">

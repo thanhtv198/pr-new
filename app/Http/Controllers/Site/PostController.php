@@ -39,6 +39,14 @@ class PostController extends Controller
         $this->topicRepository = $topicRepository;
     }
 
+    public function getPostByUser($id)
+    {
+        $id = auth()->user()->id;
+        $posts = $this->repository->getPostByUser($id);
+
+        return view('site.post.index', compact('posts'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +56,7 @@ class PostController extends Controller
     {
         $posts = $this->repository->paginate();
 
-        return view('site.post.index', compact('posts'));
+        return view('site.forumn.index', compact('posts'));
     }
 
     /**
@@ -97,11 +105,11 @@ class PostController extends Controller
     {
         $post = $this->repository->show($id);
 
-        $tags = $this->repository->getTags($id);
+//        $tags = $this->repository->getTags($id);
 
         $comments = Comment::getById($id);
 
-        return view('site.post.detail', compact('post', 'tags', 'comments'));
+        return view('site.forumn.detail', compact('post',  'comments'));
     }
 
     /**

@@ -130,6 +130,7 @@ Route::group(['namespace' => 'Site'], function () {
     //post user
     //route resource post
     Route::resource('posts', 'PostController');
+    Route::get('posts/user/{id}', 'PostController@getPostByUser')->name('posts.user');
 
     //comment posts
     Route::post('posts/{id}/comments', 'PostController@comment')->name('posts.comment');
@@ -193,6 +194,12 @@ Route::group(['namespace' => 'Site'], function () {
         Route::get('/compare', 'CompareController@index')->name('get_compare');
         Route::get('/add/{id}', 'CompareController@addToCompare')->name('add_compare');
         Route::get('/delete/{id}', 'CompareController@delete')->name('delete_compare');
+    });
+//wishlist product
+    Route::group(['prefix' => 'wishlist'], function () {
+        Route::get('/wishlist', 'WishlistController@index')->name('get_wishlist');
+        Route::get('/add/{id}', 'WishlistController@addToWishlist')->name('add_wishlist');
+        Route::post('/delete/{id}', 'WishlistController@delete')->name('delete_wishlist');
     });
 
     //notify route

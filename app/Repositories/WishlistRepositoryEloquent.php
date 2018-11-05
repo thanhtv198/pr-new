@@ -29,12 +29,10 @@ class WishlistRepositoryEloquent extends AbstractRepositoryEloquent implements W
 
     public function store(array $data)
     {
-//        return $this->model()->create([
-//            'name' => $data['name'],
-//            'slug' => $data['slug'],
-//            'parent_id' => $data['slug'],
-//            'status' => config('blog.wishlist.status.active'),
-//        ]);
+        return $this->model()->create([
+            'user_id' => auth()->user()->id,
+            'product_id' => $data['product_id'],
+        ]);
     }
 
     public function edit($id)

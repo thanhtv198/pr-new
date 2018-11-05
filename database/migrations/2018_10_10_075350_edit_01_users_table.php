@@ -14,7 +14,7 @@ class Edit01UsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('status')->after('name')->nullable()->default(config('blog.user.status.active'));
+            $table->tinyInteger('status')->after('name')->nullable()->default(config('model.user.status.active'));
             $table->integer('block_id')->after('name')->nullable();
             $table->integer('city_id')->unsigned()->after('name')->nullable();
             $table->string('address')->after('name')->nullable();
@@ -37,7 +37,7 @@ class Edit01UsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('status');
-            $table->dropColumn('role');
+            $table->dropColumn('role_id');
             $table->dropColumn('birthday');
             $table->dropColumn('provider_id');
             $table->dropColumn('avatar');

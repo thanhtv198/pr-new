@@ -12,6 +12,9 @@ $(document).ready(function () {
         $.ajax({
             url: $(this).attr('href'),
             success: function (data) {
+                var a = document.getElementById("count_cart").innerText;
+                var b = parseInt(a) + 1;
+                document.getElementById("count_cart").innerHTML = b;
                 alert('Add to cart success');
             }
         });
@@ -20,11 +23,63 @@ $(document).ready(function () {
     });
 });
 
-function addToCart() {
-    var a = document.getElementById("count_cart").innerText;
-    var b = parseInt(a) + 1;
-    document.getElementById("count_cart").innerHTML = b;
-}
+// function addToCart() {
+//     var a = document.getElementById("count_cart").innerText;
+//     var b = parseInt(a) + 1;
+//     document.getElementById("count_cart").innerHTML = b;
+// }
+
+// add-wishlist
+$(document).ready(function () {
+    $('.product-add-wishlist').find('a').click(function (event) {
+        event.preventDefault();
+
+        let url = $(this).attr('href');
+        $.ajax({
+            type: 'get',
+            url: url,
+            success: function (data) {
+                console.log(data)
+                if(data && data.product > 0){
+                    alert(data.message);
+                } else {
+                    var a = document.getElementById("count_wishlist").innerText;
+                    var b = parseInt(a) + 1;
+                    document.getElementById("count_wishlist").innerHTML = b;
+                    alert(data.success);
+                }
+            }
+        });
+
+        return false; //for good measure
+    });
+});
+
+//del -wishlist
+$(document).ready(
+    function () {
+        $(document).on('click', '.del-button', function (e) {
+            if (confirm('Are you sure!')) {
+                let id = $(this).attr('id');
+                $('#row-' + id).remove();
+                let url = $(this).attr('data-url');
+                $.ajax({
+                    url: url,
+                    type: 'POST',  // user.destroy
+                    success: function (result) {
+
+                        var a = document.getElementById("count_wishlist").innerText;
+                        var b = parseInt(a) - 1;
+                        document.getElementById("count_wishlist").innerHTML = b;
+                        if(b == 0) {
+                            alert(result.empty)
+                        }
+                    }
+                });
+            }
+        });
+    });
+
 // add-compare
 $(document).ready(function () {
     $('.compare_count').find('a').click(function (event) {

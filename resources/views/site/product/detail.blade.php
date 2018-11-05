@@ -156,10 +156,26 @@
                         @endif
                         <thead>
                     </table>
-                    <div class="product-icon-container">
-                        <a href={{ route( 'add_cart', $product->id) }} onclick="addToCart()">
-                            {{ Form::submit(trans('common.button.add_cart'), ['class' => 'submit check_out bnt btn-success']) }}
-                        </a>
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out thanh-detail">
+                        <div class="product-icon-container thanh-product-detail">
+                            <a href="{{ route('add_cart', $product->id) }}" onclick="addToCart()">
+                                {{ Form::submit(trans('common.button.add_cart'), ['class' => 'button']) }}
+                            </a>
+                        </div>
+                        <div class="product-add-wishlist thanh-product-detail">
+                            <a href="{{ route('add_wishlist', $product->id) }}" class="hover-li-top"  aria-hidden="true">
+                                <span class="nav-icon fa fa-heart-o" style="color:Red"></span>
+                                {{ trans('common.product.add_wishlist') }}
+                            </a>
+                        </div>
+                        <div class="compare_count thanh-product-detail">
+                           <a href="{{ route('add_compare', $product->id) }}" onclick="addCompare()" class="hover-li-top" aria-hidden="true" style="margin-left: 20px">
+                               <span class="fa fa-balance-scale" style="color: orangered"></span>
+                               {{ trans('common.product.add_compare') }}
+                           </a>
+                       </div>
+
+
                     </div>
                 </div>
             </div>

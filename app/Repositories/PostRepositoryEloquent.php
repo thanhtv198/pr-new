@@ -7,6 +7,7 @@ use App\Models\Block;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 use DB;
 
 class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostRepository
@@ -41,23 +42,23 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
     {
         $post = $this->model()->findBySlugOrFail($id);
 
-        $tags = $post->tags;
+//        $tags = $post->tags;
         $tagsName = [];
         $view = $post->view;
         $post->update([
             'view' => $view + 1,
         ]);
 
-        foreach ($tags as $tag) {
-            $tagsName[] = array([
-                'id' => $tag->id,
-                'name' => $tag->name,
-            ]);
-        }
+//        foreach ($tags as $tag) {
+//            $tagsName[] = array([
+//                'id' => $tag->id,
+//                'name' => $tag->name,
+//            ]);
+//        }
 
-        $tagsName = array_slice($tagsName, 0, config('blog.post.tagInDetail'));
+//        $tagsName = array_slice($tagsName, 0, config('blog.post.tagInDetail'));
 
-        $post->setAttribute('tags_name', $tagsName);
+//        $post->setAttribute('tags_name', $tagsName);
 
         return $post;
     }
@@ -226,5 +227,13 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
         }
 
         return $result;
+    }
+
+    public function getPostByUser($id)
+    {
+        $user = User::findOrFail($id);
+        $posts = $user->posts;
+
+        return $posts;
     }
 }

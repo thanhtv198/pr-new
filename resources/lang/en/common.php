@@ -47,6 +47,9 @@ return [
     //return with
     'with' => [
         'add_success' => 'Add success!',
+        'add_wishlist_success' => 'Add to wishlist success!',
+        'wishlist_already_exits' => 'Product is already exits in your wishlist!',
+        'wishlist_empty' => 'Your wishlist have no product!',
         'edit_success' => 'Edit success',
         'add_message' => 'Add failed',
         'edit_message' => 'Add failed',
@@ -157,6 +160,7 @@ return [
         'check_product' => 'Check Product',
         'slide_title' => 'list slide',
         'slide_head' => 'Slide management',
+        'wishlist' => 'Products In Your Wishlist',
     ],
     //product
     'product' => [
@@ -193,6 +197,8 @@ return [
         'product' => 'Product',
         'seller_info' => 'Seller Infomation',
         'address_sell' => 'Address sell product ',
+        'add_wishlist' => 'Add To Wishlist',
+        'add_compare' => 'Add To Compare',
     ],
     //news
     'news' => [

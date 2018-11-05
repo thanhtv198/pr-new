@@ -33,6 +33,7 @@ class Product extends Model
         'pin',
         'battery',
         'status',
+        'is_new',
         'views',
         'created_at',
         'updated_at'

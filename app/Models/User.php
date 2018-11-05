@@ -44,9 +44,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function level()
+    public function role()
     {
-        return $this->belongsTo(Level::class);
+        return $this->HasOne(Role::class);
     }
 
     public function city()
@@ -85,7 +85,7 @@ class User extends Authenticatable
 
     public function scopeSearch($query, $key)
     {
-        return $query->where('name', 'ilike', '%' . $key . '%')->get()->toArray();
+        return $query->where('name', 'like', '%' . $key . '%')->get()->toArray();
     }
 
     public function scopeRemove($query, $id)
@@ -95,8 +95,8 @@ class User extends Authenticatable
 
     public function scopeManager($query, $request)
     {
-        return $query->where('name', 'ilike', '%' . $request . '%')
-            ->where('level_id', '<>', config('page.user.role.member'));
+        return $query->where('name', 'like', '%' . $request . '%')
+            ->where('role_id', '<>', config('page.user.role.member'));
     }
 
     public function scopeMember($query, $request)

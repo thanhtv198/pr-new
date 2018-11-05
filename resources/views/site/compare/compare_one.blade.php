@@ -70,19 +70,24 @@
                         </tr>
                         <tr>
                             <td>{{ trans('common.product.action') }}</td>
-                            <div class="line">
-                                <div class="product-icon-container pull-left" id="cart_compare">
-                                    <a href="{{ route('add_cart', $products[0]->id) }}" onclick="addToCart()">
-                                        <button class="btn btn-info"
-                                                id="btn-cart">{{ trans('common.button.add_cart') }}</button>
-                                    </a>
+                            <td>
+                                <div class="line">
+                                    <div class="pull-left">
+                                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out thanh-detail">
+                                            <div class="product-icon-container thanh-add-car-compare">
+                                                <a href="{{ route('add_cart', $products[0]->id) }}" onclick="addToCart()">
+                                                    {{ Form::submit(trans('common.button.add_cart'), ['class' => 'btn btn-info']) }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="{{ route('delete_compare', $rowId[0]) }}">
+                                            <button class="btn btn-danger">{{ trans('common.button.remove') }}</button>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="pull-right">
-                                    <a href="{{ route('delete_compare', $rowId[0]) }}">
-                                        <button class="btn btn-danger">{{ trans('common.button.remove') }}</button>
-                                    </a>
-                                </div>
-                            </div>
+                            </td>
                         </tr>
                         <thead>
                     </table>

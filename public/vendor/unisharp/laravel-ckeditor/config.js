@@ -35,4 +35,13 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+    CKEDITOR.editorConfig = function( config ) {
+        config.filebrowserBrowseUrl = './laravel-ckeditor/ckfinder/ckfinder.html';
+        config.filebrowserImageBrowseUrl = './laravel-ckeditor/ckfinder/ckfinder.html?type=Images';
+        config.filebrowserFlashBrowseUrl = './laravel-ckeditor/ckfinder/ckfinder.html?type=Flash';
+        config.filebrowserUploadUrl = './laravel-ckeditor/ckfinder/core/connector/php/connector. php?command=QuickUpload&type=Files';
+        config.filebrowserImageUploadUrl = './laravel-ckeditor/ckfinder/core/connector/php/connector. php?command=QuickUpload&type=Images';
+        config.filebrowserFlashUploadUrl = './laravel-ckeditor/ckfinder/core/connector/php/connector. php?command=QuickUpload&type=Flash';
+    };
 };

@@ -32,7 +32,8 @@ class CreateProductsTable extends Migration
             $table->string('sim')->nullable();
             $table->integer('memory')->nullable();
             $table->integer('battery')->nullable();
-            $table->integer('status')->default(config('model.product.status.inactive'));
+            $table->tinyInteger('status')->default(config('model.product.status.inactive'));
+            $table->tinyInteger('is_new')->nullable();
             $table->integer('views')->default(config('model.product.status.view'));
             $table->integer('block_id')->unsigned()->nullable();
             $table->softDeletesTz();

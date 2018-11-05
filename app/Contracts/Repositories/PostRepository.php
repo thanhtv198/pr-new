@@ -8,6 +8,8 @@ interface PostRepository extends AbstractRepository
 
     public function paginate();
 
+    public function getPostByUser($id);
+
     public function getTags($id);
 
     public function active($id);

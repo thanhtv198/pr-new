@@ -58,9 +58,9 @@
 </head>
 <body>
 <div class="app">
-@include('site/layouts/header')
-@yield('content')
-@include('site/layouts/footer')
+    @include('site/layouts/header')
+    @yield('content')
+    @include('site/layouts/footer')
 </div>
 </body>
 </html>
