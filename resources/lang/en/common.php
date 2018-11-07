@@ -264,7 +264,7 @@ return [
         'wishlist' => 'Wishlist',
         'transaction' => 'Transaction',
         'my_account' => 'Account',
-        'time_line' => 'Timeline',
+        'home' => 'Home',
     ],
     //aside_content
     'aside' => [

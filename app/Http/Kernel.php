@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'role_admin' => \App\Http\Middleware\CheckRoleAdmin::class,
         'require_login' => \App\Http\Middleware\RequireLoginMiddleware::class,
+        'locale' => \App\Http\Middleware\Locale::class,
     ];
 }

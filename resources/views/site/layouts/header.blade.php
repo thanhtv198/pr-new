@@ -7,10 +7,17 @@
         <!-- header lists -->
         <ul class="list-inline pull-left">
             <li>
-                <a><img src="{{ asset('source/site/images/vietnam.png') }}"></a>
+                <a href="{!! route('change-language', ['en']) !!}">
+                    <img src="{{ asset('source/site/images/english.png') }}"> 
+                    English
+                </a>
+           
             </li>
             <li>
-                <a><img src="{{ asset('source/site/images/english.png') }}"></a>
+                <a href="{!! route('change-language', ['vi']) !!}">
+                    <img src="{{ asset('source/site/images/vietnam.png') }}">
+                    Vietnam
+                </a>
             </li>
         </ul>
         <ul class="list-inline nav navbar-nav menu__list pull-right ul-top" view="header">
@@ -196,7 +203,8 @@
                         <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav menu__list" id="thanh-menu-header">
                                 <li class="active">
-                                    <a class="nav-stylehead" href="{{ route('home_page') }}">Home
+                                    <a class="nav-stylehead" href="{{ route('home_page') }}">
+                                        {{ trans('common.header.home')}}
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>

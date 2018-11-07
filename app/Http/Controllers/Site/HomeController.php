@@ -15,6 +15,7 @@ use App\Models\News;
 use App\Models\City;
 use Cart;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -236,6 +237,13 @@ class HomeController extends Controller
         Cart::instance('compare')->destroy();
 
         return redirect()->route('home_page');
+    }
+
+    public function changeLanguage($language)
+    {
+        \Session::put('website_language', $language);
+       
+        return redirect()->back();
     }
 }
 

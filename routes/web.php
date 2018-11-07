@@ -102,8 +102,9 @@ Route::namespace('Auth')->group(function () {
     Route::get('/login/{social}/callback', 'SocialController@handleProviderCallback');
 });
 
-Route::group(['namespace' => 'Site'], function () {
+Route::group(['namespace' => 'Site', 'middleware' => 'locale'], function () {
     Route::get('/', 'HomeController@index')->name('home_page');
+    Route::get('change-language/{language}', 'HomeController@changeLanguage')->name('change-language');
     //auth user
     Route::get('/signup', 'HomeController@getSignUp')->name('get_signup');
     Route::post('/signup', 'HomeController@postSignUp')->name('post_signup');
@@ -218,3 +219,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
