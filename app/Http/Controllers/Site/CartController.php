@@ -110,13 +110,13 @@ class CartController extends Controller
             $request->merge([
                 'buyer_id' => config('page.buyer_id'),
                 'total' => $totalMoney,
-                'remove' => config('page.order.remove.active'),
+//                'remove' => config('page.order.remove.active'),
             ]);
         } else {
             $request->merge([
                 'buyer_id' => Auth::user()->id,
                 'total' => $totalMoney,
-                'remove' => config('page.order.remove.active'),
+//                'remove' => config('page.order.remove.active'),
             ]);
         }
 
@@ -131,7 +131,7 @@ class CartController extends Controller
                 'user_id' => $product->user_id,
                 'quantity' => $value->qty,
                 'status' => config('page.order_detail.status.active'),
-                'remove' => config('page.order_detail.remove.active'),
+//                'remove' => config('page.order_detail.remove.active'),
                 'price' => $value->price,
             ]);
 

@@ -65,9 +65,9 @@
                         @endforeach
                         <div class="clearfix"></div>
                         <div align="center">
-                            @if(count($products) > 0)
-                            {{ $products->links() }}
-                            @endif
+                            {{--@if(count($products) > 0)--}}
+                            {{--{{ $products->links() }}--}}
+                            {{--@endif--}}
                         </div>
                     </div>
                 </div>

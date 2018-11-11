@@ -78,7 +78,7 @@ class Product extends Model
 
     public function scopeSearch($query, $request)
     {
-        return $query->where('name', 'ilike', '%' . $request . '%')
+        return $query->where('name', 'like', '%' . $request . '%')
             ->where('deleted_at', config('page.product.deleted_at.null'))
             ->where('status', config('page.product.status.inactive'))
             ->paginate(config('app.paginateProduct'));
@@ -94,10 +94,10 @@ class Product extends Model
 
     public function scopeSearchNameDes($query, $key)
     {
-        return $query->where('name', 'ilike', '%' . $key . '%')
+        return $query->where('name', 'like', '%' . $key . '%')
             ->where('deleted_at', config('page.product.deleted_at.null'))
             ->where('status', config('page.product.status.inactive'))
-            ->orWhere('description', 'ilike', '%' . $key . '%')
+            ->orWhere('description', 'like', '%' . $key . '%')
             ->where('deleted_at', config('page.product.deleted_at.null'))
             ->where('status', config('page.product.status.inactive'))
             ->paginate(config('app.paginateProduct'));
@@ -105,7 +105,7 @@ class Product extends Model
 
     public function scopeSearchName($query, $name)
     {
-        return $query->where('name', 'ilike', '%' . $name . '%')
+        return $query->where('name', 'like', '%' . $name . '%')
             ->where('deleted_at', config('page.product.deleted_at.null'))
             ->paginate(config('app.paginateProductSearch'));
     }
@@ -222,6 +222,35 @@ class Product extends Model
             ->where('deleted_at', config('page.product.deleted_at.null'))
             ->where('status', config('page.product.status.inactive'))
             ->paginate(config('app.paginateProductSearch'));
+    }
+
+    public function scopeSearchMultiple($query, $category_id, $price)
+    {
+        switch ($price) {
+            case 1:
+                $query = $query->whereRaw('(price - promotion) < 5000000');
+                break;
+            case 2:
+                $query = $query->whereRaw('(price - promotion) >= 5000000 and (price - promotion) <= 10000000');
+                break;
+            case 3:
+                $query = $query->whereRaw('(price - promotion) >= 10000000 and (price - promotion) <= 15000000');
+                break;
+            case 4:
+                $query = $query->whereRaw('(price - promotion) >= 15000000 and (price - promotion) <= 20000000');
+                break;
+            case 5:
+                $query = $query->whereRaw('(price - promotion) > 20000000');
+                break;
+            default:
+                break;
+        }
+
+        if (!$category_id) {
+            return $query->orderByRaw('price - promotion ', 'asc');
+        }
+
+        return $query->where('category_id', $category_id)->orderByRaw('price - promotion ', 'asc');
     }
 }
 

@@ -265,6 +265,7 @@ return [
         'transaction' => 'Transaction',
         'my_account' => 'Account',
         'home' => 'Home',
+        'lang' => 'Language'
     ],
     //aside_content
     'aside' => [

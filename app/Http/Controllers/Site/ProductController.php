@@ -27,7 +27,6 @@ class ProductController extends Controller
     public function getDetailProduct($id)
     {
         $product = Product::findOrFail($id);
-
         if ($product->status == 1) {
             $images = $product->images;
 
@@ -35,13 +34,15 @@ class ProductController extends Controller
 
             $manufactures = Manufacture::all();
 
-            $comments = Comment::getById($product->id);
+            $comments = Comment::getByIdProduct($product->id);
 
             $views = $product->views;
 
             Product::updateViews($id, $views);
 
-            return view('site.product.detail', compact('product', 'categories', 'manufactures', 'images', 'comments', 'replies'));
+            return view('site.product.detail',
+                compact('product', 'categories', 'manufactures', 'images', 'comments', 'replies')
+            );
         }
 
         return view('site.404');
@@ -61,7 +62,13 @@ class ProductController extends Controller
 
         $comment = Comment::create($request->all());
 
-        return $comment;
+        return [
+            'comment' => $comment,
+            'name' => auth()->user()->name,
+            'time' => $comment->created_at->diffForHumans(),
+            'avatar' => Auth::user()->avatar?Auth::user()->avatar: '',
+            'base_url' => url(config('model.user.upload'))
+        ];
     }
 
     /**
@@ -78,12 +85,14 @@ class ProductController extends Controller
             'content' => $request->repContent,
         ]);
 
-        $replies = Comment::create($request->all());
+        $reply = Comment::create($request->all());
 
         return [
-            'replies' => $replies,
+            'replies' => $reply,
             'name' => auth()->user()->name,
-            'time' => $replies->created_at->diffForHumans(),
+            'time' => $reply->created_at->diffForHumans(),
+            'avatar' => Auth::user()->avatar?Auth::user()->avatar: '',
+            'base_url' => url(config('model.user.upload')),
         ];
     }
 

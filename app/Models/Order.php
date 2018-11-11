@@ -17,7 +17,7 @@ class Order extends Model
         'name',
         'email',
         'phone_number',
-        'local_id',
+        'city_id',
         'address',
         'total',
         'note',

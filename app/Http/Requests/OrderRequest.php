@@ -27,6 +27,7 @@ class OrderRequest extends FormRequest
             'email' => 'required|email',
             'name' => 'required',
             'phone_number' => 'required',
+            'city_id' => 'required',
             'address' => 'required',
         ];
     }
@@ -37,6 +38,7 @@ class OrderRequest extends FormRequest
 
             'email.email' => trans('common.validate.email'),
             'name.required' => trans('common.validate.name'),
+            'city_id.required' => trans('common.validate.city'),
             'address.required' => trans('common.validate.address'),
             'phone_number.required' => trans('common.validate.phone_number'),
         ];

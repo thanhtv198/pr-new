@@ -104,10 +104,10 @@ class PostController extends Controller
     public function show($id)
     {
         $post = $this->repository->show($id);
-
+        $id = $post->id;
 //        $tags = $this->repository->getTags($id);
 
-        $comments = Comment::getById($id);
+        $comments = Comment::getByIdPost($id);
 
         return view('site.forumn.detail', compact('post',  'comments'));
     }
@@ -162,7 +162,13 @@ class PostController extends Controller
     {
         $comment = $this->repository->comment($id, $request->all());
 
-        return response()->json($comment);
+        return [
+            'comment' => $comment,
+            'name' => auth()->user()->name,
+            'time' => $comment->created_at->diffForHumans(),
+            'avatar' => Auth::user()->avatar?Auth::user()->avatar: '',
+            'base_url' => url(config('model.user.upload'))
+        ];
     }
 
     /**
@@ -178,12 +184,15 @@ class PostController extends Controller
             'content' => $request->repContent,
         ]);
 
-        $comment = $this->repository->reply($id, $request->all());
+        $reply = $this->repository->reply($id, $request->all());
 
-        return response()->json([
-            'comment' => $comment,
-            'username' => auth()->user()->name,
-        ]);
+        return [
+            'replies' => $reply,
+            'name' => auth()->user()->name,
+            'time' => $reply->created_at->diffForHumans(),
+            'avatar' => Auth::user()->avatar?Auth::user()->avatar: '',
+            'base_url' => url(config('model.user.upload')),
+        ];
 
     }
 }

@@ -182,9 +182,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        willvincent\Rateable\RateableServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-
+        willvincent\Rateable\RateableServiceProvider::class,
 
         /*
          * Package Service Providers...

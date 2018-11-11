@@ -173,12 +173,12 @@ class HomeController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getSignUp()
-    {
-        $local = City::pluck('name', 'id');
-
-        return view('site.account.sign_up', compact('local'));
-    }
+//    public function getSignUp()
+//    {
+//        $local = City::pluck('name', 'id');
+//
+//        return view('site.account.sign_up', compact('local'));
+//    }
 
     /**
      * @param UserRequest $request
@@ -187,14 +187,13 @@ class HomeController extends Controller
     public function postSignUp(UserRequest $request)
     {
         $request->merge([
-            'level_id' => 3,
+            'role_id' => 3,
             'password' => bcrypt($request->password),
-            'remove' => 0,
         ]);
 
         User::create($request->all());
 
-        return redirect('signin')->with('success', trans('common.login.sign_up_success'));
+        return back()->with('success', trans('common.login.sign_up_success'));
     }
 
     /**
@@ -245,5 +244,21 @@ class HomeController extends Controller
        
         return redirect()->back();
     }
+
+    public function searchMultiple(Request $request)
+    {
+        $products = Product::searchMultiple(
+            intval($request->category_id),
+            intval($request->price),
+            intval($request->ram)
+        )->get();
+
+        return  view('site.result', compact(
+                'products'
+
+            )
+        );
+    }
+
 }
 

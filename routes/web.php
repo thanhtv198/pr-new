@@ -118,6 +118,7 @@ Route::group(['namespace' => 'Site', 'middleware' => 'locale'], function () {
     Route::get('/price/to{to}', 'HomeController@searchPrice')->name('site_seach_price1');
     Route::get('/price/{from?}/{to?}', 'HomeController@searchPrice')->name('site_seach_price');
     Route::get('/address/{id?}', 'HomeController@searchAddress')->name('site_seach_address');
+    Route::post('/search/multiple', 'HomeController@searchMultiple')->name('site_search_multiple');
 
     //view category, manufactu news
     Route::get('/news/{id}', 'HomeController@newDetail')->name('news_detail');

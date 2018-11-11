@@ -69,6 +69,10 @@
                                             </a>
                                             <div class="media-body">
                                                 <h4 class="media-heading">
+                                                    @if(Auth::user()->avatar)
+                                                        <img src="{{ url(config('model.user.upload')) }}/{{ Auth::user()->avatar }}"
+                                                             width="37px" style="border-radius: 50%; border:1px solid #2196f3">
+                                                    @endif
                                                     <strong>
                                                         {{ $comment->user->name }}
                                                     </strong>
@@ -79,7 +83,7 @@
                                                             </a>
                                                         </span>
                                                 </h4>
-                                                <p>{{ $comment->content }}</p>
+                                                <p class="content-cmt">{{ $comment->content }}</p>
                                                 <div class="input-group input-{{ $comment->id }}" style="display: none">
                                                     <input type="text" class="form-control content-reply" id="comment-{{ $comment->id }}"
                                                            name="content-reply">
@@ -90,7 +94,7 @@
                                                             </button>
                                                         </span>
                                                 </div>
-                                                <div class="comment-replies-{{ $comment->id }}">
+                                                <div id="replies-box" class="comment-replies-{{ $comment->id }}">
                                                     <!-- Nested media object -->
                                                     @foreach ($comment->replies as $row)
                                                         <div class="media">
@@ -99,10 +103,14 @@
                                                             </a>
                                                             <div class="media-body">
                                                                 <h4 class="media-heading">
+                                                                    @if(Auth::user()->avatar)
+                                                                        <img src="{{ url(config('model.user.upload')) }}/{{ Auth::user()->avatar }}"
+                                                                             width="37px" style="border-radius: 50%; border:1px solid #2196f3">
+                                                                    @endif
                                                                     <strong>{{ $row->user->name }}</strong>
                                                                     <span>{{ $row->created_at }}</span>
                                                                 </h4>
-                                                                <p>{{ $row->content }}</p>
+                                                                <p class="content-cmt">{{ $row->content }}</p>
                                                             </div>
                                                         </div>
                                                         <!--end media-->
@@ -155,20 +163,22 @@
                     data: {content: content},
                     dataType: "json",
                     success: function (data) {
-                        let id = data.id;
+                        let id = data.comment.id;
                         console.log(data);
-                        let url = 'http://localhost:8000/product/' + id + '/replies';
+                        let url = 'http://localhost:8000/posts/' + id + '/replies';
                         let comment = '                 <div class="media comment-parent">\n' +
                             '                                                   <a href="javascript:;" class="pull-left">\n' +
                             '                                                       <img src="" alt="" class="media-object">\n' +
                             '                                                   </a>\n' +
                             '                                                   <div class="media-body">\n' +
                             '                                                    <h4 class="media-heading">' +
+                            '<img src="'+ data.base_url + '/' + data.avatar +'" ' +
+                            'width="37px" style="border-radius: 50%; border:1px solid #2196f3">\n' +
                             '                                                        <strong>' + name + '</strong>\n' +
                             '                                                         <input type="hidden" name="username" value="' + name + '">\n' +
-                            '                                                        <span>' + data.created_at + '/ <a class="reply-parent" id="' + id + '">Reply</a></span>\n' +
+                            '                                                        <span>' + data.time + '/ <a class="reply-parent" id="' + id + '">Reply</a></span>\n' +
                             '                                                    </h4>\n' +
-                            '                                                    <p>' + content + '</p>\n' +
+                            '                                                    <p class="content-cmt">' + data.comment.content + '</p>\n' +
                             '                                                    <div class="input-group input-' + id + '" style="display: none">\n' +
                             '                                                         <input type="text" size="50" class="form-control content-reply" id="comment-' + id + '" name="content-reply">\n' +
                             '                                                         <span class="input-group-btn">\n' +
@@ -219,9 +229,11 @@
                             '            </a>\n' +
                             '            <div class="media-body">\n' +
                             '                <h4 class="media-heading">\n' +
+                            '<img src="'+ data.base_url + '/' + data.avatar +'" ' +
+                            'width="37px" style="border-radius: 50%; border:1px solid #2196f3">\n' +
                             '                     <strong>' + data.name + '</strong>\n' +
                             '                     <span>' + data.time + '</span></h4>\n' +
-                            '                   <p>' + content + '</p>\n' +
+                            '                   <p class="content-cmt">' + content + '</p>\n' +
                             '            </div>\n' +
                             '        </div>'
 

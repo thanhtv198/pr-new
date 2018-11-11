@@ -1,24 +1,26 @@
-<div class="range">
-    <h3 class="agileits-sear-head">{{ trans('common.aside.search_price') }}</h3>
-    <div view="sidebar">
-        <div class="input" style="display: inline-block">
-            {!! Form::number('from', null, ['placeholder' => trans('common.aside.from'), 'id' => 'from', 'size' => 2]) !!}
-            <div class="bottom-line"></div>
-        </div>
-        <div class="input" style="display: inline-block">
-            {!! Form::number('to', null, ['placeholder' => trans('common.aside.to'), 'id' => 'to', 'size' => 2]) !!}
-        </div>
-        {!! Form::button(trans('common.tag.search'), ['type' => 'submit', 'class' => 'search_price']) !!}
-    </div>
-</div>
-<div class="range">
+<div>
     <h3 class="agileits-sear-head">{{ trans('common.aside.search_local') }}</h3>
     <div view="sidebar">
-        {!! Form::select('address', $address, null, ['class' => 'span2 col-md-2 form-control address1', 'placeholder' => 'Choose location']) !!}
-        {!! Form::button(trans('common.tag.search'), ['type' => 'submit', 'class' => 'btn-address']) !!}
+        {!! Form::select('city', $city, null, ['class' => 'span2 col-md-2 form-control address1', 'placeholder' => 'Choose location']) !!}
+        {!! Form::button(trans('common.tag.search'), ['type' => 'submit', 'class' => 'btn btn-warning']) !!}
         {!! Form::hidden('url', config('app.url_base'), ['id' => 'url']) !!}
     </div>
 </div>
+<hr>
+<div class="sidebar-banner">
+    {!! Form::open(['route' => 'site_search_multiple', 'method' => 'post']) !!}
+    <div class="form-group div-input">
+        <label>{{ __('Danh mục') }}</label>
+        {!! Form::select('category_id', $categoriesSidebar, null, ['class' => 'span2 col-md-2 form-control', 'placeholder' => 'Tất cả danh mục']) !!}
+        <br>
+        <label class="search-price">{{ __('Mức giá') }}</label>
+        {!! Form::select('price', $priceSidebar, null, ['class' => 'span2 col-md-2 form-control', 'placeholder' => 'Tất cả mức giá']) !!}
+        <br>
+        {!! Form::submit(__('Tìm kiếm'), ['class' => 'btn btn-warning search-form']) !!}
+    </div>
+    {!! Form::close() !!}
+</div>
+<hr>
 <div class="left-side">
     <h3 class="agileits-sear-head">{{ trans('common.aside.news') }}</h3>
     <ul>

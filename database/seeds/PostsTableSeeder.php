@@ -13,7 +13,7 @@ class PostsTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        $limit = 19;
+        $limit = 8;
 
         for ($i = 0; $i < $limit; $i++) {
             $post = \App\Models\Post::create([

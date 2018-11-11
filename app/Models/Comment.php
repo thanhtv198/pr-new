@@ -20,6 +20,11 @@ class Comment extends Model
         'updated_at',
     ];
 
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -32,11 +37,16 @@ class Comment extends Model
 
     public function replies()
     {
-        return $this->hasMany(Comment::class, 'parent_id');
+        return $this->hasMany(Comment::class, 'commentable_id');
     }
 
-    public function scopeGetById($query, $id)
+    public function scopeGetByIdProduct($query, $id)
     {
         return $query->where('commentable_id', $id)->where('commentable_type', 'product')->get();
+    }
+
+    public function scopeGetByIdPost($query, $id)
+    {
+        return $query->where('commentable_id', $id)->where('commentable_type', 'post')->get();
     }
 }

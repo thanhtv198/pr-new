@@ -13,7 +13,8 @@
                 @if(!isset($user->avatar))
                     <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
                 @else
-                    <img src="{{ url(config('model.user.upload')) }}/{{ $user->avatar }}" class="avatar img-circle" alt="avatar" width="120px">
+                    <img src="{{ url(config('model.user.upload')) }}/{{ $user->avatar }}"
+                         style="border-radius: 50%; border:1px solid #2196f3" class="avatar img-circle" alt="avatar" width="120px">
                 @endif
                 <div class="form-group">
                     <h6>Upload a different photo...</h6>
