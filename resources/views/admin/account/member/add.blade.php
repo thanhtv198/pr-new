@@ -67,15 +67,15 @@
                             </div>
                             <div class="form-group">
                                 <label>{{ trans('common.form.city') }}</label>
-                                {!! Form::select('local_id', $local, null, ['class' => 'span2 col-md-2 form-control']) !!}
+                                {!! Form::select('city_id', $city, null, ['class' => 'span2 col-md-2 form-control']) !!}
                             </div>
-                            @if(Auth::user()->level_id == 1)
+                            @if(Auth::user()->role_id == 1)
                             <div class="form-group">
                                 <label>{{ trans('common.form.role') }}</label>
-                                {!! Form::select('level_id', $level, null, ['class' => 'span2 col-md-2 form-control']) !!}
+                                {!! Form::select('role_id', $level, null, ['class' => 'span2 col-md-2 form-control']) !!}
                             </div>
                             @else
-                                {!! Form::hidden('level_id', 3) !!}
+                                {!! Form::hidden('role_id', 3) !!}
                             @endif
                         </div>
                         <!-- /.box-body -->

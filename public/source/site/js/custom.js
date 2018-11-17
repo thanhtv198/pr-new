@@ -59,10 +59,15 @@ $(document).ready(function () {
 $(document).ready(
     function () {
         $(document).on('click', '.del-button', function (e) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             if (confirm('Are you sure!')) {
                 let id = $(this).attr('id');
-                $('#row-' + id).remove();
                 let url = $(this).attr('data-url');
+                $('#row-' + id).remove();
                 $.ajax({
                     url: url,
                     type: 'POST',  // user.destroy
@@ -177,6 +182,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('.btn-address').click(function(){
         var url = $('#url').val();
+        // alert(url);
         var id = $('.address1').val();
         window.location.href = url + 'address' + '/' + id;
     });

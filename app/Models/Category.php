@@ -38,7 +38,6 @@ class Category extends Model
         }
 
         return $list;
-
     }
 
     public function scopeSearch($query, $key)

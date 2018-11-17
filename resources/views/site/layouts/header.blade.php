@@ -73,30 +73,36 @@
                 <li class="li-top">
                     <a href="{{ route('cart') }}" class="hover-li-top">
                         <span class="fa fa-cart-arrow-down" aria-hidden="true"></span>
-                        {{ trans('common.header.cart') }}(<span
-                                id="count_cart">{{ Cart::instance('default')->count() }}</span>)
+                        <b>{{ trans('common.header.cart') }}</b>(<span
+                                id="count_cart">
+                            {{ Cart::instance('default')->count() }}</span>)
                     </a>
                 </li>
                 <li class="li-top">
                     <a view="compare" href="{{ route('get_compare') }}" class="hover-li-top">
                         <span class="fa fa-balance-scale" aria-hidden="true"></span>
-                        {{ trans('common.header.compare') }}(<span
+                        <b>{{ trans('common.header.compare') }}</b>(<span
                                 id="count_compare">{{ Cart::instance('compare')->count() }}</span>)
                     </a>
                 </li>
                 <li class="li-top">
                     <a href="#" data-toggle="modal" class="hover-li-top" data-target="#myModal1">
-                        <span class="fa fa-unlock-alt" aria-hidden="true"></span> {{ trans('common.header.sign_in') }} </a>
+                        <span class="fa fa-unlock-alt" aria-hidden="true"></span>
+                        <b>{{ trans('common.header.sign_in') }}</b>
+                    </a>
                 </li>
                 <li class="li-top">
                     <a href="#" data-toggle="modal" class="hover-li-top" data-target="#myModal2">
-                        <span class="fa fa-pencil-square-o" aria-hidden="true"></span> {{ trans('common.header.sign_up') }} </a>
+                        <span class="fa fa-pencil-square-o" aria-hidden="true">
+                        </span>
+                        <b>{{ trans('common.header.sign_up') }}</b>
+                    </a>
                 </li>
             @else
                 <li class="li-top">
                     <a href="{{ route('cart') }}" class="hover-li-top">
                         <span class="fa fa-cart-arrow-down" aria-hidden="true"></span>
-                        {{ trans('common.header.cart') }}
+                        <b>{{ trans('common.header.cart') }}</b>
                         (<span id="count_cart">{{ Cart::instance('default')->count() }}</span>)
                     </a>
                 </li>
@@ -105,12 +111,13 @@
                     <ul class="" style="margin-top: 14px">
                     <div class="sl-nav">
                         <ul>
-                            <li class="li-user">
-                                <b class="fa fa-bell-o count_notify">
+                            <li class="li-user" style="color:#337ab7;">
+                                <span class="fa fa-bell-o count_notify">  </span>
+                                    <b>{{ trans('common.header.notify') }}</b>
                                     <a class="dropdown-toggle hover-li-top" data-toggle="dropdown" data-target="#" href="javascript:;">
                                     (<span>{{ count(auth()->user()->unreadNotifications) }}</span>)
                                     </a>
-                                </b>
+
                                 <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 <div class="triangle"></div>
                                 @if(auth()->user()->unreadNotifications->count())
@@ -119,9 +126,10 @@
                                             @if(isset($no->data['product_name']))
                                                 <li style="cursor: pointer">
                                                     <div class="read read1" id="{{ $no->data['product_name'] }}">
-                                                        <a id="{{ $no->id }}"
+                                                        <a href="{{ route('get_order_sold') }}" id="{{ $no->id }}"
                                                            class="pro">
-                                                            You have order with {{ $no->data['qty'] }} product
+                                                            {{ __('common.header.you_have_order_with') }}
+                                                            {{ $no->data['qty'] }} product
                                                             <b>{!! ($no->data['product_name']) !!}</b><span style="font-size: 15px;color:black">{{ $no->created_at->diffForHumans()  }}</span>
                                                         </a>
                                                     </div>
@@ -131,8 +139,8 @@
                                             @if(isset($no->data['sender_name']))
                                                 <li style="cursor: pointer">
                                                     <div class="read read2" id="{{ $no->data['sender_id'] }}">
-                                                        <a class="user" id="{{ $no->id }}">
-                                                            You have message from
+                                                        <a href="{{ route('send', $no->data['sender_id']) }}" class="user" id="{{ $no->id }}">
+                                                            {{ __('common.header.you_have_mesage_from') }}
                                                             <b>{!! ($no->data['sender_name']) !!}</b> <span style="font-size: 12px;color: black">{{ $no->created_at->diffForHumans()  }}</span>
                                                         </a>
                                                     </div>
@@ -145,7 +153,7 @@
                                         <li>
                                             <div>
                                                 <a>
-                                                    {{ __('No notification') }}
+                                                    {{ __('common.header.no_notify') }}
                                                 </a>
                                             </div>
                                         </li>
@@ -158,28 +166,20 @@
                 </li>
 
                 <li class="li-top">
-                    <a href="{{ route('get_wishlist') }}" class="hover-li-top" aria-hidden="true">
-                        <span class="nav-icon fa fa-heart-o" aria-hidden="true">
-                            {{ trans('common.header.wishlist') }}
+                    <a view="compare" href="{{ route('get_wishlist') }}" class="hover-li-top" aria-hidden="true">
+                        <span class="fa-heart-o fa" aria-hidden="true">
+                            <b>{{ trans('common.header.wishlist') }}</b>
                             (<span id="count_wishlist">{{ $wishlistHeader }}</span>)
                         </span>
                     </a>
                 </li>
                 <li class="li-top">
-                    <a view="compare" href="{{ route('get_compare') }}" class="hover-li-top" aria-hidden="true">
+                    <a href="{{ route('get_compare') }}" class="hover-li-top" aria-hidden="true">
                         <span class="fa fa-balance-scale" aria-hidden="true"></span>
-                        {{ trans('common.header.compare') }}
+                        <b>{{ trans('common.header.compare') }}</b>
                         (<span id="count_compare">{{ Cart::instance('compare')->count() }}</span>)
                     </a>
                 </li>
-                {{--<li class="li-top">--}}
-                    {{--<a href="javascript:;" class="hover-li-top" aria-hidden="true">--}}
-                        {{--<span class="nav-icon fa fa-bell-o" aria-hidden="true">--}}
-                            {{--{{ trans('common.header.notify') }}--}}
-                            {{--(<span id="count_notify"></span>)--}}
-                        {{--</span>--}}
-                    {{--</a>--}}
-                {{--</li>--}}
             @endif
         </ul>
         <!-- //header lists -->
@@ -350,7 +350,7 @@
                                                     <ul class="multi-column-dropdown">
                                                         @foreach($row->subCategory as $sub)
                                                             <li>
-                                                                <a href="{{ route('site_category', $row->id) }}">{{ $sub->name }}</a>
+                                                                <a href="{{ route('site_category', $sub->id) }}">{{ $sub->name }}</a>
                                                             </li>
                                                         @endforeach
                                                     </ul>

@@ -68,11 +68,11 @@
                             <!-- /.form group -->
                             <div class="form-group">
                                 <label>{{ trans('common.form.city') }}</label>
-                                {!! Form::select('local_id', $local, null, ['class' => 'span2 col-md-2 form-control']) !!}
+                                {!! Form::select('city_id', $city, null, ['class' => 'span2 col-md-2 form-control']) !!}
                             </div>
                             <div class="form-group">
                                 <label>{{ trans('common.form.role') }}</label>
-                                {!! Form::select('level_id', $level, null, ['class' => 'span2 col-md-2 form-control']) !!}
+                                {!! Form::select('role_id', $level, null, ['class' => 'span2 col-md-2 form-control']) !!}
                             </div>
                         </div>
                         <!-- /.box-body -->

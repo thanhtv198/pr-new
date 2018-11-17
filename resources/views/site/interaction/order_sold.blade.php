@@ -40,7 +40,7 @@
                                 <td class="invert">{{ $row->order->name }}</td>
                                 <td class="invert">{{ $row->order->email }}</td>
                                 <td class="invert">{{ $row->order->phone_number }}</td>
-                                <td class="invert">{{ $row->order->address . ", " . $row->order->local->name }}</td>
+                                <td class="invert">{{ $row->order->address . ", " . $row->order->city->name }}</td>
                                 <td class="invert"><a href="{{ route('detail_product', $row->id) }}">{{ $row->product->name }}</a></td>
                                 <td class="invert">{{ $row->quantity }}</td>
                                 <td class="invert">
@@ -86,23 +86,14 @@
                             {{ trans('common.sold.export') }}
                         </a>
                     </div>
-                    <form class="fileupload" action="{{route('import')}}" method="POST" enctype="multipart/form-data">
-                        {{csrf_field()}}
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-xs-12">
-                                <div class="form-group">
-                                    <label for="file">Select a file to upload</label>
-                                    <input type="file" name="file" id="file" class="form-group">
-                                </div>
-                            </div>
-                            <div class="col-xs-12">
-                                <button type="submit" class="btn btn-primary">Upload</button>
-                            </div>
-                        </div>
-                    </form>
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
                 </div>
             </div>
             <div class="clearfix"></div>
+            <br>
+            <br>
         </div>
     </div>
 @endsection

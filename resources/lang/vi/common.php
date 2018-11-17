@@ -263,7 +263,9 @@ return [
         'transaction' => 'Giao dịch',
         'my_account' => 'Tài khoản',
         'home' => 'Trang chủ',
-        'lang' => 'Ngôn ngữ'
+        'lang' => 'Ngôn ngữ',
+        'time_line' => 'Time line',
+        'interact' => 'Tương tác',
     ],
     //aside_content
     'aside' => [
@@ -335,12 +337,19 @@ return [
     //sold
     'sold' => [
         'order_sold' => 'Đơn hàng bán ra',
-        'your_product_sold' => 'Sản phẩm đã bans',
+        'your_product_sold' => 'Sản phẩm đã bán',
         'export' => 'Xuất file',
     ],
     //bought
     'bought' => [
         'order_bought' => 'Đơn hàng mua vào',
         'your_product_bought' => 'Sản phẩm đã mua',
+    ],
+
+    'interact' => [
+        'title' => 'Lịch sử tương tác',
+        'sold' => ' Sản phẩm đã bán',
+        'bought' => 'Sản phẩm đã mua',
+        'respond' => 'Phản hồi của bạn',
     ],
 ];

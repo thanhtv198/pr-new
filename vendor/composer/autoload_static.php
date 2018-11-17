@@ -2760,6 +2760,8 @@ class ComposerStaticInit3c247572cd681f56f5c1acb1af8a4e1f
         'Monolog\\Processor\\WebProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/WebProcessor.php',
         'Monolog\\Registry' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Registry.php',
         'NewsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/NewsTableSeeder.php',
+        'OrderDetailTableSeeder' => __DIR__ . '/../..' . '/database/seeds/OrderDetailTableSeeder.php',
+        'OrdersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/OrdersTableSeeder.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/AssertionFailedError.php',

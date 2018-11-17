@@ -11,15 +11,15 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('vi_VN');
 
-        $limit = 8;
+        $limit = 30;
 
         for ($i = 0; $i < $limit; $i++) {
             $post = \App\Models\Post::create([
                 'user_id' => $i + 1,
                 'title' => $faker->unique()->sentence($nbWords = 15),
-                'slug' => $faker->unique()->slug(10),
+                'slug' => str_slug($faker->unique()->sentence($nbWords = 15)),
                 'content' => $faker->unique()->sentence($nbWords = 500),
                 'status' => config('model.post.status.active'),
                 'view' => config('model.post.view'),

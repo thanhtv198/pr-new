@@ -30,6 +30,6 @@ class TopicController extends Controller
 
         $topicName = $this->repository->getNameById($id);
        
-        return view('frontend.topic.index', compact('posts', 'topicName', 'topicSidebar'));
+        return view('site.forumn.topic', compact('posts', 'topicName', 'topicSidebar'));
     }
 }

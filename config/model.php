@@ -108,7 +108,7 @@ return [
         'status' => [
             'wating' => 0,
             'handled' => 1,
-            'cancle' => 2,
+            'cancel' => 2,
         ],
         'upload' => 'upload/post',
         'paginate' => 5,

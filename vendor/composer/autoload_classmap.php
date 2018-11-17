@@ -2281,6 +2281,8 @@ return array(
     'Monolog\\Processor\\WebProcessor' => $vendorDir . '/monolog/monolog/src/Monolog/Processor/WebProcessor.php',
     'Monolog\\Registry' => $vendorDir . '/monolog/monolog/src/Monolog/Registry.php',
     'NewsTableSeeder' => $baseDir . '/database/seeds/NewsTableSeeder.php',
+    'OrderDetailTableSeeder' => $baseDir . '/database/seeds/OrderDetailTableSeeder.php',
+    'OrdersTableSeeder' => $baseDir . '/database/seeds/OrdersTableSeeder.php',
     'PHPUnit\\Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert.php',
     'PHPUnit\\Framework\\AssertionFailedError' => $vendorDir . '/phpunit/phpunit/src/Framework/AssertionFailedError.php',

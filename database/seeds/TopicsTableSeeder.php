@@ -11,14 +11,13 @@ class TopicsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('vi_VN');
 
         $limit = 5;
-
-        for ($i = 0; $i < $limit; $i++) {
+        for ($i = 0; $i <= $limit; $i++) {
             DB::table('topics')->insert([
-                'name' => $faker->unique()->sentence($nbWords = 3),
-                'slug' => $faker->unique()->slug(4),
+                'name' =>  $faker->unique()->sentence($nbWords = 4),
+                'slug' => str_slug($faker->unique()->sentence($nbWords = 4)),
                 'parent_id' => null,
                 'status' => config('model.topic.status.active')
             ]);

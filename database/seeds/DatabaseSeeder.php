@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\CustomizeProduct::query()->truncate();
         \App\Models\Wishlist::query()->truncate();
         \App\Models\Rating::query()->truncate();
+        \App\Models\OrderDetail::query()->truncate();
+        \App\Models\Order::query()->truncate();
 
         $this->call(TopicsTableSeeder::class);
         $this->call(TagsTableSeeder::class);
@@ -47,5 +49,7 @@ class DatabaseSeeder extends Seeder
         $this->call(NewsTableSeeder::class);
         $this->call(WishlistsTableSeeder::class);
         $this->call(RatingsTableSeeder::class);
+        $this->call(OrdersTableSeeder::class);
+        $this->call(OrderDetailTableSeeder::class);
     }
 }

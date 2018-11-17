@@ -120,7 +120,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="#">
+                        <a href="{{ route('admin.topics.index') }}">
                             <i class="fa fa-sticky-note-o"></i>
                                 {{ trans('en.sidebar.topic') }}
                         </a>

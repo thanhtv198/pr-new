@@ -6,6 +6,7 @@ use App\Contracts\Repositories\WishlistRepository;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Wishlist;
+use Auth;
 use Illuminate\Http\Request;
 use Symfony\Component\Translation\Dumper\PoFileDumper;
 
@@ -14,7 +15,9 @@ class WishlistController extends Controller
     public function index()
     {
         $ids = Wishlist::where('user_id',  auth()->user()->id)->pluck('product_id')->toArray();
-        $products = Product::whereIn('id', $ids)->get();
+        $products = Product::whereIn('id', $ids)
+            ->where('status', config('model.product.status.active'))
+            ->get();
 
         return view('site.wishlist.index', compact('products'));
     }
@@ -50,7 +53,7 @@ class WishlistController extends Controller
      */
     public function delete($id)
     {
-        $product = Wishlist::where('product_id', $id)->first();
+        $product = Wishlist::where('product_id', $id)->where('user_id', Auth::id())->first();
         $product->delete();
 
         return $response = [

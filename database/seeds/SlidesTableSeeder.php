@@ -11,10 +11,11 @@ class SlidesTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker\Factory::create('vi_VN');
         $limit = 5;
         for ($i = 1; $i < $limit; $i++) {
             DB::table('slides')->insert([
-                'title' => 'điện thoại iPhone 8 64GB chính hãng ',
+                'title' => $faker->text(10),
                 'image' => 'banner'.$i.'.jpg',
             ]);
         }

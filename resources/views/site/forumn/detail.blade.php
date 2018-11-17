@@ -77,7 +77,7 @@
                                                         {{ $comment->user->name }}
                                                     </strong>
                                                     <span>
-                                                            {{ $comment->created_at }} /
+                                                            {{ $comment->created_at->diffForHumans() }} /
                                                             <a class="reply-parent" id="{{ $comment->id }}">
                                                                 {{ trans('en.button.reply') }}
                                                             </a>
@@ -108,7 +108,7 @@
                                                                              width="37px" style="border-radius: 50%; border:1px solid #2196f3">
                                                                     @endif
                                                                     <strong>{{ $row->user->name }}</strong>
-                                                                    <span>{{ $row->created_at }}</span>
+                                                                    <span>{{ $row->created_at->diffForHumans() }}</span>
                                                                 </h4>
                                                                 <p class="content-cmt">{{ $row->content }}</p>
                                                             </div>
@@ -196,6 +196,7 @@
                 });
             });
         });
+    });
 
     $(document).ready(
         function () {
@@ -243,6 +244,6 @@
                 });
             });
         });
-
+    });
 
 </script>

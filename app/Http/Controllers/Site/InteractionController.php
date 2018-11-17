@@ -102,15 +102,13 @@ class InteractionController extends Controller implements FromCollection, WithHe
 
         $orderdetails = OrderDetail::getSold();
 
-        return $orderdetails;
+        if (count($orderdetails) == 0) {
+            return redirect()->route('get_profile', $id)->with('message', trans('common.with.no_order'));
+        }
 
-//        if (count($orderdetails) == 0) {
-//            return redirect()->route('get_profile', $id)->with('message', trans('common.with.no_order'));
-//        }
-//
-//        \App\Models\Notification::where('notifiable_id', '>', 0)->update(['read_at' => Carbon::now()]);
-//
-//        return view('site.interaction.order_sold', compact('orderdetails'));
+        \App\Models\Notification::where('notifiable_id', '>', 0)->update(['read_at' => Carbon::now()]);
+
+        return view('site.interaction.order_sold', compact('orderdetails'));
     }
 
     /**
@@ -134,7 +132,7 @@ class InteractionController extends Controller implements FromCollection, WithHe
                 'Full Name' => $row->order->name,
                 'Email' => $row->order->email,
                 'Phone' => $row->order->phone_number,
-                'Address' => $row->order->address . ', ' . $row->order->local->name,
+                'Address' => $row->order->address . ', ' . $row->order->city->name,
                 'Product' => $row->product->name,
                 'Quantity' => $row->quantity,
                 'Price/1' => number_format($row->price),
@@ -153,7 +151,7 @@ class InteractionController extends Controller implements FromCollection, WithHe
      */
     public function exportFile()
     {
-        return Excel::download(new InteractionController(), 'orders.csv');
+        return Excel::download(new InteractionController(), 'orders.xlsx');
     }
 
     public function importFile()

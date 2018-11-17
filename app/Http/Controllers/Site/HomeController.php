@@ -107,7 +107,6 @@ class HomeController extends Controller
     public function searchAddress(Request $request)
     {
         $id = $request->id;
-
         if (!$id) {
             return redirect()->back()->with('message', 'Choose location');
         }

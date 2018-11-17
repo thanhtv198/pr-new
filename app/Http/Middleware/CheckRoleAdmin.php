@@ -16,7 +16,7 @@ class CheckRoleAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->level_id == 1) {
+        if (Auth::user() && Auth::user()->role_id == 1) {
             return $next($request);
         } else {
             return redirect()->back()->with('message', trans('common.with.permission'));

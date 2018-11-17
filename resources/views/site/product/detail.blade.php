@@ -385,7 +385,7 @@
                 let href = $(this).attr('data-url');
                 let parent_id = $(this).attr('id').substring(3);
                 let content = $('#comment-' + parent_id).val();
-alert(href)
+
                 $.ajax({
                     type: 'POST',
                     url: href,

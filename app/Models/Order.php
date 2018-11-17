@@ -37,9 +37,9 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function local()
+    public function city()
     {
-        return $this->belongsTo(Local::class);
+        return $this->belongsTo(City::class);
     }
 
     public function scopeGetBuyer($query, $id)

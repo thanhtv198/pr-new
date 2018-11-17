@@ -17,11 +17,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/logout', 'AdminController@logOut')->name('logout_admin');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'locale'], 'namespace' => 'Admin'], function () {
     Route::get('/home', 'HomeController@index')->name('home_admin');
 
     //manage menber
-    Route::group(['prefix' => 'member'], function () {
+    Route::group(['prefix' => 'member', 'middleware' => 'role_admin'], function () {
         Route::get('/index', 'AccountController@getMember')->name('get_member');
         Route::get('/add', 'AccountController@addMember')->name('add_member');
         Route::post('/add', 'AccountController@postAddMember')->name('postAdd_member');
@@ -33,7 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admi
     });
 
     //manage manager
-    Route::group(['prefix' => 'manager'], function () {
+    Route::group(['prefix' => 'manager', 'middleware' => 'role_admin'], function () {
         Route::get('/index', 'AccountController@getManager')->name('get_manager');
         Route::get('/add', 'AccountController@addManager')->name('add_manager')->middleware('role_admin');
         Route::post('/add', 'AccountController@postAddManager')->name('postAdd_manager')->middleware('role_admin');
@@ -45,21 +45,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admi
     });
 
     //manage category admin
-    Route::group(['namespace' => 'Product', 'middleware' => 'role_admin'], function () {
+    Route::group(['namespace' => 'Product', 'middleware' => 'role_manager'], function () {
         Route::resource('category', 'CategoryController', ['except' => ['destroy', 'edit']]);
         Route::get('/search/category', 'CategoryController@search')->name('search_category');
         Route::get('/category/delete/{id}', 'CategoryController@delete')->name('category.delete');
     });
 
     //manage manufacture admin
-    Route::group(['namespace' => 'Product', 'middleware' => 'role_admin'], function () {
+    Route::group(['namespace' => 'Product', 'middleware' => 'role_manager'], function () {
         Route::resource('manufacture', 'ManufactureController', ['except' => ['destroy', 'edit']]);
         Route::get('/search/manufacture', 'ManufactureController@searchManufacture')->name('search_manufacture');
         Route::get('/manufacture/delete/{id}', 'ManufactureController@delete')->name('manufacture.delete');
     });
-
+Route::group(['middleware' => ['role_manager', 'locale']], function () {
     //manage product admin
-    Route::group(['prefix' => 'product', 'namespace' => 'Product', 'middleware' => 'role_admin'], function () {
+    Route::group(['prefix' => 'product', 'namespace' => 'Product'], function () {
         Route::get('/index', 'ProductController@getProduct')->name('get_product');
         Route::get('/delete/{id}', 'ProductController@deleteProduct')->name('delete_product');
         Route::get('/search', 'ProductController@searchProduct')->name('search_product');
@@ -90,11 +90,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'namespace' => 'Admi
     //route resource post
     Route::group(['as' => 'admin.'], function () {
         Route::resource('posts', 'PostController');
+        Route::resource('topics', 'TopicController');
     });
+
     //route status post
     Route::post('posts/active/{id}', 'PostController@activePost')->name('admin.posts.active');
     Route::post('posts/inactive/{id}', 'PostController@inActivePost')->name('admin.posts.inactive');
+
+    Route::group(['as' => 'admin.'], function () {
+        Route::resource('topics', 'TopicController');
+    });
+
 });
+});
+
 
 Route::namespace('Auth')->group(function () {
     //login social
@@ -137,6 +146,13 @@ Route::group(['namespace' => 'Site', 'middleware' => 'locale'], function () {
     //comment posts
     Route::post('posts/{id}/comments', 'PostController@comment')->name('posts.comment');
     Route::post('posts/{id}/replies', 'PostController@reply')->name('posts.reply');
+
+    //route resource topic
+    Route::resource('topics', 'TopicController');
+    Route::get('topics/{slug}/posts', [
+        'as' => 'posts',
+        'uses' => 'TopicController@getPostByTopicId',
+    ]);
 
 
     //route cart

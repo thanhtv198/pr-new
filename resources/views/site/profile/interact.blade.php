@@ -42,7 +42,7 @@
                                     <td class="invert">{{ $row->order->name }}</td>
                                     <td class="invert">{{ $row->order->email }}</td>
                                     <td class="invert">{{ $row->order->phone_number }}</td>
-                                    <td class="invert">{{ $row->order->address . ", " . $row->order->local->name }}</td>
+                                    <td class="invert">{{ $row->order->address . ", " . $row->order->city->name }}</td>
                                     <td class="invert"><a href="{{ route('detail_product', $row->id) }}">{{ $row->product->name }}</a></td>
                                     <td class="invert">{{ $row->quantity }}</td>
                                     <td class="invert">

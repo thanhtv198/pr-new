@@ -9,4 +9,6 @@ interface TopicRepository extends AbstractRepository
     public function active($id);
 
     public function getNameById($id);
+
+    public function take();
 }

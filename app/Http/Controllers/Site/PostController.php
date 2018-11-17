@@ -55,8 +55,9 @@ class PostController extends Controller
     public function index()
     {
         $posts = $this->repository->paginate();
-
-        return view('site.forumn.index', compact('posts'));
+        $topics = $this->topicRepository->take();
+        
+        return view('site.forumn.index', compact('posts', 'topics'));
     }
 
     /**

@@ -11,14 +11,14 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('vi_VN');
 
         $limit = 50;
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('tags')->insert([
-                'name' => $faker->unique()->sentence($nbWords = 1),
-                'slug' => $faker->unique()->slug(1),
+                'name' => $faker->unique()->sentence($nbWords = 2),
+                'slug' => str_slug($faker->unique()->sentence($nbWords = 2)),
                 'view' => config('model.tag.view')
             ]);
         }

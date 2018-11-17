@@ -79,64 +79,64 @@ class Product extends Model
     public function scopeSearch($query, $request)
     {
         return $query->where('name', 'like', '%' . $request . '%')
-            ->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->paginate(config('app.paginateProduct'));
     }
 
     public function scopeSearchByUser($query, $user_id)
     {
         return $query->whereIn('user_id', $user_id)
-            ->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->paginate(config('app.paginateProduct'));
     }
 
     public function scopeSearchNameDes($query, $key)
     {
         return $query->where('name', 'like', '%' . $key . '%')
-            ->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->orWhere('description', 'like', '%' . $key . '%')
-            ->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->paginate(config('app.paginateProduct'));
     }
 
     public function scopeSearchName($query, $name)
     {
         return $query->where('name', 'like', '%' . $name . '%')
-            ->where('deleted_at', config('page.product.deleted_at.null'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
             ->paginate(config('app.paginateProductSearch'));
     }
 
     public function scopeDiscount($query)
     {
         return $query->where('promotion', '<>', 0)
-            ->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->paginate(config('app.paginateProduct'));
     }
 
     public function scopeViews($query)
     {
-        return $query->where('deleted_at', config('page.product.deleted_at.null'))
+        return $query->where('deleted_at', config('model.product.deleted_at.null'))
             ->orderBy('created_at', 'DESC')
-            ->where('status', config('page.product.status.inactive'))
+            ->where('status', config('model.product.status.active'))
             ->take(config('app.paginateProduct'))->get();
     }
 
     public function scopeGetProduct($query)
     {
-        return $query->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+        return $query->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->orderBy('created_at', 'DESC')
             ->paginate(config('app.paginateProductSearch'));
     }
 
     public function scopeProductCheck($query)
     {
-        return $query->where('status', config('page.product.status.active'))
+        return $query->where('status', config('model.product.status.active'))
             ->orderBy('created_at', 'DESC');
     }
 
@@ -149,7 +149,7 @@ class Product extends Model
     {
         return $query->where('id', $id)
             ->update([
-                'status' => config('page.product.status.inactive'),
+                'status' => config('model.product.status.active'),
                 'check' => ''
             ]);
     }
@@ -158,7 +158,7 @@ class Product extends Model
     {
         return $query->where('id', $id)
             ->update([
-                'status' => config('page.product.status.reject'),
+                'status' => config('model.product.status.reject'),
                 'check' => $content
             ]);
     }
@@ -171,7 +171,7 @@ class Product extends Model
 
     public function scopeGetAll($query)
     {
-        return $query->where('deleted_at', config('page.product.deleted_at.null'))
+        return $query->where('deleted_at', config('model.product.deleted_at.null'))
             ->orderBy('id', 'DESC')
             ->get();
     }
@@ -179,48 +179,48 @@ class Product extends Model
     public function scopeGetCategory($query, $id)
     {
         return $query->where('category_id', $id)
-            ->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->paginate(config('app.paginateProductSearch'));
     }
 
     public function scopeGetManufacture($query, $id)
     {
         return $query->where('manufacture_id', $id)
-            ->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->paginate(config('app.paginateProductSearch'));
     }
 
     public function scopePriceBetween($query, $from, $to)
     {
         return $query->whereBetween('price', [$from, $to])
-            ->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->paginate(config('app.paginateProductSearch'));
     }
 
     public function scopePriceFrom($query, $from)
     {
         return $query->where('price', '>=', $from)
-            ->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->paginate(config('app.paginateProductSearch'));
     }
 
     public function scopePriceTo($query, $to)
     {
         return $query->where('price', '<=', $to)
-            ->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->paginate(config('app.paginateProductSearch'));
     }
 
     public function scopeGetByAddress($query, $array)
     {
         return $query->whereIn('user_id', $array)->orderBy('id', 'DESC')
-            ->where('deleted_at', config('page.product.deleted_at.null'))
-            ->where('status', config('page.product.status.inactive'))
+            ->where('deleted_at', config('model.product.deleted_at.null'))
+            ->where('status', config('model.product.status.active'))
             ->paginate(config('app.paginateProductSearch'));
     }
 

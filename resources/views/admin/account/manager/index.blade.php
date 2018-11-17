@@ -21,23 +21,23 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div id="header" view="header">
-                                        <div class="main">
-                                            {!! Form::open(['route' => 'search_manager', 'method' => 'get', 'class' => 'form-signin']) !!}
-                                            <div class="search-bar">
-                                                {!! Form::text('key', null, ['placeholder' => trans('common.tag.search')]) !!}
-                                                <button type="submit" class="fa fa-search"></button>
-                                            </div>
-                                            {!! Form::close() !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {{--<div class="row">--}}
+                                {{--<div class="col-sm-6">--}}
+                                    {{--<div id="header" view="header">--}}
+                                        {{--<div class="main">--}}
+                                            {{--{!! Form::open(['route' => 'search_manager', 'method' => 'get', 'class' => 'form-signin']) !!}--}}
+                                            {{--<div class="search-bar">--}}
+                                                {{--{!! Form::text('key', null, ['placeholder' => trans('common.tag.search')]) !!}--}}
+                                                {{--<button type="submit" class="fa fa-search"></button>--}}
+                                            {{--</div>--}}
+                                            {{--{!! Form::close() !!}--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                    <table id="example1" class="table table-bordered table-hover dataTable" role="grid">
                                         {!! Form::open(['route' => ['mul_del_manager', 'method' => 'post', 'class' => 'form-signin']]) !!}
                                         <thead>
                                         <tr role="row">
@@ -68,7 +68,7 @@
                                         @foreach($managers as $row)
                                             <tr role="row" class="odd">
                                                 <td>{!! Form::checkbox('check[]', $row->id) !!}</td>
-                                                @if( $row->level_id == 1)
+                                                @if( $row->role_id == 1)
                                                     <td class="admin-name">{{ $row->name }}</td>
                                                 @else
                                                     <td>{{ $row->name }}</td>
@@ -76,7 +76,7 @@
                                                 <td>{{ $row->birthday }}</td>
                                                 <td>{{ $row->phone_number }}</td>
                                                 <td>{{ $row->email }}</td>
-                                                <td>{{ $row->local->name }}</td>
+                                                <td>{{ $row->city->name }}</td>
                                                 <td class="textC">
                                                     <a href="{{ route('edit_manager', $row->id) }}">
                                                         <i class="fa fa-eye" aria-hidden="true" id="eye"></i>

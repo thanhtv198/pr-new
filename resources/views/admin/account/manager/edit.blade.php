@@ -9,7 +9,7 @@
                 <h3 class="box-title">{{ trans('common.title_form.account_manager_title') }}</h3>
                 @include('admin.notice')
             </div>
-            @if(Auth::user()->id == $user->id || Auth::user()->level_id == 1)
+            @if(Auth::user()->id == $user->id || Auth::user()->role_id == 1)
             {!! Form::open(['route' => ['postEdit_manager', $user->id, 'method' => 'post', 'class' => 'form-signin']]) !!}
             @endif
                 <div class="row">
@@ -67,23 +67,23 @@
                             <!-- /.form group -->
                             <div class="form-group">
                                 <label>{{ trans('common.form.city') }}</label>
-                                {!! Form::select('local_id', $local, "$user->local_id", ['class' => 'span2 col-md-2 form-control']) !!}
+                                {!! Form::select('city_id', $city, "$user->city_id", ['class' => 'span2 col-md-2 form-control']) !!}
                             </div>
                             <!-- /.form group -->
-                            @if(Auth::user()->level_id == 1)
+                            @if(Auth::user()->role_id == 1)
                                 <div class="form-group">
                                     <label>{{ trans('common.form.role') }}</label>
-                                    {!! Form::select('level_id', $level, "$user->level_id", ['class' => 'span2 col-md-2 form-control']) !!}
+                                    {!! Form::select('role_id', $level, "$user->role_id", ['class' => 'span2 col-md-2 form-control']) !!}
                                 </div>
                             @else
-                                {!! Form::hidden('level_id', 2) !!}
+                                {!! Form::hidden('role_id', 2) !!}
                             @endif
                         </div>
                         <!-- /.box-body -->
                     </div>
                 </div>
             </div>
-            @if(Auth::user()->id == $user->id || Auth::user()->level_id == 1)
+            @if(Auth::user()->id == $user->id || Auth::user()->role_id == 1)
             <div class="add">
                 {{ Form::submit(trans('common.button.save'), ['class' => 'btn btn-primary']) }}
             </div>

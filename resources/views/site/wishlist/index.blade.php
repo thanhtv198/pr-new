@@ -64,6 +64,9 @@
                             </div>
                             <hr>
                         </div>
+                        <br>
+                        <hr>
+                        <br>
                     @endforeach
                 </div>
             </div>

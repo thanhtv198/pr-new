@@ -20,7 +20,7 @@ class AccountController extends Controller
      */
     public function getMember()
     {
-        $members = User::where('level_id', '3')->get();
+        $members = User::where('role_id', '3')->get();
 
         return view('admin.account.member.index', compact('members'));
     }
@@ -145,7 +145,7 @@ class AccountController extends Controller
      */
     public function getManager()
     {
-        $managers = User::where('level_id', '<>', '3')->get();
+        $managers = User::where('role_id', '<>', '3')->get();
 
         return view('admin.account.manager.index', compact('managers'));
     }

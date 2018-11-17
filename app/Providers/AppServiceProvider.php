@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\Topic;
 use App\Models\Wishlist;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
@@ -63,11 +66,24 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        view()->composer( 'site.layouts.header', function ($view2) {
+        view()->composer( ['site.layouts.header', 'admin.layouts.header'], function ($view2) {
             $lang = config('app.locale');
             $view2->with(compact([
                 'lang',
             ]));
+        });
+
+        view()->composer('site.forumn.*', function ($view3) {
+            $recentPost = Post::getRecent()
+                ->paginate(config('model.post.recent'));
+
+            $topics = Topic::all();
+
+            $tags = Tag::latest()
+                ->take(config('model.tag.limit'))
+                ->get();
+
+            $view3->with(compact('recentPost', 'tags', 'topics'));
         });
     }
 

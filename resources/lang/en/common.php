@@ -253,7 +253,6 @@ return [
         'sign_up' => 'Sign Up',
         'cart' => 'Cart',
         'compare' => 'Compare',
-        'home' => 'Home Page',
         'category' => 'Category',
         'manufacture' => 'Manufacture',
         'introduce' => 'Introduction',
@@ -265,7 +264,9 @@ return [
         'transaction' => 'Transaction',
         'my_account' => 'Account',
         'home' => 'Home',
-        'lang' => 'Language'
+        'lang' => 'Language',
+        'time_line' => 'Time line',
+        'interact' => 'Interact',
     ],
     //aside_content
     'aside' => [
@@ -346,4 +347,11 @@ return [
         'order_bought' => 'Bought orders',
         'your_product_bought' => 'Your bought products',
     ],
+
+    'interact' => [
+        'title' => 'Your Interacts',
+        'sold' => ' Sold Products',
+        'bought' => ' Bought Products',
+        'respond' => 'Your Responds',
+    ]
 ];
