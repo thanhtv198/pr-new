@@ -47,9 +47,14 @@ class Post extends Model
         return $this->hasOne(Block::class, 'blockable_id');
     }
 
+    public function rootComments()
+    {
+        return $this->comments()->whereNull('parent_id');
+    }
+
     public function comments()
     {
-        return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function scopeGetRecent($query)

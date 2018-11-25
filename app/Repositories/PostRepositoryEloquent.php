@@ -192,27 +192,25 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
 
     public function comment($id, $data)
     {
-        $comment = Comment::create([
+        $post = $this->model()->findOrFail($id);
+
+        $comment = $post->comments()->create([
             'user_id' => auth()->user()->id,
             'status' => 1,
             'content' => $data['content'],
-            'parent_id' => null,
-            'commentable_id' => $id,
-            'commentable_type' => 'post',
         ]);
 
         return $comment;
     }
 
-    public function reply($parentId, $data)
+    public function reply($postId, $data)
     {
-        $reply = Comment::create([
+        $post = $this->model()->findOrFail($postId);
+        $reply = $post->comments()->create([
             'user_id' => auth()->user()->id,
             'status' => 1,
             'content' => $data['content'],
             'parent_id' => $data['parent_id'],
-            'commentable_id' => $parentId,
-            'commentable_type' => 'post',
         ]);
 
         return $reply;

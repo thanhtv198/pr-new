@@ -54,20 +54,23 @@ class ProductController extends Controller
      */
     public function comment(Request $request, $id)
     {
+        $product = Product::findOrFail($id);
+
         $request->merge([
             'user_id' => Auth::user()->id,
-            'commentable_id' => $id,
-            'commentable_type' => 'product',
+//            'commentable_id' => $id,
+//            'commentable_type' => 'product',
         ]);
 
-        $comment = Comment::create($request->all());
+        $comment = $product->comments()->create($request->all());
 
         return [
             'comment' => $comment,
             'name' => auth()->user()->name,
             'time' => $comment->created_at->diffForHumans(),
             'avatar' => Auth::user()->avatar?Auth::user()->avatar: '',
-            'base_url' => url(config('model.user.upload'))
+            'base_url' => url(config('model.user.upload')),
+            'reply' => trans(' common.button.reply'),
         ];
     }
 
@@ -77,15 +80,14 @@ class ProductController extends Controller
      */
     public function reply(Request $request, $id)
     {
+        $product = Product::findOrFail($request->productId);
         $request->merge([
             'user_id' => auth()->user()->id,
-            'commentable_id' => $id,
-            'commentable_type' => 'product',
-            'parent_id' => $request->comment_id,
+            'parent_id' => $request->parent_id,
             'content' => $request->repContent,
         ]);
 
-        $reply = Comment::create($request->all());
+        $reply = $product->comments()->create($request->all());
 
         return [
             'replies' => $reply,

@@ -37,16 +37,16 @@ class Comment extends Model
 
     public function replies()
     {
-        return $this->hasMany(Comment::class, 'commentable_id');
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 
     public function scopeGetByIdProduct($query, $id)
     {
-        return $query->where('commentable_id', $id)->where('commentable_type', 'product')->get();
+        return $query->where('commentable_id', $id)->where('commentable_type', 'App\Models\Product')->get();
     }
 
     public function scopeGetByIdPost($query, $id)
     {
-        return $query->where('commentable_id', $id)->where('commentable_type', 'post')->get();
+        return $query->where('commentable_id', $id)->where('commentable_type', 'App\Models\Post')->get();
     }
 }

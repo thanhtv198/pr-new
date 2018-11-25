@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Rating::query()->truncate();
         \App\Models\OrderDetail::query()->truncate();
         \App\Models\Order::query()->truncate();
+        \App\Models\Comment::query()->truncate();
 
         $this->call(TopicsTableSeeder::class);
         $this->call(TagsTableSeeder::class);

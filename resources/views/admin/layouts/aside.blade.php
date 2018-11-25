@@ -110,10 +110,12 @@
                     </li>
                 </ul>
             </li>
+
             <li class="treeview">
                 <a href="">
-                    <i class="fa fa-newspaper-o"></i>
-                    <span>{{ trans('common.tag.aside_admin_toppic') }}</span>
+                    <i class="nav-icon fa fa-sticky-note-o"></i>
+                        {{ trans('common.sidebar.forumn') }}
+                        <span class="right badge badge-danger">2</span>
                     <span class="pull-right-container">
                         <span class="label label-primary pull-right">2</span>
                     </span>
@@ -122,33 +124,14 @@
                     <li>
                         <a href="{{ route('admin.topics.index') }}">
                             <i class="fa fa-sticky-note-o"></i>
-                                {{ trans('en.sidebar.topic') }}
+                            {{ trans('common.sidebar.topic') }}
                         </a>
                     </li>
-                </ul>
-            </li>
 
-            <li class="treeview">
-                <a href="">
-                    <i class="nav-icon fa fa-sticky-note-o"></i>
-                        {{ trans('en.sidebar.post') }}
-                        <span class="right badge badge-danger">2</span>
-                    <span class="pull-right-container">
-                        <span class="label label-primary pull-right">2</span>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
                     <li>
                         <a href="{{ route('admin.posts.index') }}" class="nav-link">
                             <i class="fa fa-edit"></i>
-                            {{ trans('en.sidebar.all_post') }}
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{ route('admin.posts.index') }}" class="nav-link">
-                            <i class="nav-icon fa fa-question-circle"></i>
-                            {{ trans('en.sidebar.all_question') }}
+                            {{ trans('common.sidebar.post') }}
                         </a>
                     </li>
                 </ul>

@@ -71,9 +71,14 @@ class Product extends Model
         return $this->hasMany(OrderDetail::class);
     }
 
+    public function rootComments()
+    {
+        return $this->comments()->whereNull('parent_id');
+    }
+
     public function comments()
     {
-        return $this->hasMany(Comment::class)->whereNull('parent_id');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function scopeSearch($query, $request)

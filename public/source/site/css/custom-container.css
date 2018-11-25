@@ -1,6 +1,7 @@
 #thanh-container{
     width: 90%!important;
 }
+
 .inner-men-cart-pro .link-product-add-cart{
     left: 0%!important;
     width: 50%!important;
@@ -147,10 +148,6 @@
     background: #FF5722 !important;
     margin-top: 10px;
     width: 100px;
-}
-
-.thanh-rating {
-    margin-bottom: 100px;
 }
 
 .thanh-list-inline {

@@ -18,6 +18,13 @@ return [
         'delete_selected' => 'Xóa lựa chọn',
         'remove' => 'Xóa',
         'send' => 'Giử',
+        'commnet' => 'Bình luận',
+        'rating' => 'Đánh giá',
+        'sign_up_gg' => 'Đăng kí bằng google+',
+        'sign_up_fb' => 'Đăng kí bằng facebook',
+        'sign_in_gg' => 'Tài khoản google+',
+        'sign_in_fb' => 'Tài khoản facebook',
+        'reply' => 'Trả lời',
     ],
     //validate
     'validate' => [
@@ -108,6 +115,8 @@ return [
         'compare_product' => 'So sánh sản phẩm',
         '404' => 'Lỗi 404 - Không tìm thấy trang!',
         'aside_admin_content_slide' => 'Slides',
+        'comment_by_facebook' => 'Bình luận với tài khoản facebook',
+        'leave_comment' => 'Để lại bình luận '
     ],
     //form
     'form' => [
@@ -205,6 +214,12 @@ return [
         'content' => 'Nội dung',
         'image' => 'Ảnh',
     ],
+
+    'sidebar' => [
+        'forumn' => 'Thảo luận',
+        'topic' => 'chủ đề',
+        'post' => 'Bài viết',
+    ],
     //respond
     'respond' => [
         'check_now' => 'Duyệt ngay',
@@ -256,7 +271,7 @@ return [
         'manufacture' => 'Nhà sản xuất',
         'introduce' => 'Giới thiệu',
         'profile' => 'Trang cá nhân',
-        'sell_product' => 'Đăng bài bán sản phẩm',
+        'sell_product' => 'Đăng bán sản phẩm',
         'logout' => 'Đăng xuất',
         'notify' => 'Thông báo',
         'wishlist' => 'Yêu thích',
@@ -266,15 +281,22 @@ return [
         'lang' => 'Ngôn ngữ',
         'time_line' => 'Time line',
         'interact' => 'Tương tác',
+        'you_have_mesage_from' => 'Bạn có tin nhắn từ',
+        'you_have_order_with' => 'Bạn có đơn hàng với',
+        'write_post' => 'Đăng bài',
+        'discuss' => 'Tạo bài viết',
+        'forumn' => 'Diễn đàn',
     ],
     //aside_content
     'aside' => [
         'search_here' => 'Tìm kiếm..',
-        'search_price' => 'Giá (.000.000 đ)',
-        'search_local' => 'Tìm theo thành phố',
+        'search_price' => 'Mức gía',
+        'search_local' => 'Tìm theo Thành phố',
+        'search_category' => 'Danh mục',
         'from' => 'Từ',
         'to' => 'Đến',
-        'news' => 'Tin tức mới'
+        'news' => 'Tin tức mới',
+        'choose_location' => 'Chọn khu vực',
     ],
     //site
     'site' => [

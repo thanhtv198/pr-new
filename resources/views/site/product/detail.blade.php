@@ -70,7 +70,7 @@
                 <div class="pull-right col-md-6">
                     <h1>{{ $product->name }} </h1>
                     <div>
-                        <input id="input-1" name="rate" class="rating rating-loading" data-min="0" data-max="5"
+                        <input id="input-5" name="rate" class="rating rating-loading" data-min="0" data-max="5"
                                data-step="0.5" value="{{ $product->averageRating }}" data-size="xs">
                     </div>
                     <div class="info-product-price">
@@ -192,30 +192,34 @@
                 <br>
                 <div>
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#home">{{ trans('common.tag.comment') }}</a></li>
-                        <li><a data-toggle="tab" href="#menu1">{{ trans('common.tag.rating') }}</a></li>
+                        <li class="active"><a data-toggle="tab" href="#home">{{ trans('common.button.comment') }}</a></li>
+                        <li><a data-toggle="tab" href="#menu1">{{ trans('common.button.rating') }}</a></li>
                     </ul>
 
-                    <div class="tab-content">
+                    <div class="tab-content" style="width:70%;">
                         <div id="home" class="tab-pane fade in active">
                             <div class="post-comment padding-top-40" style="margin-top: 20px">
                                 <h2>{{ trans('common.tag.leave_comment') }}</h2>
-                                <div class="form-group" style="margin-top: 15px">
-                                    <label>{{ trans('common.tag.message') }}</label>
-                                    <textarea class="form-control" name="content_parent_comment" rows="8"></textarea>
-                                </div>
-                                <p>
-                                    <button class="btn btn-primary parent-comment" data-url="{{ url('product/'.$product->id.'/comments') }}">
-                                        {{ trans('common.button.comment') }}
-                                    </button>
-                                    33 Binh luaan
-                                </p>
+                                @if(Auth::user())
+                                    <div class="form-group" style="margin-top: 15px">
+                                        <textarea class="form-control" name="content_parent_comment" rows="8"></textarea>
+                                    </div>
+                                    <p>
+                                        <button  style="margin: 10px" class="btn btn-primary parent-comment" data-url="{{ url('product/'.$product->id.'/comments') }}">
+                                            {{ trans('common.button.comment') }}
+                                        </button>
+                                        ({{ count($comments) }} {{ trans('common.button.comment') }})
+                                    </p>
+                                @else
+                                    <br>
+                                    <h5>{{ trans('common.product_detail.login_to_comment') }}</h5>
+                                @endif
                             </div>
-                            <div class="comments">
+                            <div class="comments" style="margin-top: 50px;">
                                 @if(Auth::check())
                                     {!! Form::hidden('username', auth()->user()->name) !!}
                                 @endif
-                                @foreach ($comments as $comment)
+                                @foreach ($product->comments as $comment)
                                     @if($comment->parent_id == null)
                                         <div class="media comment-parent">
                                             <a href="javascript:;" class="pull-left">
@@ -223,6 +227,7 @@
                                             </a>
                                             <div class="media-body">
                                                 <h4 class="media-heading">
+                                                    @if(Auth::check())
                                                     @if(Auth::user()->avatar)
                                                         <img src="{{ url(config('model.user.upload')) }}/{{ Auth::user()->avatar }}"
                                                              width="37px" style="border-radius: 50%; border:1px solid #2196f3">
@@ -231,11 +236,12 @@
                                                         {{ $comment->user->name }}
                                                     </strong>
                                                     <span>
-                                            {{ $comment->created_at->diffForHumans() }} /
-                                            <a class="reply-parent" id="{{ $comment->id }}">
-                                                {{ trans('common.button.reply') }}
-                                            </a>
-                                        </span>
+                                                        <span style="font-size: 15px">{{ $comment->created_at->diffForHumans() }}</span> /
+                                                        <a class="reply-parent" id="{{ $comment->id }}">
+                                                            {{ trans('common.button.reply') }}
+                                                        </a>
+                                                    </span>
+                                                    @endif
                                                 </h4>
                                                 <p class="content-cmt">{{ $comment->content }}</p>
                                                 <div class="input-group input-{{ $comment->id }}" style="display: none">
@@ -257,12 +263,14 @@
                                                             </a>
                                                             <div class="media-body">
                                                                 <h4 class="media-heading">
+                                                                    @if(Auth::check())
                                                                     @if(Auth::user()->avatar)
                                                                         <img src="{{ url(config('model.user.upload')) }}/{{ Auth::user()->avatar }}"
                                                                              width="37px" style="border-radius: 50%; border:1px solid #2196f3">
                                                                     @endif
                                                                     <strong>{{ $row->user->name }}</strong>
-                                                                    <span>{{ $row->created_at->diffForHumans() }}</span>
+                                                                    <span style="font-size: 15px">{{ $row->created_at->diffForHumans() }}</span>
+                                                                    @endif
                                                                 </h4>
                                                                 <p class="content-cmt">{{ $row->content }}</p>
                                                             </div>
@@ -276,10 +284,17 @@
                                 @endforeach
                             </div>
                             <br><br>
-
+                            <hr>
+                            <h2 class="text-left">{{ trans('common.tag.comment_by_facebook') }}</h2>
+                            <div class="comment">
+                                <div class="media">
+                                    <div class="fb-comments" data-href="http://localhost:8000/product/{{ $product->id }}" data-width="100%" data-numposts="2">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div id="menu1" class="tab-pane fade">
-                            <h2 style="margin-top: 20px">{{ trans('common.tag.rating') }}</h2>
+                            <h2 style="margin-top: 20px">{{ trans('common.button.rating') }}</h2>
                             <div>
                                 <div style="margin-left:20px;width:80%">
                                     <div class="thanh-rating row" style="margin-top: 15px">
@@ -305,9 +320,10 @@
                         </div>
                     </div>
                 </div>
-
+                <input id="" name="prodId" type="hidden" value="{{ $product->id }}">
             </div>
         </div>
+        <input id="" name="prodId" type="hidden" value="">
         <div class="clearfix"></div>
     </div>
 @endsection
@@ -327,7 +343,7 @@
                 let content = $('textarea[name="content_parent_comment"]').val();
                 let href = $(this).attr('data-url');
                 let name = $("input[name='username']").val();
-                ;
+
                 $.ajax({
                     type: 'POST',
                     url: href,
@@ -335,6 +351,7 @@
                     dataType: "json",
                     success: function (data) {
                         let id = data.comment.id;
+                        let productId = data.comment.commentable_id;
                         console.log(data);
                         let url = 'http://localhost:8000/product/' + id + '/replies';
                         let comment = '                 <div class="media comment-parent">\n' +
@@ -347,34 +364,28 @@
                             'width="37px" style="border-radius: 50%; border:1px solid #2196f3">\n' +
                             '                                                        <strong>' + name + '</strong>\n' +
                             '                                                         <input type="hidden" name="username" value="' + name + '">\n' +
-                            '                                                        <span>' + data.time + '/ <a class="reply-parent" id="' + id + '">Reply</a></span>\n' +
+                            '                                                        <span style="font-size: 15px">' + data.time + '/ <a class="reply-parent" id="' + id + '">'+ data.reply +'</a></span>\n' +
                             '                                                    </h4>\n' +
                             '                                                    <p class="content-cmt">' + content + '</p>\n' +
                             '                                                    <div class="input-group input-' + id + '" style="display: none">\n' +
                             '                                                         <input type="text" size="50" class="form-control content-reply" id="comment-' + id + '" name="content-reply">\n' +
                             '                                                         <span class="input-group-btn">\n' +
-                            '                                                           <button class="btn btn-success reply-button" id="rep' + id + '" data-url="' + url + '">Reply\n' +
+                            '                                                           <button class="btn btn-success reply-button" id="rep' + id + '" data-url="' + url + '">'+ data.reply +'\n' +
                             '                                                           </button>\n' +
                             '                                                         </span>\n' +
                             '                                                    </div>\n' +
                             '                                                    <div id="replies-box" class="comment-replies-' + id + '">\n' +
                             '                                                    </div>\n' +
                             '                                                </div>\n' +
-                            '                                            </div>'
+                            '                                            </div>\n' +
+                            '<input id="" name="prodIddđd" type="hidden" value="'+productId+'">'
                         $('.comments').append(comment);
                     }
 
                 });
             });
-        });
 
-    $(document).ready(
-        function () {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+
 
             $(document).on('click', '.reply-parent', function (e) {
                 let id = $(this).attr('id');
@@ -385,11 +396,12 @@
                 let href = $(this).attr('data-url');
                 let parent_id = $(this).attr('id').substring(3);
                 let content = $('#comment-' + parent_id).val();
+                let productId = $("input[name='prodId']").val();
 
                 $.ajax({
                     type: 'POST',
                     url: href,
-                    data: {repContent: content, parent_id: parent_id},
+                    data: {repContent: content, parent_id: parent_id, productId: productId},
                     dataType: "json",
                     success: function (data) {
                         console.log(data);
@@ -403,7 +415,7 @@
                             '<img src="'+ data.base_url + '/' + data.avatar +'" ' +
                             'width="37px" style="border-radius: 50%; border:1px solid #2196f3">\n' +
                             '                     <strong>' + data.name + '</strong>\n' +
-                            '                     <span>' + data.time + '</span></h4>\n' +
+                            '                     <spanstyle="font-size: 15px">' + data.time + '</span></h4>\n' +
                             '                   <p  class="content-cmt">' + content + '</p>\n' +
                             '            </div>\n' +
                             '        </div>'
@@ -414,6 +426,5 @@
                 });
             });
         });
-
 
 </script>

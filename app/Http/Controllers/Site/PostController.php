@@ -168,7 +168,8 @@ class PostController extends Controller
             'name' => auth()->user()->name,
             'time' => $comment->created_at->diffForHumans(),
             'avatar' => Auth::user()->avatar?Auth::user()->avatar: '',
-            'base_url' => url(config('model.user.upload'))
+            'base_url' => url(config('model.user.upload')),
+            'reply' => trans(' common.button.reply'),
         ];
     }
 
@@ -185,7 +186,7 @@ class PostController extends Controller
             'content' => $request->repContent,
         ]);
 
-        $reply = $this->repository->reply($id, $request->all());
+        $reply = $this->repository->reply($request->postId, $request->all());
 
         return [
             'replies' => $reply,
@@ -193,6 +194,7 @@ class PostController extends Controller
             'time' => $reply->created_at->diffForHumans(),
             'avatar' => Auth::user()->avatar?Auth::user()->avatar: '',
             'base_url' => url(config('model.user.upload')),
+            'reply' => trans(' common.button.reply'),
         ];
 
     }

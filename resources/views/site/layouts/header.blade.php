@@ -153,7 +153,7 @@
                                         <li>
                                             <div>
                                                 <a>
-                                                    {{ __('common.header.no_notify') }}
+                                                    {{ __('common.header.notify') }}
                                                 </a>
                                             </div>
                                         </li>
@@ -202,12 +202,8 @@
                     <span class="fa fa-envelope-o" aria-hidden="true"></span>
                 </div>
                 <div class="modal_body_left modal_body_left1">
-                    <h3 class="agileinfo_sign">Sign In </h3>
-                    <p>
-                        Sign In now, Let's start your Grocery Shopping. Don't have an account?
-                        <a href="#" data-toggle="modal" data-target="#myModal2">
-                            Sign Up Now</a>
-                    </p>
+                    <h3 class="agileinfo_sign">{{ trans('common.tag.sign_in') }}</h3>
+
                     {!! Form::open(['route' => 'login', 'method' => 'post']) !!}
                     <div class="styled-input agile-styled-input-top">
                         {!! Form::text('email', null, ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
@@ -215,10 +211,29 @@
                     <div class="styled-input">
                         {!! Form::password('password', ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
                     </div>
-                    <input type="submit" value="Sign In"> {!! Form::close() !!}
+                    <input type="submit" value="{{ trans('common.tag.sign_in') }}">
+                    {!! Form::close() !!}
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
+                <div class="row omb_row-sm-offset-3 omb_socialButtons">
+                    <div class="row">
+                        <div class="col-md-5 custom-login-fb">
+                            <a href="{{ url('login/facebook') }}" class="btn btn-lg btn-block omb_btn-facebook loginBtn loginBtn--facebook">
+                                <i class="fa fa-facebook visible-xs"></i>
+                                <span class="hidden-xs">{{ trans('common.button.sign_in_fb') }}</span>
+                            </a>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-5 custom-login-gg ">
+                            <a href="{{ url('login/google') }}" class="btn btn-lg btn-block omb_btn-google loginBtn loginBtn--google">
+                                <i class="fa fa-google-plus visible-xs"></i>
+                                <span class="hidden-xs"> {{ trans('common.button.sign_in_gg') }}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- //Modal content-->
@@ -286,7 +301,7 @@
                     <div class="col-md-5 custom-login-fb">
                         <a href="{{ url('login/facebook') }}" class="btn btn-lg btn-block omb_btn-facebook loginBtn loginBtn--facebook">
                             <i class="fa fa-facebook visible-xs"></i>
-                            <span class="hidden-xs">{{ trans('common.button.sign_up_fb') }}Sign up use facebook</span>
+                            <span class="hidden-xs">{{ trans('common.button.sign_up_fb') }}</span>
                         </a>
                     </div>
                     <div class="col-md-1">
@@ -294,7 +309,7 @@
                     <div class="col-md-5 custom-login-gg ">
                         <a href="{{ url('login/google') }}" class="btn btn-lg btn-block omb_btn-google loginBtn loginBtn--google">
                             <i class="fa fa-google-plus visible-xs"></i>
-                            <span class="hidden-xs"> {{ trans('common.button.sign_up_gg') }}Sign up use google+</span>
+                            <span class="hidden-xs"> {{ trans('common.button.sign_up_gg') }}</span>
                         </a>
                     </div>
                 </div>
@@ -338,7 +353,7 @@
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        Categories
+                                        {{ trans('common.header.category')}}
                                         <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu multi-column columns-3">
@@ -354,10 +369,6 @@
                                                             </li>
                                                         @endforeach
                                                     </ul>
-                                                    {{--@elseif($row->parent_id == null && !$row->childs)--}}
-                                                        {{--<a href="{{ route('site_category', $row->id) }}">--}}
-                                                            {{--<h2>{{ $row->name }}</h2>--}}
-                                                        {{--</a>--}}
                                                     @endif
                                                 </div>
                                             @endforeach
@@ -371,28 +382,28 @@
                                 @if(Auth::check())
                                     <li class="dropdown">
                                         <a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">
-                                            Write Post
+                                            {{ trans('common.header.write_post')}}
                                             <b class="caret"></b>
                                         </a>
                                         <ul class="dropdown-menu agile_short_dropdown">
                                             <li id="li-category">
-                                                <a href="{{ route('sell.index') }}">Sell product</a>
+                                                <a href="{{ route('sell.index') }}"> {{ trans('common.header.sell_product')}}</a>
                                             </li>
                                             <li id="li-category">
-                                                <a href="{{ route('posts.user', Auth::user()->id)}}">Discuss</a>
+                                                <a href="{{ route('posts.user', Auth::user()->id)}}"> {{ trans('common.header.discuss')}}</a>
                                             </li>
                                         </ul>
                                     </li>
                                 @endif
                                 <li class="">
-                                    <a class="nav-stylehead" href="{{ route('posts.index')}}">Forums</a>
+                                    <a class="nav-stylehead" href="{{ route('posts.index')}}"> {{ trans('common.header.forumn')}}</a>
                                 </li>
                                 <li class="dropdown" id="drop-search">
                                     <div class="input-group" id="thanh-input-group">
                                         <input type="text" class="form-control">
                                         <span class="input-group-btn">
                                             <button class="btn search-button-header">
-                                                Search
+                                                 {{ trans('common.button.search')}}
                                             </button>
                                         </span>
                                     </div>

@@ -18,6 +18,13 @@ return [
         'delete_selected' => 'Delete Selected',
         'remove' => 'Remove',
         'send' => 'Send',
+        'comment' => 'Comment',
+        'rating' => 'Rating',
+        'sign_up_gg' => 'Sign up with google+',
+        'sign_up_fb' => 'Sign up with facebook',
+        'sign_in_gg' => 'Sign in with google+',
+        'sign_in_fb' => 'Sign in with facebook',
+        'reply' => 'Reply',
     ],
     //validate
     'validate' => [
@@ -109,6 +116,8 @@ return [
         'compare_product' => 'Products Compare',
         '404' => 'Error 404 - Page not found',
         'aside_admin_content_slide' => 'Slides',
+        'comment_by_facebook' => 'Comment with facebook account',
+        'leave_comment' => 'Leave your comment'
     ],
     //form
     'form' => [
@@ -206,6 +215,12 @@ return [
         'content' => 'Content',
         'image' => 'Image',
     ],
+
+    'sidebar' => [
+        'forumn' => 'Discuss',
+        'topic' => 'topic',
+        'post' => 'Post',
+    ],
     //respond
     'respond' => [
         'check_now' => 'Check',
@@ -257,7 +272,7 @@ return [
         'manufacture' => 'Manufacture',
         'introduce' => 'Introduction',
         'profile' => 'Profile',
-        'sell_product' => 'Posted for sale',
+        'sell_product' => 'Sell Product',
         'logout' => 'Logout',
         'notify' => 'Notifications',
         'wishlist' => 'Wishlist',
@@ -267,15 +282,22 @@ return [
         'lang' => 'Language',
         'time_line' => 'Time line',
         'interact' => 'Interact',
+        'you_have_mesage_from' => 'You have message from',
+        'you_have_order_with' => 'You have order with',
+        'write_post' => 'Write Post',
+        'discuss' => 'New Post',
+        'forumn' => 'Forumn',
     ],
     //aside_content
     'aside' => [
         'search_here' => 'Search Here..',
-        'search_price' => 'Price (.000.000 đ)',
+        'search_price' => 'Mức giá',
         'search_local' => 'Search by local',
+        'search_category' => 'Category',
         'from' => 'From',
         'to' => 'To',
-        'news' => 'Phone news'
+        'news' => 'Phone news',
+        'choose_location' => 'Choose locaiton',
     ],
     //site
     'site' => [
