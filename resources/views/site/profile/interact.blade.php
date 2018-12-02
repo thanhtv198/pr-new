@@ -7,7 +7,7 @@
     <body>
     <div class="container time-line" id=" thanh-container" view="time-line">
         <h2 class="time-line-head">{{ trans('common.interact.title') }}</h2>
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs" style="margin-top: 70px;">
             <li class="active"><a data-toggle="tab" href="#home">{{ trans('common.interact.sold') }}</a></li>
             <li><a data-toggle="tab" href="#menu1">{{ trans('common.interact.bought') }}</a></li>
             <li><a data-toggle="tab" href="#menu2">{{ trans('common.interact.respond') }}</a></li>
@@ -30,9 +30,9 @@
                                 <th>{{ trans('common.product.product') }}</th>
                                 <th>{{ trans('common.product.qty') }}</th>
                                 <th>{{ trans('common.product.price') }}</th>
-                                <th>{{ trans('common.product.created_at') }}</th>
+                                <th style="width: 10%">{{ trans('common.product.created_at') }}</th>
                                 <th>{{ trans('common.form.status') }}</th>
-                                <th>{{ trans('common.form.action') }}</th>
+{{--                                <th>{{ trans('common.form.action') }}</th>--}}
                             </tr>
                             </thead>
                             <tbody id="cart_table">
@@ -69,14 +69,14 @@
                                             </i>
                                         @endif
                                     </td>
-                                    <td class="invert">
-                                        <div class="rem">
-                                            <a href="{{ route('delete_order_sold', $row->id) }}" class="delete delele-order"
-                                               onclick="deleteSold(this)">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </td>
+                                    {{--<td class="invert">--}}
+                                        {{--<div class="rem">--}}
+                                            {{--<a href="{{ route('delete_order_sold', $row->id) }}" class="delete delele-order"--}}
+                                               {{--onclick="deleteSold(this)">--}}
+                                                {{--<i class="fa fa-trash" aria-hidden="true"></i>--}}
+                                            {{--</a>--}}
+                                        {{--</div>--}}
+                                    {{--</td>--}}
                                 </tr>
                             @endforeach
                             </tbody>
@@ -127,6 +127,7 @@
                                         </div>
                                     </td>
                                 </tr>
+
                             @endforeach
                             </tbody>
                         </table>

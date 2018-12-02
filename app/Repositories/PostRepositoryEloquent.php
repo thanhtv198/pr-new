@@ -75,7 +75,7 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
             'user_id' => auth()->user()->id,
             'title' => $data['title'],
             'content' => $data['content'],
-            'status' => config('blog.post.status.active'),
+            'status' => config('model.post.status.active'),
             'view' => Post::VIEW,
         ]);
 

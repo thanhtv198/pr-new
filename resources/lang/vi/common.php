@@ -116,7 +116,13 @@ return [
         '404' => 'Lỗi 404 - Không tìm thấy trang!',
         'aside_admin_content_slide' => 'Slides',
         'comment_by_facebook' => 'Bình luận với tài khoản facebook',
-        'leave_comment' => 'Để lại bình luận '
+        'leave_comment' => 'Để lại bình luận',
+        'head_add_post' => 'Tạo Bài Viết Mới',
+        'title_add_post' => 'Bài Đăng Của Bạn',
+        'topic' => 'Chủ đề',
+        'title' => 'Tiêu đề',
+        'content_post' => 'Nội dung bài viết',
+        'all_topic' => 'CÁc Chủ Đề',
     ],
     //form
     'form' => [
@@ -289,10 +295,21 @@ return [
     ],
     //aside_content
     'aside' => [
-        'search_here' => 'Tìm kiếm..',
-        'search_price' => 'Mức gía',
-        'search_local' => 'Tìm theo Thành phố',
+        'search_status' => 'Trạng thái',
+        'search_sidebar' => 'Lọc tìm kiếm sản phẩm',
+        'search_price' => 'Mức giá',
+        'search_local' => 'Tìm theo thành phố',
         'search_category' => 'Danh mục',
+        'all_category' => 'Chọn danh mục',
+        'all_status' => 'Chọn trạng thái',
+        'all_price' => 'Chọn mức giá',
+        '5' => 'Dưới 5 triệu',
+        '5-10' => '5 - 10 triệu',
+        '10-15' => '10 - 15 triệu',
+        '15-20' => '15 - 20 triệu',
+        '20' => 'Trên 20 triệu',
+        'new' => 'Mới',
+        'old' => 'Cũ',
         'from' => 'Từ',
         'to' => 'Đến',
         'news' => 'Tin tức mới',
@@ -331,6 +348,8 @@ return [
     //timeline
     'time_line' => [
         'title' => 'Trang cá nhân',
+        'discuss' => 'Bài viết của bạn',
+        'sell' => 'Sản phẩm của bạn',
     ],
 
     //sell
@@ -373,5 +392,18 @@ return [
         'sold' => ' Sản phẩm đã bán',
         'bought' => 'Sản phẩm đã mua',
         'respond' => 'Phản hồi của bạn',
+    ],
+    'post' => [
+        'your_post' => 'Đăng Bài',
+        'your_post_head' => 'Các bài viết của bạn',
+        'title' => 'Tiêu đề',
+        'content' => 'Nội dung',
+        'topic' => 'Chủ đề',
+        'status' => 'Trạng thái',
+        'action' => 'Hành động',
+        'checked' => 'Đã đăng',
+        'pendding' => 'Đang chờ',
+        'rejected' => 'Đã từ chối',
+        'info' => 'Thông tin bài viết',
     ],
 ];

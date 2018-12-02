@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use App\Http\Controllers\Auth\AuthController;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -99,6 +99,7 @@ class InteractionController extends Controller implements FromCollection, WithHe
      */
     public function getOrderSold()
     {
+        $id = Auth::id();
 
         $orderdetails = OrderDetail::getSold();
 
@@ -108,7 +109,8 @@ class InteractionController extends Controller implements FromCollection, WithHe
 
         \App\Models\Notification::where('notifiable_id', '>', 0)->update(['read_at' => Carbon::now()]);
 
-        return view('site.interaction.order_sold', compact('orderdetails'));
+        return $orderdetails;
+//        return view('site.interaction.order_sold', compact('orderdetails'));
     }
 
     /**

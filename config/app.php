@@ -184,7 +184,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         willvincent\Rateable\RateableServiceProvider::class,
-
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -253,6 +253,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Pusher' => Pusher\Pusher::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ],
 ];
 

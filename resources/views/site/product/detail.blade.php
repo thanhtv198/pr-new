@@ -162,20 +162,20 @@
                                 {{ Form::submit(trans('common.button.add_cart'), ['class' => 'button']) }}
                             </a>
                         </div>
+                        @if(Auth::check())
                         <div class="product-add-wishlist thanh-product-detail">
                             <a href="{{ route('add_wishlist', $product->id) }}" class="hover-li-top" aria-hidden="true">
                                 <span class="nav-icon fa fa-heart-o" style="color:Red"></span>
                                 {{ trans('common.product.add_wishlist') }}
                             </a>
                         </div>
+                        @endif
                         <div class="compare_count thanh-product-detail">
                             <a href="{{ route('add_compare', $product->id) }}" onclick="addCompare()" class="hover-li-top" aria-hidden="true" style="margin-left: 20px">
                                 <span class="fa fa-balance-scale" style="color: orangered"></span>
                                 {{ trans('common.product.add_compare') }}
                             </a>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -196,8 +196,8 @@
                         <li><a data-toggle="tab" href="#menu1">{{ trans('common.button.rating') }}</a></li>
                     </ul>
 
-                    <div class="tab-content" style="width:70%;">
-                        <div id="home" class="tab-pane fade in active">
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active" style="width: 70%">
                             <div class="post-comment padding-top-40" style="margin-top: 20px">
                                 <h2>{{ trans('common.tag.leave_comment') }}</h2>
                                 @if(Auth::user())
@@ -238,7 +238,7 @@
                                                     <span>
                                                         <span style="font-size: 15px">{{ $comment->created_at->diffForHumans() }}</span> /
                                                         <a class="reply-parent" id="{{ $comment->id }}">
-                                                            {{ trans('common.button.reply') }}
+                                                            <span style="font-size: 15px">{{ trans('common.button.reply') }}</span>
                                                         </a>
                                                     </span>
                                                     @endif
@@ -293,7 +293,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="menu1" class="tab-pane fade">
+                        <div id="menu1" class="tab-pane fade"  style="width:100%;">
                             <h2 style="margin-top: 20px">{{ trans('common.button.rating') }}</h2>
                             <div>
                                 <div style="margin-left:20px;width:80%">
@@ -352,7 +352,6 @@
                     success: function (data) {
                         let id = data.comment.id;
                         let productId = data.comment.commentable_id;
-                        console.log(data);
                         let url = 'http://localhost:8000/product/' + id + '/replies';
                         let comment = '                 <div class="media comment-parent">\n' +
                             '                                                   <a href="javascript:;" class="pull-left">\n' +

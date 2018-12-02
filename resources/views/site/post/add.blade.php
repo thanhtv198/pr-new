@@ -1,11 +1,16 @@
 @extends('site/layouts/master')
 @section('content')
+    <style>
+        .add-post{
+            min-height: 700px;
+        }
+    </style>
     <section class="content-header">
         @include('site/notice')
     </section>
     <!-- Main content -->
         <h3 class="tittle-w3l">
-            {{ trans('common.post.edit') }}
+            {{ trans('common.tag.head_add_post') }}
             <span class="heading-style">
                     <i></i>
                     <i></i>
@@ -16,36 +21,33 @@
         <div class="" style="width: 90%; margin-left: 5%">
             {!! Form::open(['route' => ['posts.store'] , 'method' => 'POST', 'files' => true]) !!}
             <div>
-                <h2>Write your new post </h2>
-                Content
-                {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => trans('en.form.title')]) !!}
-                Toppic
-                {!! Form::text('toppic', null, ['class' => 'form-control', 'placeholder' => trans('en.form.title')]) !!}
+                <h2>{{ trans('common.tag.title_add_post') }}</h2>
                 <br>
-                <div class="form-group">
-                    <label>{{ trans('common.form.role') }}</label>
-                    {!! Form::select('tags[]', $tags, null, ['class' => 'form-control select2', 'id' => 'tag', 'multiple' => true]) !!}
-                </div>
+                {{ trans('common.tag.topic') }}
+                {!! Form::select('topic', $topics, null, ['class' => 'form-control', 'placeholder' => trans('common.tag.topic')]) !!}
+                <br>
+                {{ trans('common.tag.title') }}
+                {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => trans('common.tag.title')]) !!}
+                <br>
             </div>
             <br>
             <div id="ckeditor-content">
-                {!! Form::textarea('content', null, ['class' => 'ckeditor', 'id' => 'editor-post']) !!}
+                {{ trans('common.tag.content_post') }}
+                {!! Form::textarea('content', null, ['class' => 'add-post ckeditor', 'id' => 'editor-post']) !!}
             </div>
-            {!! Form::submit(trans('en.button.save'), ['class' =>'btn btn-primary']) !!}
+            <br>
+            <div class="clearfix"></div>
+            {!! Form::submit(trans('common.button.save'), ['class' =>'btn btn-primary']) !!}
             {!! Form::close() !!}
-
             <hr>
         </div>
         </div>
     <div class="clearfix"></div>
 
-    {{--<script>--}}
-        {{--$(document).ready(function () {--}}
-            {{--CKEDITOR.replace( 'description' );--}}
-        {{--});--}}
-    {{--</script>--}}
-
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-{{--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />--}}
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>--}}
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace( 'description' );
+    });
+</script>

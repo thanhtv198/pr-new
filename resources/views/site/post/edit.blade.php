@@ -21,22 +21,22 @@
                 <h2 class="tittle">{{ trans('common.post.info') }}</h2>
                 <hr>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="post_name">{{ trans('common.post.name') }}*</label>
+                    <label class="col-md-3 control-label" for="post_name">{{ trans('common.post.title') }}</label>
                     <div class="col-md-9">
-                        {!! Form::text('name', $post->title, ['class' => 'form-control input-md', 'placeholder' => trans('common.post.name') ])!!}
+                        {!! Form::text('title', $post->title, ['class' => 'form-control input-md', 'placeholder' => trans('common.post.title') ])!!}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="post_categorie">{{ trans('common.post.category') }}</label>
+                    <label class="col-md-3 control-label" for="post_categorie">{{ trans('common.post.topic') }}</label>
                     <div class="col-md-9">
                         {!! Form::select('topic_id', $topic, null, ['class' => 'form-control select2 select2-hidden-accessible']) !!}
                     </div>
                 </div>
         
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="post_description">{{ trans('common.post.description') }}</label>
+                    <label class="col-md-3 control-label" for="post_description">{{ trans('common.post.content') }}</label>
                     <div class="col-md-9">
-                        {!! Form::textarea('content', $post->content, ['class' => 'form-control input-md', 'placeholder' => trans('common.post.description')]) !!}
+                        {!! Form::textarea('content', $post->content, ['class' => 'form-control input-md', 'placeholder' => trans('common.post.content')]) !!}
                     </div>
                 </div>
                 <!-- Button -->

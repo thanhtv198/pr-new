@@ -6,6 +6,40 @@
     <section class="content">
         @include('admin/notice')
         <div class="row">
+            <div class="chart-user col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <div class="pull-left">
+                            <h2>{{ trans('common.dashboard.chart_order') }}</h2>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+                        <h4>{{ trans('common.dashboard.chart_total_order') }}: {{ $data['total_order'] }}</h4>
+                        {!! Charts::scripts() !!}
+                        {!! $chartUser->render() !!}
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-user col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <div class="pull-left">
+                            <h2>{{ trans('common.dashboard.chart_order') }}</h2>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+                        <h4>{{ trans('common.dashboard.chart_total_order') }}: {{ $data['total_order'] }}</h4>
+                        {!! Charts::scripts() !!}
+                        {!! $chartOrder->render() !!}
+                    </div>
+                </div>
+            </div>
+
             <div class="col-xs-8">
                 <div class="box">
                     <div class="box-header">
@@ -40,11 +74,11 @@
                                         </thead>
                                         <tbody>
                                         <tr role="row" class="odd">
-                                            <td><a href="{{ route('get_product') }}">{{ $product }}</a></td>
-                                            <td><a href="{{ route('get_member') }}">{{ $member }}</a></td>
-                                            <td><a href="{{ route('news.index') }}">{{ $news }}</a></td>
-                                            <td><a href="{{ route('news.index') }}">{{ $slide }}</a></td>
-                                            <td><a href="{{ route('get_respond') }}">{{ $respond }}</a></td>
+                                            <td><a href="{{ route('get_product') }}">{{ $data['total_product'] }}</a></td>
+                                            <td><a href="{{ route('get_member') }}">{{ $data['total_user'] }}</a></td>
+                                            <td><a href="{{ route('news.index') }}">{{ $data['total_new'] }}</a></td>
+                                            <td><a href="{{ route('news.index') }}">{{ $data['total_slide'] }}</a></td>
+                                            <td><a href="{{ route('get_respond') }}">{{ $data['total_respond'] }}</a></td>
                                         </tr>
                                         </tbody>
                                         {!! Form::close() !!}
@@ -141,7 +175,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="clear"></div>
     </section>
+    {{--<script src=https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.2/echarts-en.min.js charset=utf-8></script>--}}
     <script type="text/javascript">
         $(document).ready(
             function () {

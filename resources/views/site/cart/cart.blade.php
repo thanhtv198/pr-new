@@ -26,7 +26,7 @@
                                 <th>{{ trans('common.product.qty') }}</th>
                                 <th>{{ trans('common.product.price') }}</th>
                                 <th>{{ trans('common.form.action') }}</th>
-                                <th>{{ trans('common.form.action') }}</th>
+{{--                                <th>{{ trans('common.form.action') }}</th>--}}
                             </tr>
                             </thead>
                             <tbody id="cart_table">

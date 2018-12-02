@@ -1,13 +1,17 @@
+<h3 class="agileits-sear-head">{{ trans('common.aside.search_sidebar') }}</h3>
 <div class="sidebar-banner">
     {!! Form::open(['route' => 'site_search_multiple', 'method' => 'post']) !!}
     <div class="form-group div-input">
-        <label>{{ trans('common.aside.search_category') }}</label>
-        {!! Form::select('category_id', $categoriesSidebar, null, ['class' => 'span2 col-md-2 form-control', 'placeholder' => 'Tất cả danh mục']) !!}
+        <label>{{ trans('common.aside.search_status') }}</label>
+        {!! Form::select('status', $statusSidebar, null, ['class' => 'span2 col-md-2 form-control', 'placeholder' => trans('common.aside.all_status') ]) !!}
+        <br>
+        <label class="search-price">{{ trans('common.aside.search_category') }}</label>
+        {!! Form::select('category_id', $categoriesSidebar, null, ['class' => 'span2 col-md-2 form-control', 'placeholder' => trans('common.aside.all_category')]) !!}
         <br>
         <label class="search-price">{{ trans('common.aside.search_price') }}</label>
-        {!! Form::select('price', $priceSidebar, null, ['class' => 'span2 col-md-2 form-control', 'placeholder' => 'Tất cả mức giá']) !!}
+        {!! Form::select('price', $priceSidebar, null, ['class' => 'span2 col-md-2 form-control', 'placeholder' => trans('common.aside.all_price')]) !!}
         <br>
-        {!! Form::submit(__('Tìm kiếm'), ['class' => 'btn btn-warning search-form']) !!}
+        {!! Form::submit(trans('common.tag.search'), ['class' => 'btn btn-warning search-form']) !!}
     </div>
     {!! Form::close() !!}
 </div>

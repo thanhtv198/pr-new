@@ -10,6 +10,7 @@ use App\Events\NotifyWelcome;
 use App\Http\Requests\CommentRequest;
 use App\Http\Requests\PostRequest;
 use App\Models\Comment;
+use App\Models\Post;
 use App\Notifications\NewPostNotification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -68,9 +69,9 @@ class PostController extends Controller
     public function create()
     {
         $tags = $this->tagRepository->pluck();
-        $topic = $this->topicRepository->pluck();
+        $topics = $this->topicRepository->pluck();
 
-        return view('site.post.add', compact('tags', 'topic'));
+        return view('site.post.add', compact('tags', 'topics'));
     }
 
     /**
@@ -83,17 +84,9 @@ class PostController extends Controller
     {
         $data = $request->only('content', 'title');
 
-        $post = $this->repository->store($data);
+        $this->repository->store($data);
 
-        $this->tagRepository->saveTagsByPost($request->tags, $post->id);
-
-        $admins = $this->userRepository->getAdmin();
-
-        Notification::send($admins, new NewPostNotification($post));
-
-        event(new NotifyWelcome("Hi,for reading my article!"));
-
-        return redirect()->route('home');
+        return redirect()->route('posts');
     }
 
     /**
@@ -140,7 +133,7 @@ class PostController extends Controller
 
         $this->repository->update($id, $data);
 
-        return redirect()->route('home');
+        return redirect()->route('posts.user', auth()->user()->id);
 
     }
 
@@ -152,7 +145,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Post::findOrFail($id)->delete();
     }
 
     /**
@@ -169,7 +162,7 @@ class PostController extends Controller
             'time' => $comment->created_at->diffForHumans(),
             'avatar' => Auth::user()->avatar?Auth::user()->avatar: '',
             'base_url' => url(config('model.user.upload')),
-            'reply' => trans(' common.button.reply'),
+            'reply' => trans('common.button.reply'),
         ];
     }
 
@@ -194,7 +187,7 @@ class PostController extends Controller
             'time' => $reply->created_at->diffForHumans(),
             'avatar' => Auth::user()->avatar?Auth::user()->avatar: '',
             'base_url' => url(config('model.user.upload')),
-            'reply' => trans(' common.button.reply'),
+            'reply' => trans('common.button.reply'),
         ];
 
     }

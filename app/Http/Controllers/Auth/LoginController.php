@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
+use Cart;
 
 class LoginController extends Controller
 {
@@ -20,12 +23,27 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    public function login(Request $request)
+    {
+        $email = $request->email;
+        $password = $request->password;
+
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            Cart::destroy();
+
+            Cart::instance('compare')->destroy();
+
+            return redirect('/')->with('success', trans('common.login.success'));
+        } else {
+            return redirect()->back()->with('message', trans('common.login.failed'));
+        }
+    }
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.

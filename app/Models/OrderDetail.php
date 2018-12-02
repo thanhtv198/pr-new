@@ -36,8 +36,8 @@ class OrderDetail extends Model
 
     public function scopeGetSold($query)
     {
-        return $query->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')
-            ->where('deleted_at', null)
+        return $query->where('user_id', Auth::user()->id)
+            ->orderBy('id', 'DESC')
             ->get();
     }
 

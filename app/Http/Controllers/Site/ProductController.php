@@ -70,7 +70,7 @@ class ProductController extends Controller
             'time' => $comment->created_at->diffForHumans(),
             'avatar' => Auth::user()->avatar?Auth::user()->avatar: '',
             'base_url' => url(config('model.user.upload')),
-            'reply' => trans(' common.button.reply'),
+            'reply' => trans('common.button.reply'),
         ];
     }
 
@@ -95,6 +95,7 @@ class ProductController extends Controller
             'time' => $reply->created_at->diffForHumans(),
             'avatar' => Auth::user()->avatar?Auth::user()->avatar: '',
             'base_url' => url(config('model.user.upload')),
+            'reply' =>trans('common.button.reply'),
         ];
     }
 

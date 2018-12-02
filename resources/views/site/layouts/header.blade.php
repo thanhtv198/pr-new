@@ -54,7 +54,7 @@
                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                             <div class="triangle"></div>
                             <ul class="dropdown-menu dropdown-user" id="dropdown-top">
-                                <li><a href="{{ route('time_line', Auth::user()->id) }}"><i class="nav-icon fa fa-user"></i>{{ trans('common.header.time_line') }}</a></li>
+                                <li><a href="{{ route('time_line', Auth::user()->id) }}"><i class="nav-icon fa fa-clock-o"></i>{{ trans('common.header.time_line') }}</a></li>
                                 <li><a href="{{ route('get_interact', Auth::user()->id) }}"><i class="nav-icon fa fa-cog"></i>{{ trans('common.header.interact') }}</a></li>
                                 <li><a href="{{ route('get_profile', Auth::user()->id) }}"><i class="nav-icon fa fa-user"></i>{{ trans('common.header.my_account') }}</a></li>
                                 <li><a href="{{ route('logout') }}"><i class="nav-icon fa fa-sign-out"></i>{{ trans('common.header.logout') }}</a>
@@ -85,15 +85,18 @@
                                 id="count_compare">{{ Cart::instance('compare')->count() }}</span>)
                     </a>
                 </li>
+
                 <li class="li-top">
                     <a href="#" data-toggle="modal" class="hover-li-top" data-target="#myModal1">
-                        <span class="fa fa-unlock-alt" aria-hidden="true"></span>
+                        <span class="fa fa-user-o" aria-hidden="true">
+                        </span>
                         <b>{{ trans('common.header.sign_in') }}</b>
                     </a>
                 </li>
+
                 <li class="li-top">
                     <a href="#" data-toggle="modal" class="hover-li-top" data-target="#myModal2">
-                        <span class="fa fa-pencil-square-o" aria-hidden="true">
+                        <span class="fa fa-user" aria-hidden="true">
                         </span>
                         <b>{{ trans('common.header.sign_up') }}</b>
                     </a>
@@ -211,7 +214,7 @@
                     <div class="styled-input">
                         {!! Form::password('password', ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
                     </div>
-                    <input type="submit" value="{{ trans('common.tag.sign_in') }}">
+                    <input style="margin-left:200px;" class="agileinfo_sign" type="submit" value="{{ trans('common.tag.sign_in') }}">
                     {!! Form::close() !!}
                     <div class="clearfix"></div>
                 </div>
@@ -319,8 +322,7 @@
     </div>
 </div>
 <!-- //Modal content-->
-</div>
-</div>
+
 <div class="clear"></div>
 <!-- //Modal2 -->
 <!-- //signup Model -->
@@ -400,9 +402,10 @@
                                 </li>
                                 <li class="dropdown" id="drop-search">
                                     <div class="input-group" id="thanh-input-group">
-                                        <input type="text" class="form-control">
+                                        {!! Form::text('key', null, ['id' => 'tags', 'onkeyup' => 'autoComplete()', 'class' => 'form-control', 'placeholder' => trans('common.tag.search')]) !!}
+                                        {!! Form::hidden('url', config('app.url_base'), ['id' => 'url']) !!}
                                         <span class="input-group-btn">
-                                            <button class="btn search-button-header">
+                                            <button type="submit" class="btn search-button-header search_name">
                                                  {{ trans('common.button.search')}}
                                             </button>
                                         </span>
@@ -471,7 +474,7 @@
         right: -15px;
         display: block;
         background: #fff;
-        min-width: 250px;
+        min-width: 200px;
         padding-top: 0px;
         z-index: 1;
         border-radius: 5px;

@@ -115,7 +115,7 @@
                 <a href="">
                     <i class="nav-icon fa fa-sticky-note-o"></i>
                         {{ trans('common.sidebar.forumn') }}
-                        <span class="right badge badge-danger">2</span>
+
                     <span class="pull-right-container">
                         <span class="label label-primary pull-right">2</span>
                     </span>

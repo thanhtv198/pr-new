@@ -73,7 +73,7 @@
                                                 <td>{{ $row->birthday }}</td>
                                                 <td>{{ $row->phone_number }}</td>
                                                 <td>{{ $row->email }}</td>
-                                                <td>{{ $row->local->name }}</td>
+                                                <td>{{ $row->city->name }}</td>
                                                 <td class="textC">
                                                     <a href="{{ route('edit_member', $row->id) }}">
                                                         <i class="fa fa-eye" aria-hidden="true" id="eye"></i>

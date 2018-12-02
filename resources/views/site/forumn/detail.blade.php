@@ -28,22 +28,15 @@
                     <div class="row">
                         <!-- BEGIN LEFT SIDEBAR -->
                         <div class="col-md-9 col-sm-9 blog-item">
-                            <h2><p>{{ $post->title }}</p></h2>
+                            <h2>{{ $post->title }}</h2>
+                            <hr>
+                                <p>{!! $post->content !!}</p>
+                            <br>
                             <ul class="blog-info">
-                                <li><i class="fa fa-user"></i>By admin</li>
-                                <li><i class="fa fa-calendar"></i>{{ $post->created_at }}</li>
-                                <li><i class="fa fa-eye"></i>{{ $post->view }}</li>
-                                <li>
-                                    {{--@foreach($post->tags_name as $tag)--}}
-                                        {{--<a href="javascript:;">--}}
-                                            {{--<i class="fa fa-tags"></i>--}}
-                                            {{--{{ $tag[0]['name'] }}--}}
-                                        {{--</a>--}}
-                                    {{--@endforeach--}}
-                                </li>
+                                <span><i style="margin-right: 2px;" class="fa fa-user"></i>{{ $post->user->name }}</span>
+                                <span style="margin-left: 10px;"><i style="margin-right: 2px;" class="fa fa-calendar"></i>{{ $post->created_at }}</span>
+                                <span  style="margin-left: 10px;"><i style="margin-right: 2px;" class="fa fa-eye"></i>{{ $post->view }}</span>
                             </ul>
-
-                            <p>{!! $post->content !!}</p>
                             <div class="post-comment padding-top-40">
                                 <Br><br>
                                 <h3>{{ trans('common.tag.leave_comment') }}</h3>
@@ -63,6 +56,7 @@
                                     <h5>{{ trans('common.product_detail.login_to_comment') }}</h5>
                                 @endif
                             </div>
+                            <br>
                             <div class="comments">
                                 @if(Auth::check())
                                     {!! Form::hidden('username', auth()->user()->name) !!}
@@ -86,7 +80,7 @@
                                                     <span>
                                                             <span style="font-size: 15px">{{ $comment->created_at->diffForHumans() }}</span> /
                                                             <a class="reply-parent" id="{{ $comment->id }}">
-                                                                {{ trans('common.button.reply') }}
+                                                                 <span style="font-size: 15px">{{ trans('common.button.reply') }}</span>
                                                             </a>
                                                         </span>
                                                     @endif
@@ -141,6 +135,22 @@
                         </div>
                         <input id="post-" name="postId" type="hidden" value="{{ $post->id }}">
                     </div>
+                        <div class="side-bar col-md-3" id="thanh-side-bar">
+                            <h2 style="text-align: center">{{ trans('common.tag.all_topic') }}</h2>
+                            <ul class="nav sidebar-categories margin-bottom-40">
+                                @foreach($topics as $row)
+                                    <li>
+                                        @if(isset($topicSidebar) && $topicSidebar == $row->id)
+                                            <a href="{{ route('posts',  ['slug' => $row->slug]) }}" class="title-topic-choose">
+                                                {{ $row->name }} ({{ count($row->posts) }})
+                                            </a>
+                                        @else
+                                            <a href="{{ route('posts',  ['slug' => $row->slug]) }}">{{ $row->name }} ({{ count($row->posts) }})</a>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                 </div>
             </div>
         <div class="clearfix"></div>

@@ -33,20 +33,17 @@ class AppServiceProvider extends ServiceProvider
             $city = DB::table('cities')->pluck('name', 'id');
 
             $priceSidebar = array(
-                1 => 'Dưới 5 triệu',
-                2 => 'Từ 5-10 triệu',
-                3 => 'Từ 10-15 triệu',
-                4 => 'Từ 15-20 triệu',
-                5 => 'Trên 20 triệu'
+                1 => trans('common.aside.5'),
+                2 => trans('common.aside.5-10'),
+                3 => trans('common.aside.10-15'),
+                4 => trans('common.aside.15-20'),
+                5 => trans('common.aside.20'),
             );
 
-//            $ramSidebar = array(
-//                1 => '2 GB',
-//                2 => '3 GB',
-//                3 => '4 GB',
-//                4 => '6 GB',
-//                5 => 'Trên 6 GB'
-//            );
+            $statusSidebar = array(
+                1 => trans('common.aside.new'),
+                2 => trans('common.aside.old'),
+            );
 
             $view->with(compact([
                 'categoriesHeader',
@@ -55,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
                 'city',
                 'priceSidebar',
                 'categoriesSidebar',
+                'statusSidebar',
             ]));
         });
         view()->composer( 'site.layouts.header', function ($view1) {

@@ -229,7 +229,7 @@ class Product extends Model
             ->paginate(config('app.paginateProductSearch'));
     }
 
-    public function scopeSearchMultiple($query, $category_id, $price)
+    public function scopeSearchMultiple($query, $category_id, $price, $status)
     {
         switch ($price) {
             case 1:
@@ -252,10 +252,18 @@ class Product extends Model
         }
 
         if (!$category_id) {
-            return $query->orderByRaw('price - promotion ', 'asc');
+            $query = $query->where('status', $status)->orderByRaw('price - promotion ', 'asc');
+        } else {
+            $query = $query->where('category_id', $category_id)->orderByRaw('price - promotion ', 'asc');
         }
 
-        return $query->where('category_id', $category_id)->orderByRaw('price - promotion ', 'asc');
+        if($status == 1) {
+            return $query->where('is_new', 1);
+        } elseif($status == 2) {
+            return $query->where('is_new', 0);
+        } else {
+            return $query;
+        }
     }
 }
 

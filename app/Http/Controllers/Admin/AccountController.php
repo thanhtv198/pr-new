@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\User;
-use App\Models\Level;
+use App\Models\Role;
 use Validator;
 use App\Http\Requests\UserRequest;
 
@@ -30,11 +30,11 @@ class AccountController extends Controller
      */
     public function addMember()
     {
-        $level = Level::pluck('role', 'id');
+        $role = Role::pluck('role', 'id');
 
         $city = City::pluck('name', 'id');
 
-        return view('admin.account.member.add', compact('level', 'city'));
+        return view('admin.account.member.add', compact('role', 'city'));
     }
 
     /**
@@ -61,7 +61,7 @@ class AccountController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $level = Level::pluck('role', 'id');
+        $level = Role::pluck('role', 'id');
 
         $city = City::pluck('name', 'id');
 
@@ -155,11 +155,11 @@ class AccountController extends Controller
      */
     public function addManager()
     {
-        $level = Level::pluck('role', 'id');
+        $level = Role::pluck('role', 'id');
 
         $city = city::pluck('name', 'id');
 
-        return view('admin.account.manager.add', compact('level', 'city'));
+        return view('admin.account.manager.add', compact('role', 'city'));
     }
 
     /**
@@ -186,11 +186,11 @@ class AccountController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $level = Level::pluck('role', 'id');
+        $role = Level::pluck('role', 'id');
 
         $city = city::pluck('name', 'id');
 
-        return view('admin/account/manager/edit', compact('level', 'user', 'city'));
+        return view('admin/account/manager/edit', compact('role', 'user', 'city'));
     }
 
     /**

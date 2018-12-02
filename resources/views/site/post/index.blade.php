@@ -8,7 +8,7 @@
             <div view="sell" class="container" >
                 <!-- tittle heading -->
                 <h3 class="tittle-w3l">
-                    {{ trans('common.sell.your_product') }}
+                    {{ trans('common.post.your_post_head') }}
                     <span class="heading-style">
                     <i></i>
                     <i></i>
@@ -17,7 +17,7 @@
                 </h3>
                 <div class="checkout-right">
                     <h4>
-                        {{ trans('common.sell.your_sold') }}
+                        {{ trans('common.post.your_post') }}
                         <a href="{{ route('posts.create') }}">
                             <span class="fa fa-plus-square" id="plus"></span>
                         </a>
@@ -34,7 +34,7 @@
                             </thead>
                             <tbody id="cart_table">
                             @foreach ($posts as $row)
-                                <tr class="rem1">
+                                <tr class="rem1" id="row-{{ $row->id }}">
                                     <td class="invert col-md-3">
                                         <a href="{{ route('home_page') }}">
                                             {{ $row->title }}
@@ -48,13 +48,13 @@
                                 
                                     <td class="invert col-md-1">
                                         @if ($row->status == 0)
-                                            <span id="pendding">{{ trans('common.respond.pendding') }}</span>
+                                            <span id="pendding">{{ trans('common.post.pendding') }}</span>
                                         @elseif ($row->status == 1)
-                                            <i class="fa fa-check-circle">{{ trans('common.respond.checked') }}</i>
+                                            <i class="fa fa-check-circle">{{ trans('common.post.checked') }}</i>
                                         @elseif ($row->status == 2)
                                             <i class="fa fa-minus-square" id="status-rejected">
-                                                {{--  <b>{{ trans('common.respond.rejected') }}</b><br><br>
-                                                <span id="reason" style="color:Red">{{ $row->check }}</span>  --}}
+                                                  <b>{{ trans('common.post.rejected') }}</b><br><br>
+                                                {{--<span id="reason" style="color:Red">{{ $row->check }}</span>  --}}
                                             </i>
                                         @endif
                                     </td>
@@ -64,7 +64,10 @@
                                             <a href="{{ route('posts.edit', $row->id) }}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a> |
-                                            <a class="delete" onclick="deleteSell(this)">
+                                            {{--<a class="del-post-button" href="{{ route('posts.delete_post', ['id' => $row->id]) }}" data-url="{{ route('posts.delete_post', $row->id) }}" class=".del-post-button" onclick="deleteSell(this)">--}}
+                                                {{--<i class="fa fa-trash" aria-hidden="true"></i>--}}
+                                            {{--</a>--}}
+                                            <a class="del-button-post" id="{{ $row->id }}" data-url="{{ route('posts.destroy', $row->id) }}">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
                                         </div>

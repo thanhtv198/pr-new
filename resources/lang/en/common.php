@@ -117,7 +117,13 @@ return [
         '404' => 'Error 404 - Page not found',
         'aside_admin_content_slide' => 'Slides',
         'comment_by_facebook' => 'Comment with facebook account',
-        'leave_comment' => 'Leave your comment'
+        'leave_comment' => 'Leave your comment',
+        'head_add_post' => 'Write New Post',
+        'title_add_post' => 'Your New Post',
+        'topic' => 'Topic',
+        'title' => 'Title',
+        'content_post' => 'Post content',
+        'all_topic' => 'All Topics',
     ],
     //form
     'form' => [
@@ -290,10 +296,21 @@ return [
     ],
     //aside_content
     'aside' => [
-        'search_here' => 'Search Here..',
-        'search_price' => 'Mức giá',
+        'search_status' => 'Status',
+        'search_sidebar' => 'Filter and search product',
+        'search_price' => 'Prices',
         'search_local' => 'Search by local',
-        'search_category' => 'Category',
+        'search_category' => 'Categories',
+        'all_category' => 'Choose Categories',
+        'all_status' => 'Choose Status',
+        'all_price' => 'Choose Prices',
+        '5' => 'Under 5 million',
+        '5-10' => '5 to 10 million',
+        '10-15' => '10 to 15 million',
+        '15-20' => '15 to 20 million',
+        '20' => 'Over 20 million',
+        'new' => 'New product',
+        'old' => 'Old product',
         'from' => 'From',
         'to' => 'To',
         'news' => 'Phone news',
@@ -332,6 +349,8 @@ return [
     //timeline
     'time_line' => [
         'title' => 'Your Timeline',
+        'discuss' => 'Your posts',
+        'sell' => 'Your products',
     ],
 
 
@@ -375,5 +394,18 @@ return [
         'sold' => ' Sold Products',
         'bought' => ' Bought Products',
         'respond' => 'Your Responds',
-    ]
+    ],
+    'post' => [
+        'your_post' => 'Write New Post',
+        'your_post_head' => 'Your Posts',
+        'title' => 'Title',
+        'content' => 'Content',
+        'topic' => 'Topic',
+        'status' => 'Status',
+        'action' => 'Action',
+        'checked' => 'Checked',
+        'pendding' => 'Pendding',
+        'rejected' => 'Rejected',
+        'info' => 'Post infomation',
+    ],
 ];

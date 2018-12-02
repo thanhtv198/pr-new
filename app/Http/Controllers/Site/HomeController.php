@@ -234,7 +234,7 @@ class HomeController extends Controller
 
         Cart::instance('compare')->destroy();
 
-        return redirect()->route('home_page');
+        return redirect('/');
     }
 
     public function changeLanguage($language)
@@ -249,7 +249,7 @@ class HomeController extends Controller
         $products = Product::searchMultiple(
             intval($request->category_id),
             intval($request->price),
-            intval($request->ram)
+            intval($request->status)
         )->get();
 
         return  view('site.result', compact(

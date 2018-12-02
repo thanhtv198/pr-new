@@ -113,6 +113,7 @@ Route::namespace('Auth')->group(function () {
 
 Route::group(['namespace' => 'Site', 'middleware' => 'locale'], function () {
     Route::get('/', 'HomeController@index')->name('home_page');
+    Route::get('/home', 'HomeController@index');
     Route::get('change-language/{language}', 'HomeController@changeLanguage')->name('change-language');
     //auth user
     Route::get('/signup', 'HomeController@getSignUp')->name('get_signup');
@@ -141,8 +142,8 @@ Route::group(['namespace' => 'Site', 'middleware' => 'locale'], function () {
     //post user
     //route resource post
     Route::resource('posts', 'PostController');
+//    Route::post('posts', 'PostController@deletePost')->name('posts.delete_post');
     Route::get('posts/user/{id}', 'PostController@getPostByUser')->name('posts.user');
-
     //comment posts
     Route::post('posts/{id}/comments', 'PostController@comment')->name('posts.comment');
     Route::post('posts/{id}/replies', 'PostController@reply')->name('posts.reply');

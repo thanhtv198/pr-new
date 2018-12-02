@@ -10,7 +10,7 @@
         <div class="tab-time-line">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">{{ trans('common.time_line.sell') }}</a></li>
-                <li><a data-toggle="tab" href="#menu1">{{ trans('common.time_line.disscus') }}</a></li>
+                <li><a data-toggle="tab" href="#menu1">{{ trans('common.time_line.discuss') }}</a></li>
             </ul>
 
             <div class="tab-content">
@@ -18,11 +18,12 @@
                     <h3>{{ trans('common.time_line.sell') }}</h3>
                     @foreach($sellings as $row)
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3" style="text-align: center">
                                 <img src="{{ url(config('app.productUrl')) }}/{{$row->id}}/{{ $row->images[0]['image'] }}"
                                      alt="{{ $row->name }}" width="220px" height="250px">
                                 <h4>
-                                    <a href="{{ route('detail_product', $row->id) }}">{{ $row->name }}</a>
+                                    <br>
+                                    <a style="font-size: 22px" href="{{ route('detail_product', $row->id) }}">{{ $row->name }}</a>
                                 </h4>
                             </div>
                             <div class="col-md-9">
@@ -34,7 +35,7 @@
                 </div>
 
                 <div id="menu1" class="tab-pane fade">
-                    <h3>{{ trans('common.time_line.disscus') }}</h3>
+                    <h3>{{ trans('common.time_line.discuss') }}</h3>
                     @foreach($discuss as $row)
                         <div class="row">
                             <div class="col-md-3">
@@ -52,7 +53,6 @@
 
             </div>
         </div>
-    </div>
     </div>
     <div class="clearfix"></div>
     </body>
