@@ -3,7 +3,7 @@
     @include('site.notice')
     <div view="detail">
         <h3 class="tittle-w3l">
-            {{ trans('common.product_detail.head') }}
+            {{ $topicName }}
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -12,7 +12,6 @@
         </h3>
 
         <div class="container">
-            <h2 class="time-line-head" style="text-align: left">{{ $topicName }}</h2>
             <div class="row">
 
                 <div class="col-md-9">
@@ -22,7 +21,8 @@
                                 {{ $post->title }}
                             </a>
                         </h2>
-                        <p>{!! $post->content !!}</p>
+                        <p class="content-post">{!! $post->content !!}</p>
+                        <hr>
                     @endforeach
                 </div>
                 <div class="side-bar col-md-3" id="thanh-side-bar">

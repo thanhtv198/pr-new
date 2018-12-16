@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('price');
             $table->text('description')->nullable();
-            $table->string('promotion')->nullable();
+            $table->string('promotion')->default(0);
             $table->date('date_manufacture')->nullable();
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();

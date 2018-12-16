@@ -10,13 +10,13 @@
                 <div class="box">
                     <div class="box-header">
                         <div class="pull-left">
-                            <h2>{{ trans('common.dashboard.chart_order') }}</h2>
+                            <h2>{{ trans('common.dashboard.chart_user') }}</h2>
                         </div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
 
-                        <h4>{{ trans('common.dashboard.chart_total_order') }}: {{ $data['total_order'] }}</h4>
+                        <h4>{{ trans('common.dashboard.chart_total_user') }}: {{ $data['total_user'] }}</h4>
                         {!! Charts::scripts() !!}
                         {!! $chartUser->render() !!}
                     </div>
@@ -32,10 +32,26 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-
                         <h4>{{ trans('common.dashboard.chart_total_order') }}: {{ $data['total_order'] }}</h4>
                         {!! Charts::scripts() !!}
                         {!! $chartOrder->render() !!}
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-user col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <div class="pull-left">
+                            <h2>{{ trans('common.dashboard.chart_product') }}</h2>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+                        <h4>{{ trans('common.dashboard.chart_total_product') }}: {{ $data['total_product'] }}</h4>
+                        {!! Charts::scripts() !!}
+                        {!! $chartProduct->render() !!}
                     </div>
                 </div>
             </div>
@@ -52,7 +68,7 @@
                         <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                    <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                         <tr role="row">
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">

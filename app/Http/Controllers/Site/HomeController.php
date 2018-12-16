@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Models\Category;
+use Complex\Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,8 @@ use App\Models\City;
 use Cart;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\App;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -185,12 +188,19 @@ class HomeController extends Controller
      */
     public function postSignUp(UserRequest $request)
     {
-        $request->merge([
-            'role_id' => 3,
-            'password' => bcrypt($request->password),
-        ]);
+        try {
+            $request->merge([
+                'role_id' => 3,
+                'password' => bcrypt($request->password),
+            ]);
 
-        User::create($request->all());
+            $user = User::create($request->all());
+            Mail::to($user['email'])->send(new WelcomeMail($user));
+            return response(['message' => trans('common.login.sign_up_success')]);
+        } catch (\Exception $e) {
+            return response(['message' => $e->getMessage()]);
+        }
+
 
         return back()->with('success', trans('common.login.sign_up_success'));
     }
@@ -198,30 +208,30 @@ class HomeController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getSignIn()
-    {
-        return view('site.account.sign_in');
-    }
-
-    /**
-     * @param SignInRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function postSignIn(SignInRequest $request)
-    {
-        $email = $request->email;
-        $password = $request->password;
-
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            Cart::destroy();
-
-            Cart::instance('compare')->destroy();
-
-            return redirect('/')->with('success', trans('common.login.success'));
-        } else {
-            return redirect()->back()->with('message', trans('common.login.failed'));
-        }
-    }
+//    public function getSignIn()
+//    {
+//        return view('site.account.sign_in');
+//    }
+//
+//    /**
+//     * @param SignInRequest $request
+//     * @return \Illuminate\Http\RedirectResponse
+//     */
+//    public function postSignIn(SignInRequest $request)
+//    {
+//        $email = $request->email;
+//        $password = $request->password;
+//
+//        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+//            Cart::destroy();
+//
+//            Cart::instance('compare')->destroy();
+//
+//            return redirect('/')->with('success', trans('common.login.success'));
+//        } else {
+//            return redirect()->back()->with('message', trans('common.login.failed'));
+//        }
+//    }
 
     /**
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector

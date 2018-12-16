@@ -1,12 +1,12 @@
 @extends('admin/layouts/master')
 @section('content')
     <section class="content-header">
-        <h1>{{ trans('common.title_form.topic_head') }}</h1>
+        <h1>{{ trans('common.topic.topic_head') }}</h1>
     </section>
     <div class="content">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">{{ trans('common.title_form.topic_title') }}</h3>
+                <h3 class="box-title">{{ trans('common.topic.topic_title') }}</h3>
                 @include('admin.notice')
             </div>
             {!! Form::open(['route' => ['admin.topics.update', $topic->id], 'method' => 'put', 'class' => 'form-signin']) !!}

@@ -49,8 +49,10 @@
                                             <a href="{{ route('detail_product', $row->id) }}">{{ $row->name }}</a>
                                         </h4>
                                         <div class="info-product-price">
-                                            <span class="item_price">{{ number_format($row->price) }}đ</span>
-                                            <del>{{ number_format($row->promotion) }}đ</del>
+                                            <span class="item_price">{{ number_format($row->price - $row->promotion) }}đ</span>
+                                            @if ($row->promotion > 1)
+                                            <del>{{ number_format($row->price) }}đ</del>
+                                            @endif
                                         </div>
                                         <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                             <div class="product-icon-container">

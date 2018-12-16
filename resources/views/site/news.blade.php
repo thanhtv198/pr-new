@@ -2,7 +2,7 @@
 @section('content')
     <!-- top Products -->
     <div class="ads-grid">
-        <div class="container">
+        <div class="container" id="thanh-container">
             <!-- tittle heading -->
             <h3 class="tittle-w3l">
                 {{ trans('common.home_page.news_detail') }}
@@ -24,7 +24,7 @@
                         <br>
                         <div class="clearfix"></div>
                         <div class="image">
-                            <img src="{{ url(config('app.newsUrl')) }}/{{ $news->avatar }}" id="news-image">
+                            <img src="{{ url(config('app.newsUrl')) }}/{{ $news->image }}" width="100%;">
                         </div>
                         <div class="clearfix"></div>
                         <br><br>

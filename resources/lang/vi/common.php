@@ -28,15 +28,22 @@ return [
     ],
     //validate
     'validate' => [
+        'require_name' => 'Tên không thể trống',
         'name' => 'Tên không thể trống',
+        'require_email' => 'Email không thể trống',
         'email' => 'Email không thể trống',
         'valid_email' => 'Email không hợp lệ',
-        'address' => 'Địa chỉ không thể trống',
+        'email_unique' => 'Email đã tồn tại',
+        'require_phone_number' => 'Số điện thoại không thể trống',
         'phone_number' => 'Số điện thoại không thể trống',
+        'require_birthday' => 'Ngày sinh không thể trống',
         'birthday' => 'Ngày sinh không thể trống',
+        'require_password' => 'Mật khẩu phải hợp lệ',
         'password' => 'Mật khẩu phải hợp lệ',
+        'valid_password_confirm' => 'Mật khẩu xác nhận không đúng',
         'repassword' => 'Mật khẩu không trùng khớp',
-        'valid_password' => 'Mật khẩu phải ít nhất 6 kí tự',
+        'password_min' => 'Mật khẩu phải ít nhất 6 kí tự',
+        'address' => 'Địa chỉ không thể trống',
         'news_title' => 'Tiêu đề không thể trống',
         'news_content' => 'Nội dung không thể trống',
         'news_image' => 'Ảnh không được trống',
@@ -122,7 +129,7 @@ return [
         'topic' => 'Chủ đề',
         'title' => 'Tiêu đề',
         'content_post' => 'Nội dung bài viết',
-        'all_topic' => 'CÁc Chủ Đề',
+        'all_topic' => 'Các Chủ Đề',
     ],
     //form
     'form' => [
@@ -260,7 +267,7 @@ return [
         'title14' => 'Khuyến mại tuyệt vời',
         'title21' => 'Sản phẩm mới',
         'title22' => 'Sản phẩm xem nhiều nhất',
-        'search_result' => 'Không tìm thấy sản phẩm',
+        'search_result' => 'Sản phẩm tìm được',
         'result_quantity' => 'Số sản phẩm phù hợp với kết quả tìm kiếm',
         'news_detail' => 'Chi tiết tin tức',
         'view_product' => 'Xem chi tiết',
@@ -336,6 +343,7 @@ return [
         'login_to_rate' => 'Bạn phải đăng nhập để đánh giá',
         'replies' => 'Trả lời',
         'seller' => 'Người bán',
+        'send_message' => 'Gửi tin nhắn: ',
     ],
     //info
     'info' => [
@@ -403,7 +411,47 @@ return [
         'action' => 'Hành động',
         'checked' => 'Đã đăng',
         'pendding' => 'Đang chờ',
-        'rejected' => 'Đã từ chối',
         'info' => 'Thông tin bài viết',
+        'post_head' => 'Quản lí bài đăng',
+        'post_title' => 'Thông tin bài đăng',
+        'name' => 'Người đăng',
+        'view' => 'Lượt xem',
+        'activating' => 'Đang hoạt động',
+        'block_now' => 'Chặn ngay',
+        'rejected' => 'Đã từ chối',
+    ],
+
+    'dashboard' => [
+        'chart_user' => 'Biểu đồ thống kê người dùng trong năm',
+        'chart_order' => 'Biểu đồ thống kê tình trạng đơn hàng',
+        'chart_product' => 'Biểu đồ thống kê lượt đăng sản phẩm',
+        'chart_total_user' => 'Tổng người dùng tính đến hiện tại',
+        'chart_total_order' => 'Tổng số đơn hàng',
+        'chart_total_product' => 'Tổng số sản phẩm',
+    ],
+
+    'topic' => [
+        'topics_head' => 'Quản lí chủ đề',
+        'topics_title' => 'Thông tin các chủ đề',
+        'code' => 'Mã',
+        'name' => 'Tên',
+        'action' => 'Hành động',
+    ],
+
+    'mail' => [
+        'welcome_title' => 'Chúc mừng bạn đã đăn kí thành công',
+        'welcome_thank' => 'Cảm ơn vì đã đăng kí và trở thành thành của trang web',
+        'welcome_your_email' => 'Email bạn đã đăng kí',
+        'welcome_register_success' => 'Bạn đã đăng kí thành công!',
+        'welcome_please_login' => 'Vui lòng đăng nhập bên dưới!',
+        'welcome_login' => 'Đăng nhập',
+        'welcome_order' => 'Chúc mừng bạn đã đặt hàng thành công',
+        'total_price' => 'Tổng giá trị đơn hàng: ',
+        'welcome_order_seller' => 'Chúc mừng bạn có đơn hàng mới',
+        'order_from' => 'Đơn hàng đến từ: ',
+    ],
+
+    'forumn'=> [
+        'head' => 'Tất Cả Bài Đăng',
     ],
 ];

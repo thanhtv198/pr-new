@@ -32,12 +32,15 @@
                     <div class="clearfix"></div>
                     <div class="seller_info">
                         <h2>{{ trans('common.product.seller_info') }}</h2>
+                        <br>
+                        @if(Auth::user()->id != $product->user_id)
                         <div style="text-align: left;">
-                            <span>{{ __('Send message') }}</span>
+                            <span>{{ trans('common.product_detail.send_message') }}</span>
                             <a href="{{ route('send_message', $product->user->id) }}">
                                 <i class="fa fa-comments message"></i>
                             </a>
                         </div>
+                        @endif
 
                         <table class="table table-hover">
                             <thead>

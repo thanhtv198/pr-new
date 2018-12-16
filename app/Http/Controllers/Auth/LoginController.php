@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequet;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
@@ -23,19 +24,21 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    public function login(Request $request)
+    public function login(LoginRequet $request)
     {
-        $email = $request->email;
-        $password = $request->password;
+        try {
+            $email = $request->email;
+            $password = $request->password;
 
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            Cart::destroy();
+            if (Auth::attempt(['email' => $email, 'password' => $password])) {
+                Cart::destroy();
 
-            Cart::instance('compare')->destroy();
+                Cart::instance('compare')->destroy();
+            }
 
-            return redirect('/')->with('success', trans('common.login.success'));
-        } else {
-            return redirect()->back()->with('message', trans('common.login.failed'));
+            return response(['message' => trans('common.login.success')]);
+        }catch (\Exception $e) {
+            return response(['message' => $e->getMessage()]);
         }
     }
 

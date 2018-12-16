@@ -36,8 +36,8 @@ class ProductsTableSeeder extends Seeder
                     'status' => 1,
                     'is_new' => 0,
                     'views' => $i + 2,
-                    'created_at' => '2018-08-08 01:14:0' . $i,
-                    'updated_at' => '2018-08-08 01:14:0' . ($i + 15),
+                    'created_at' => '2018-05-08 01:14:0' . $i,
+                    'updated_at' => '2018-05-08 01:14:0' . ($i + 15),
                 ]);
         }
 
@@ -64,7 +64,7 @@ class ProductsTableSeeder extends Seeder
                     'status' => 1,
                     'is_new' => 1,
                     'views' => $i + 2,
-                    'created_at' => '2018-08-08 01:14:0' . ($i + 5),
+                    'created_at' => '2018-08-08 01:14:0' . $i,
                     'updated_at' => '2018-08-08 01:14:0' . ($i + 15),
                 ]);
         }
@@ -92,8 +92,8 @@ class ProductsTableSeeder extends Seeder
                     'status' => 1,
                     'is_new' => 1,
                     'views' => $i + 5,
-                    'created_at' => '2018-08-08 01:14:0' . ($i + 10),
-                    'updated_at' => '2018-08-08 01:14:0' . ($i + 15),
+                    'created_at' => '2018-10-08 01:14:0' . $i,
+                    'updated_at' => '2018-10-08 01:14:0' . ($i + 15),
                 ]);
         }
 
@@ -120,8 +120,8 @@ class ProductsTableSeeder extends Seeder
                     'status' => 1,
                     'is_new' => 0,
                     'views' => $i + 2,
-                    'created_at' => '2018-08-08 01:14:0' . ($i + 15),
-                    'updated_at' => '2018-08-08 01:14:0' . ($i + 15),
+                    'created_at' => '2018-11-08 01:14:0' . $i,
+                    'updated_at' => '2018-11-08 01:14:0' . ($i + 15),
                 ]);
         }
 
@@ -148,8 +148,8 @@ class ProductsTableSeeder extends Seeder
                     'status' => 0,
                     'is_new' => 1,
                     'views' => 0,
-                    'created_at' => '2018-08-08 01:14:0' . ($i + 20),
-                    'updated_at' => '2018-08-08 01:14:0' . ($i + 20),
+                    'created_at' => '2018-08-08 01:14:0' . $i,
+                    'updated_at' => '2018-08-08 01:14:0' . ($i + 15),
                 ]);
         }
 
@@ -176,8 +176,8 @@ class ProductsTableSeeder extends Seeder
                     'status' => 2,
                     'is_new' => 1,
                     'views' => 0,
-                    'created_at' => '2018-08-08 01:14:0' . ($i + 25),
-                    'updated_at' => '2018-08-08 01:14:0' . ($i + 25),
+                    'created_at' => '2018-10-08 01:14:0' . $i,
+                    'updated_at' => '2018-10-08 01:14:0' . ($i + 15),
                 ]);
         }
     }

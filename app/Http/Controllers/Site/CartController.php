@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Mail\OrderMailBuyer;
+use App\Mail\OrderMailSeller;
+use App\Mail\WelcomeMail;
 use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,6 +15,7 @@ use App\Models\OrderDetail;
 use App\Models\Product;
 use Auth;
 use App\Http\Requests\OrderRequest;
+use Illuminate\Support\Facades\Mail;
 use Notification;
 
 class CartController extends Controller
@@ -131,13 +135,13 @@ class CartController extends Controller
                 'user_id' => $product->user_id,
                 'quantity' => $value->qty,
                 'status' => config('page.order_detail.status.active'),
-//                'remove' => config('page.order_detail.remove.active'),
                 'price' => $value->price,
             ]);
 
             Notification::send($product->user, new \App\Notifications\OrderNotification($order, $orderdetail));
+            Mail::to($orderdetail->user->email)->send(new OrderMailSeller($orderdetail, $order));
         }
-
+        Mail::to($order->email)->send(new OrderMailBuyer($order, Cart::content()));
         Cart::destroy();
 
         return redirect()->route('home_page')->with('success', trans('common.with.order_success'));

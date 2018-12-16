@@ -26,6 +26,20 @@
                             </td>
                         </tr>
                         <tr>
+                            <td>{{ trans('common.product.price') }}</td>
+                            <td>
+                                <span class="item_price">{{ number_format($products[0]->price - $products[0]->promotion) }}đ</span>
+                                @if ($products[0]->promotion > 0)
+                                <del>{{ number_format($products[0]->price) }}đ</del></td>
+                                @endif
+                            <td>
+                                <span class="item_price">{{ number_format($products[1]->price - $products[1]->promotion) }}đ</span>
+                                @if ($products[1]->promotion > 1)
+                                    <del>{{ number_format($products[1]->price) }}đ</del>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
                             <td>{{ trans('common.product.screen') }}</td>
                             <td>{{ $products[0]->screen }}</td>
                             <td>{{ $products[1]->screen }}</td>

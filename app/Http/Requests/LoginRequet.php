@@ -32,10 +32,10 @@ class LoginRequet extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => trans('commom.validate.email'),
-            'email.email' => trans('commom.validate.valid_email'),
-            'password.required' => trans('commom.validate.password'),
-            'password.min' => trans('commom.validate.valid_password'),
+            'email.required' => trans('common.validate.require_email'),
+            'email.email' => trans('common.validate.valid_email'),
+            'password.required' => trans('common.validate.require_password'),
+            'password.min' => trans('common.validate.password_min'),
         ];
     }
 }

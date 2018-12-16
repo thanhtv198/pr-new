@@ -24,25 +24,24 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required|min:6',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed',
             'name' => 'required|max:255',
             'phone_number' => 'required|max:255',
-            'address' => 'required|max:255',
-            'birthday' => 'required|max:255',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => trans('en.validate.name'),
-            'email.required' => trans('en.validate.email'),
-            'email.email' => trans('en.validate.valid_email'),
-            'phone_number.required' => trans('en.validate.phone_number'),
-            'address.required' => trans('en.validate.address'),
-            'password.required' => trans('en.validate.password'),
-            'password.min' => trans('en.validate.valid_password'),
+            'name.required' => trans('common.validate.require_name'),
+            'email.required' => trans('common.validate.require_email'),
+            'email.email' => trans('common.validate.valid_email'),
+            'email.unique' => trans('common.validate.email_unique'),
+            'phone_number.required' => trans('common.validate.require_phone_number'),
+            'password.required' => trans('common.validate.require_password'),
+            'password.min' => trans('common.validate.password_min'),
+            'password.confirmed' => trans('common.validate.valid_password_confirm'),
         ];
     }
 }

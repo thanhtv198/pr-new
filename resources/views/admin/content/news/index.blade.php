@@ -41,9 +41,9 @@
                                         {!! Form::open(['route' => ['mul_del_news', 'method' => 'post', 'class' => 'form-signin']]) !!}
                                         <thead>
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                                {!! Form::button(trans('common.button.delete'), ['type' => 'submit', 'class' => 'btn btn-default', 'id' => 'confirmation']) !!}
-                                            </th>
+                                            {{--<th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">--}}
+                                                {{--{!! Form::button(trans('common.button.delete'), ['type' => 'submit', 'class' => 'btn btn-default', 'id' => 'confirmation']) !!}--}}
+                                            {{--</th>--}}
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
                                                 {{ trans('common.news.title') }}
                                             </th>
@@ -61,9 +61,9 @@
                                         <tbody>
                                         @foreach($news as $row)
                                             <tr role="row" class="odd">
-                                                <td>{!! Form::checkbox('check[]', $row->id) !!}</td>
+{{--                                                <td>{!! Form::checkbox('check[]', $row->id) !!}</td>--}}
                                                 <td>{{ $row->title }}</td>
-                                                <td><img class="img_news" src="{{ url(config('app.newsUrl')) }}/{{ $row->avatar }}"/></td>
+                                                <td><img class="img_news" src="{{ url(config('app.newsUrl')) }}/{{ $row->image }}"/></td>
                                                 <td>{!! $row->content !!}</td>
                                                 <td class="textC">
                                                     <a href="{{ route('news.show', $row->id) }}">

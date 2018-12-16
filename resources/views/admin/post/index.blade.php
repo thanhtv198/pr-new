@@ -1,7 +1,7 @@
 @extends('admin/layouts/master')
 @section('content')
     <section class="content-header">
-        <h1>{{ trans('common.title_form.post_head') }}</h1>
+        <h1>{{ trans('common.post.post_head') }}</h1>
     </section>
     <section class="content">
         <div class="row">
@@ -11,7 +11,7 @@
                         @include('admin/notice')
                         <div class="pull-left">
                             <div class="card-header">
-                                <h3 class="card-title">{{ trans('common.title_form.post_title') }}</h3>
+                                <h3 class="card-title">{{ trans('common.post.post_title') }}</h3>
                             </div>
                         </div>
                     </div>
@@ -20,12 +20,12 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>{{ trans('en.form.name') }}</th>
-                                <th>{{ trans('en.form.title') }}</th>
-                                <th>{{ trans('en.form.content') }}</th>
-                                <th>{{ trans('en.form.view') }}</th>
-                                <th>{{ trans('en.form.status') }}</th>
-                                <th>{{ trans('en.form.action') }}</th>
+                                <th>{{ trans('common.post.name') }}</th>
+                                <th>{{ trans('common.post.title') }}</th>
+                                <th>{{ trans('common.post.content') }}</th>
+                                <th>{{ trans('common.post.view') }}</th>
+                                <th>{{ trans('common.post.status') }}</th>
+                                <th>{{ trans('common.post.action') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -44,14 +44,14 @@
                                     <td>
                                         @if ($post->status == 1)
                                             <span class="right badge badge-success badge-status active-{{ $post->id }}">
-                                                 {{ trans('en.form.activating') }}
+                                                 {{ trans('common.post.activating') }}
                                             </span>
                                             <br>
                                             <hr>
                                             <i class="reject-{{ $post->id }}" id="status-reject-now">
                                                 <p class="show_input reject-font" id="reason{{ $post->id }}">
                                                     <span class="right badge badge-danger badge-status">
-                                                        {{ trans('en.form.block_now') }}
+                                                        {{ trans('common.post.block_now') }}
                                                     </span>
                                                 </p>
                                             </i>
@@ -66,7 +66,7 @@
                                         @else
                                             <p class="show_input reject-font" id="reject-{{ $post->id }}">
                                                 <span class="right badge badge-danger badge-status">
-                                                     {{ trans('en.form.rejected') }}
+                                                     {{ trans('common.post.rejected') }}
                                                 </span><br>
                                                 <span id="reason">{{ $post->block->reason }}</span>
                                             <hr>

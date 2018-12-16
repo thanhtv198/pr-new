@@ -85,9 +85,9 @@ class ProductController extends Controller
      */
     public function deleteManyProduct(Request $request)
     {
-        if ($request->check == null) {
-            return redirect()->back()->with('success', trans('common.with.delete_success'));
-        }
+//        if ($request->check == null) {
+//            return redirect()->back()->with('success', trans('common.with.delete_success'));
+//        }
 
         for ($i = 0; $i < count($request->check); $i++) {
             $product = Product::findOrFail($request->check[$i]);

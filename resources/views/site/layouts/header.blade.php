@@ -109,7 +109,6 @@
                         (<span id="count_cart">{{ Cart::instance('default')->count() }}</span>)
                     </a>
                 </li>
-
                 <li class="li-top">
                     <ul class="" style="margin-top: 14px">
                     <div class="sl-nav">
@@ -142,7 +141,7 @@
                                             @if(isset($no->data['sender_name']))
                                                 <li style="cursor: pointer">
                                                     <div class="read read2" id="{{ $no->data['sender_id'] }}">
-                                                        <a href="{{ route('send', $no->data['sender_id']) }}" class="user" id="{{ $no->id }}">
+                                                        <a href="{{ route('send_message', $no->data['sender_id']) }}" class="user" id="{{ $no->id }}">
                                                             {{ __('common.header.you_have_mesage_from') }}
                                                             <b>{!! ($no->data['sender_name']) !!}</b> <span style="font-size: 12px;color: black">{{ $no->created_at->diffForHumans()  }}</span>
                                                         </a>
@@ -167,7 +166,6 @@
                     </div>
                     </ul>
                 </li>
-
                 <li class="li-top">
                     <a view="compare" href="{{ route('get_wishlist') }}" class="hover-li-top" aria-hidden="true">
                         <span class="fa-heart-o fa" aria-hidden="true">
@@ -206,16 +204,16 @@
                 </div>
                 <div class="modal_body_left modal_body_left1">
                     <h3 class="agileinfo_sign">{{ trans('common.tag.sign_in') }}</h3>
+                    <div class="sign-error">
 
-                    {!! Form::open(['route' => 'login', 'method' => 'post']) !!}
+                    </div>
                     <div class="styled-input agile-styled-input-top">
-                        {!! Form::text('email', null, ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
+                        {!! Form::text('email', null, ['class' => 'form-control my-colorpicker1 colorpicker-element', 'id' => 'login-email', 'placeholder' => trans('common.form.email')]) !!}
                     </div>
                     <div class="styled-input">
-                        {!! Form::password('password', ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
+                        {!! Form::password('password', ['class' => 'form-control my-colorpicker1 colorpicker-element', 'id' => 'login-password', 'placeholder' => trans('common.form.password')]) !!}
                     </div>
-                    <input style="margin-left:200px;" class="agileinfo_sign" type="submit" value="{{ trans('common.tag.sign_in') }}">
-                    {!! Form::close() !!}
+                    <button style="width: 96%; margin-left: 2%" data-url="{{  route('login') }}" class="agileinfo_sign btn btn-info btn-login">{{ trans('common.tag.sign_in') }}</button>
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
@@ -254,51 +252,53 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <h3 class="agileinfo_sign" style="margin-top: 20px;">{{ trans('common.site.sign_up') }}</h3>
-            @include('site/notice')
-            {!! Form::open(['route' => 'post_signup', 'method' => 'post', 'class' => 'creditly-card-form agileinfo_form']) !!}
+            <div class="sign-error">
+
+            </div>
+
             <div class="creditly-wrapper wthree, w3_agileits_wrapper modal-body modal-body-sub_agile">
                 <div class="information-wrapper">
                     <div class="first-row">
                         <div class="w3_agileits_card_number_grids">
                             <div class="form-group">
-                                <label>{{ trans('common.form.name') }}</label>
-                                {!! Form::text('name', null, ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
+                                <label>{{ trans('common.form.name') }}*</label>
+                                {!! Form::text('name', null, ['class' => 'form-control my-colorpicker1 colorpicker-element', 'id' => 'sign-name']) !!}
                             </div>
                             <div class="form-group">
-                                <label>{{ trans('common.form.email') }}</label>
-                                {!! Form::text('email', null, ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
+                                <label>{{ trans('common.form.email') }}*</label>
+                                {!! Form::text('email', null, ['class' => 'form-control my-colorpicker1 colorpicker-element', 'id' => 'sign-email']) !!}
+                            </div>
+                            <div class="form-group">
+                                <label>{{ trans('common.form.phone_number') }}*</label>
+                                {!! Form::number('phone_number', null, ['class' => 'span2 col-md-2 form-control', 'id' => 'sign-phone-number']) !!}
                             </div>
                             <div class="form-group" view="city">
                                 <label>{{ trans('common.form.city') }}</label><br>
-                                {!! Form::select('city_id', $city, null, ['class' => 'my-colorpicker1colorpicker-element select-checkout-a', 'placeholder' => 'Choose location']) !!}
+                                {!! Form::select('city_id', $city, null, ['class' => 'my-colorpicker1colorpicker-element select-checkout-a', 'id' => 'sign-city', 'placeholder' => trans('common.sidebar.choose_location')]) !!}
                             </div>
                             <div class="form-group">
                                 <label>{{ trans('common.form.address') }}</label>
-                                {!! Form::text('address', null, ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
-                            </div>
-                            <div class="form-group">
-                                <label>{{ trans('common.form.phone_number') }}</label>
-                                {!! Form::number('phone_number', null, ['class' => 'span2 col-md-2 form-control']) !!}
+                                {!! Form::text('address', null, ['class' => 'form-control my-colorpicker1 colorpicker-element', 'id' => 'sign-address']) !!}
                             </div>
                             <div class="form-group">
                                 <label>{{ trans('common.form.birthday') }}</label>
-                                {!! Form::date('birthday', null, ['class' => 'span2 col-md-2 form-control']) !!}
+                                {!! Form::date('birthday', null, ['class' => 'span2 col-md-2 form-control','id' => 'sign-birthday']) !!}
                             </div>
                             <div class="form-group">
-                                <label>{{ trans('common.form.password') }}</label>
-                                {!! Form::password('password', ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
+                                <label>{{ trans('common.form.password') }}*</label>
+                                {!! Form::password('password', ['class' => 'form-control my-colorpicker1 colorpicker-element', 'id' => 'sign-password']) !!}
                             </div>
                             <div class="form-group">
-                                <label>{{ trans('common.form.repassword') }}</label>
-                                {!! Form::password('password_confirmation', ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
+                                <label>{{ trans('common.form.repassword') }}*</label>
+                                {!! Form::password('password_confirmation', ['class' => 'form-control my-colorpicker1 colorpicker-element','id' => 'sign-repassword']) !!}
                             </div>
                             <div class="clear"></div>
                         </div>
                     </div>
-                    {{ Form::submit(trans('common.button.sign_up'), ['class' =>'btn btn-success']) }}
+                    <button style="width:100%" class="btn btn-success btn-sign-up"
+                            data-url="{{  route('post_signup') }}">{{ trans('common.button.sign_up') }}</button>
                 </div>
             </div>
-            {!! Form::close() !!}
             <div class="row omb_row-sm-offset-3 omb_socialButtons">
                 <div class="row">
                     <div class="col-md-5 custom-login-fb">
@@ -347,7 +347,7 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav menu__list" id="thanh-menu-header">
-                                <li class="active">
+                                <li class="">
                                     <a class="nav-stylehead" href="{{ route('home_page') }}">
                                         {{ trans('common.header.home')}}
                                         <span class="sr-only">(current)</span>

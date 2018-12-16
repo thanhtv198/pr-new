@@ -124,7 +124,7 @@ $(document).ready(function () {
                     return false;
                 }
                 // document.getElementById("count_compare").innerHTML = 2;
-                if(a < 2) {
+                if (a < 2) {
                     alert(('Add to compare!'));
                     var b = parseInt(a) + 1;
                     document.getElementById("count_compare").innerHTML = b;
@@ -143,6 +143,67 @@ $(document).ready(function () {
             }
         });
         return false;
+    });
+
+    $('.btn-sign-up').click(function () {
+        let a = $('#sign-city').val();
+
+        let url = $(this).attr('data-url');
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data:{
+                name: $('#sign-name').val(),
+                email: $('#sign-email').val(),
+                phone_number: $('#sign-phone-number').val(),
+                city_id: $('#sign-city').val(),
+                address: $('#sign-adđress').val(),
+                birthday: $('#sign-birthday').val(),
+                password: $('#sign-password').val(),
+                password_confirmation: $('#sign-repassword').val(),
+            },
+            success: function (data) {
+                alert(data.message);
+                $('#myModal2').modal('hide');
+            },
+            error: function (data) {
+                if(data.responseJSON.errors.name) {
+                    $('.sign-error').append('<div class="alert alert-danger">'+ data.responseJSON.errors.name[0] +'</div>');
+                }
+                if(data.responseJSON.errors.email) {
+                    $('.sign-error').append('<div class="alert alert-danger">'+ data.responseJSON.errors.email[0] +'</div>');
+                }
+                if(data.responseJSON.errors.password) {
+                    $('.sign-error').append('<div class="alert alert-danger">'+ data.responseJSON.errors.password[0] +'</div>');
+                }
+                if(data.responseJSON.errors.phone_number) {
+                    $('.sign-error').append('<div class="alert alert-danger">'+ data.responseJSON.errors.phone_number[0] +'</div>');
+                }
+            }
+        });
+    });
+
+    $('.btn-login').click(function () {
+        let url = $(this).attr('data-url');
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data:{
+                email: $('#login-email').val(),
+                password: $('#login-password').val(),
+            },
+            success: function (data) {
+                location.reload(true);
+            },
+            error: function (data) {
+                if(data.responseJSON.errors.email) {
+                    $('.sign-error').append('<div class="alert alert-danger">'+ data.responseJSON.errors.email[0] +'</div>');
+                }
+                if(data.responseJSON.errors.password) {
+                    $('.sign-error').append('<div class="alert alert-danger">'+ data.responseJSON.errors.password[0] +'</div>');
+                }
+            }
+        });
     });
 });
 //delete cart

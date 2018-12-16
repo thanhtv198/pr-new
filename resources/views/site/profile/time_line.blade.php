@@ -25,6 +25,10 @@
                                     <br>
                                     <a style="font-size: 22px" href="{{ route('detail_product', $row->id) }}">{{ $row->name }}</a>
                                 </h4>
+                                <p>
+                                    <span class="item_price">{{ number_format($row->price - $row->promotion) }}đ</span>
+                                    <del>{{ number_format($row->price) }}đ</del>
+                                </p>
                             </div>
                             <div class="col-md-9">
                                 {{ $row->description }}

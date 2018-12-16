@@ -16,30 +16,16 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                            {{--<div class="row">--}}
-                                {{--<div class="col-sm-6">--}}
-                                    {{--<div id="header" view="header">--}}
-                                        {{--<div class="main">--}}
-                                            {{--{!! Form::open(['route' => 'search_product', 'method' => 'get', 'class ' => 'form-signin']) !!}--}}
-                                            {{--<div class="search-bar">--}}
-                                                {{--{!! Form::text('key', null, ['id' => 'tags', 'onkeyup' => 'autoComplete()', 'placeholder' => trans('common.tag.search')]) !!}--}}
-                                                {{--{!! Form::button('<i class="fa fa-search"></i>', ['type' => 'submit', 'class' => 'fa fa-search', 'id' => 'tag' ]) !!}--}}
-                                            {{--</div>--}}
-                                            {{--{!! Form::close() !!}--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="example1" class="table table-bordered table-hover dataTable" role="grid"">
+                                    <table id="example1" class="table table-bordered table-hover dataTable" role="grid">
                                         {!! Form::open(['route' => ['mul_del_product', 'method' => 'post', 'class' => 'form-signin']]) !!}
                                         <thead>
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending"
-                                                aria-label="Rendering engine: activate to sort column descending">
-                                                {!! Form::button(trans('common.button.delete'), ['type' => 'submit', 'class' => 'btn btn-default', 'id' => 'confirmation']) !!}
-                                            </th>
+                                            {{--<th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending"--}}
+                                                {{--aria-label="Rendering engine: activate to sort column descending">--}}
+                                                {{--{!! Form::button(trans('common.button.delete'), ['type' => 'submit', 'class' => 'btn btn-default', 'id' => 'confirmation']) !!}--}}
+                                            {{--</th>--}}
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
                                                 {{ trans('common.product.name') }}
                                             </th>
@@ -70,7 +56,7 @@
                                         {!! Form::hidden('qty', count($products), ['id' => 'qty_pro']) !!}
                                         @foreach($products as $row)
                                             <tr role="row" class="odd">
-                                                <td>{!! Form::checkbox('check[]', $row->id) !!}</td>
+{{--                                                <td>{!! Form::checkbox('check[]', $row->id) !!}</td>--}}
                                                 <td>{{ $row->name }}</td>
                                                 <td>{{ $row->user->name }}</td>
                                                 <td>{{ $row->category->name }}</td>
@@ -116,7 +102,7 @@
                                                     @endif
                                                 </td>
                                                 <td class="textC">
-                                                    <a href="{{ route('delete_product', $row->id) }}" onclick="return confirm({{ trans('common.form.confirm') }})">
+                                                    <a href="{{ route('delete_product', $row->id) }}">
                                                         <i id="trash" class="fa fa-trash" aria-hidden="true"></i>
                                                     </a>
                                                 </td>

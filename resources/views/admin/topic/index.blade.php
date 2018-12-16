@@ -1,7 +1,7 @@
 @extends('admin/layouts/master')
 @section('content')
     <section class="content-header">
-        <h1>{{ trans('common.title_form.topics_head') }}</h1>
+        <h1>{{ trans('common.topic.topics_head') }}</h1>
     </section>
     <section class="content">
         <div class="row">
@@ -10,7 +10,7 @@
                     <div class="box-header">
                         @include('admin/notice')
                         <div class="pull-left">
-                            <h3 class="box-title">{{ trans('common.title_form.topics_title') }}</h3>
+                            <h3 class="box-title">{{ trans('common.topic.topics_title') }}</h3>
                         </div>
                         <div class="pull-right">
                             <a class="btn btn-primary" href="{{ route('admin.topics.create') }}"  role="button">

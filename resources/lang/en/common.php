@@ -28,14 +28,22 @@ return [
     ],
     //validate
     'validate' => [
-        'name' => 'The :attribute field must have a value.',
-        'email' => 'The :attribute field must have a value.',
-        'valid_email' => 'The :attribute is not valid.',
+        'require_name' => 'The name field must have a value',
+        'name' => 'The name field must have a value',
+        'require_email' => 'The email field must have a value',
+        'email' => 'The email field must have a value',
+        'email_unique' => 'Email must be unique',
+        'require_phone_number' => 'The phone number field must have a value',
+        'phone_number' => 'The phone number field must have a value',
+        'require_birthday' => 'The birthday field must have a value',
+        'birthday' => 'The birthday field must have a value',
+        'require_password' => 'The password field must have a value ',
+        'password' => 'The password field must have a value ',
+        'valid_password_confirm' => 'The password confirmation not match',
+        'password_min' => 'Min length password is 6 character',
+        'valid_email' => 'The email is not valid.',
         'address' => 'The :attribute field must have a value.',
-        'phone_number' => 'The :attribute field must have a value.',
-        'birthday' => 'The :attribute field must have a value.',
-        'password' => 'The :attribute is not valid.',
-        'repassword' => 'The :attribute is not match.',
+        'repassword' => 'The password is not match.',
         'valid_password' => 'Passwords must be at least six characters.',
         'news_title' => 'The :attribute field must have a value.',
         'news_content' => 'The :attribute field must have a value.',
@@ -224,7 +232,7 @@ return [
 
     'sidebar' => [
         'forumn' => 'Discuss',
-        'topic' => 'topic',
+        'topic' => 'Topic',
         'post' => 'Post',
     ],
     //respond
@@ -337,6 +345,7 @@ return [
         'login_to_rate' => 'You have to login to rating',
         'replies' => 'replies',
         'seller' => 'Seller',
+        'send_message' => 'Send message: ',
     ],
     //info
     'info' => [
@@ -405,7 +414,46 @@ return [
         'action' => 'Action',
         'checked' => 'Checked',
         'pendding' => 'Pendding',
-        'rejected' => 'Rejected',
         'info' => 'Post infomation',
+        'post_head' => 'Post Mangement',
+        'post_title' => 'Post information',
+        'name' => 'User name',
+        'view' => 'View',
+        'activating' => 'Activating',
+        'block_now' => 'Block now',
+        'rejected' => 'Rejected',
+    ],
+    'dashboard' => [
+        'chart_user' => 'User statistics chart for the year',
+        'chart_order' => 'Order statistics chart for the year',
+        'chart_product' => 'Product posting statistics chart',
+        'chart_total_user' => 'Total users current',
+        'chart_total_order' => 'Total order',
+        'chart_total_product' => 'Total product',
+    ],
+
+    'topic' => [
+        'topics_head' => 'Topic Management',
+        'topics_title' => 'Topic infomation',
+        'code' => 'Code',
+        'name' => 'Name',
+        'action' => 'Action',
+    ],
+
+    'mail' => [
+        'welcome_title' => 'Welcome to my website',
+        'welcome_thank' => 'Thank you for registerd my website',
+        'welcome_your_email' => 'Your email use to login is',
+        'welcome_register_success' => 'Your Registration was successful!',
+        'welcome_please_login' => 'Please login below!',
+        'welcome_login' => 'Login',
+        'welcome_order' => 'Congratulation! Your order is succeed!',
+        'total_price' => 'Total price your order: ',
+        'welcome_order_seller' => 'Congratulation! You have new order ',
+        'order_from' => 'Order from: ',
+    ],
+
+    'forumn'=> [
+      'head' => 'All Posts',
     ],
 ];

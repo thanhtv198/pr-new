@@ -124,6 +124,7 @@ class SlideController extends Controller
      */
     public function deleteManySlide(Request $request)
     {
+        dd(44);
         if ($request->check == null) {
             return redirect()->back()->with('success', trans('common.with.delete_success'));
         }

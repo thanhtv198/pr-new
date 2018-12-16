@@ -176,7 +176,7 @@ Route::group(['namespace' => 'Site', 'middleware' => 'locale'], function () {
     });
 
     // profile user
-    Route::group(['prefix' => 'profile', 'middleware' => 'require_login'], function () {
+    Route::group(['prefix' => 'profile'], function () {
         Route::get('/{id}', 'ProfileController@getProfile')->name('get_profile');
         Route::post('/{id}', 'ProfileController@postProfile')->name('post_profile');
         Route::get('/sell', 'ProfileController@getSell')->name('get_sell');
@@ -184,7 +184,7 @@ Route::group(['namespace' => 'Site', 'middleware' => 'locale'], function () {
     });
 
     // user interaction
-    Route::group(['prefix' => 'interact', 'middleware' => 'require_login'], function () {
+    Route::group(['prefix' => 'interact', ], function () {
         //bought orders of user
         Route::get('/interact/{id}', 'InteractionController@getInteract')->name('get_interact');
         Route::get('/bought', 'InteractionController@getOrderBought')->name('get_order_bought');
@@ -223,7 +223,7 @@ Route::group(['namespace' => 'Site', 'middleware' => 'locale'], function () {
 
     //notify route
     Route::get('notification', 'CartController@notification');
-    Route::get('send/{id}','SocketController@index')->name('send_message')->middleware('require_login');
+    Route::get('send/{id}','SocketController@index')->name('send_message');
     Route::get('send/{id}/{key?}','SocketController@index')->name('send_message1')->middleware('require_login');
     Route::post('send','SocketController@postSendMessage')->name('post_message');
 });
