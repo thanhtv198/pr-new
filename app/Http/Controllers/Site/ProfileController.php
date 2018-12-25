@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Contracts\Repositories\PostRepository;
 use App\Contracts\Repositories\UserRepository;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\City;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -39,7 +40,7 @@ class ProfileController extends Controller
      * @param UserRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postProfile($id, UserRequest $request)
+    public function postProfile($id, UpdateUserRequest $request)
     {
         $user = User::findOrFail($id);
         $odlAvatar = $user->avatar;

@@ -10,7 +10,7 @@ return [
         'logout' => 'Đăng xuất',
         'search' => 'Tìm kiếm',
         'ship' => 'Giao hàng',
-        'save' => 'Lưa',
+        'save' => 'Lưu',
         'sign_up' => 'Đăng kí',
         'add_cart' => 'Thêm vào giỏ hàng',
         'update' => 'Cập nhật',
@@ -230,7 +230,7 @@ return [
 
     'sidebar' => [
         'forumn' => 'Thảo luận',
-        'topic' => 'chủ đề',
+        'topic' => 'Chủ đề',
         'post' => 'Bài viết',
     ],
     //respond
@@ -239,12 +239,18 @@ return [
         'pendding' => 'Đang chờ',
         'checked' => 'Đã duyệt',
         'handle_now' => 'Xử lí ngay',
+        'cancel' => 'Order is Cancel',
         'handled' => 'Đã xử lí',
         'uncheck' => 'Chưa duyệt',
         'rejected' => 'Đã từ chối',
         'reject_now' => 'Từ chối ngay',
         'send_respond' => 'Gửi phản hồi',
         'respond' => 'Nếu bạn có bất kì vấn đề gì muốn đóng góp ý kiến cho chúng tôi, vui lòng hãy để lại phẩn hồi',
+        'title' => 'Tiêu đề',
+        'content' => 'Nội dung',
+        'status' => 'Trạng thái',
+        'your_respond' => 'Phản hồi của bạn',
+        'send' => 'Gửi',
     ],
     //site footer
     'footer' => [
@@ -400,6 +406,7 @@ return [
         'sold' => ' Sản phẩm đã bán',
         'bought' => 'Sản phẩm đã mua',
         'respond' => 'Phản hồi của bạn',
+        'product_is_delete' => 'Sản phẩm đã bị xóa',
     ],
     'post' => [
         'your_post' => 'Đăng Bài',
@@ -431,8 +438,8 @@ return [
     ],
 
     'topic' => [
-        'topics_head' => 'Quản lí chủ đề',
-        'topics_title' => 'Thông tin các chủ đề',
+        'topic_head' => 'Quản lí chủ đề',
+        'topic_title' => 'Thông tin các chủ đề',
         'code' => 'Mã',
         'name' => 'Tên',
         'action' => 'Hành động',

@@ -54,9 +54,11 @@
                                             {{ trans('common.respond.handled') }}
                                         </i>
                                     @elseif ($row->status == 2)
-                                        <i class="fa fa-remove" id="pendding">
-                                            {{ __('Order is Canceled') }}
-                                        </i>
+                                        <span style="color:red; font-size: 16px">
+                                            <i class="fa fa-remove" id="pendding">
+                                                {{ trans('common.respond.cancel') }}
+                                            </i>
+                                        </span>
                                     @endif
                                 </td>
                             </tr>

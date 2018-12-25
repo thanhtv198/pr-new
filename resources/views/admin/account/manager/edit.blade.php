@@ -73,7 +73,7 @@
                             @if(Auth::user()->role_id == 1)
                                 <div class="form-group">
                                     <label>{{ trans('common.form.role') }}</label>
-                                    {!! Form::select('role_id', $level, "$user->role_id", ['class' => 'span2 col-md-2 form-control']) !!}
+                                    {!! Form::select('role_id', $role, "$user->role_id", ['class' => 'span2 col-md-2 form-control']) !!}
                                 </div>
                             @else
                                 {!! Form::hidden('role_id', 2) !!}

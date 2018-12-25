@@ -44,7 +44,7 @@ class SlideController extends Controller
             $file->move(config('app.slideUrl'), $name);
 
             $request->merge([
-                'avatar' => $name,
+                'image' => $name,
             ]);
         }
 
@@ -74,7 +74,7 @@ class SlideController extends Controller
         try {
             $slide = Slide::findOrFail($id);
 
-            $imgOld = $slide->avatar;
+            $imgOld = $slide->image;
 
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
@@ -88,12 +88,12 @@ class SlideController extends Controller
                 $file->move(config('app.slideUrl'), $name);
 
                 $request->merge([
-                    'avatar' => $name,
+                    'image' => $name,
                 ]);
 
             } else {
                 $request->merge([
-                    'avatar' => $imgOld,
+                    'image' => $imgOld,
                 ]);
             }
 

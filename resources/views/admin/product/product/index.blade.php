@@ -1,5 +1,10 @@
 @extends('admin/layouts/master')
 @section('content')
+    <style>
+        .badge{
+            font-size: 12px;
+        }
+    </style>
     <section class="content-header">
         <h1>{{ trans('common.title_form.product_head') }}</h1>
     </section>
@@ -69,35 +74,41 @@
                                                 <td>
 
                                                     @if ($row->status == 0)
-                                                        <a href="{{ route('accept_product', $row->id) }}" }})>
-                                                            <span id="status-accept">{{ trans('common.product.accept_now') }}</span>
+                                                        <a href="{{ route('accept_product', $row->id) }}">
+                                                            <span class="bg-blue right badge badge-success badge-status">{{ trans('common.product.accept_now') }}</span>
                                                         </a><br><br>
-                                                        <i class="fa fa-minus-square reject-0{{ $row->id }}" id="status-reject-now">
-                                                            <a class="show_input" id="reject{{ $row->id }}" href="" style="font-size: 20px;cursor: pointer">reject</a>
+                                                    <hr>
+                                                        <i class="reject-0{{ $row->id }}" id="status-reject-now">
+                                                            <span class="bg-yellow right badge badge-danger badge-status show_input"
+                                                                  id="reject{{ $row->id }}" href="" style="cursor: pointer">{{ trans('common.respond.reject_now') }}</span>
                                                         </i>
                                                         <div id="show{{ $row->id }}" class="hidd" style="display: none; ">
                                                             {!! Form::text('reason', null, ['id' => "rea$row->id"]) !!}
                                                             {!! Form::hidden('_token', csrf_token(), ['id' => 'token']) !!}
                                                             {!! Form::hidden('url', config('app.url_base'), ['id' => 'url']) !!}
                                                             <br>
-                                                            <a href="javascript:void(0)" data-url="{{ route('reject_product') }}" class="reject" id="re{{ $row->id }}">
-                                                                Send
-                                                            </a>
+                                                            <span href="javascript:void(0)" data-url="{{ route('reject_product') }}" class="reject" id="re{{ $row->id }}">
+                                                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                                            </span>
                                                         </div>
                                                         <div id="text-show{{ $row->id }}">
                                                         </div>
                                                     @elseif ($row->status == 1)
                                                         <i class="fa fa-check-circle" id="status-accepted">
-                                                            {{ trans('common.product.accepted') }}
+                                                              <span class="bg-green right badge badge-success badge-status active-{{ $row->id }}">
+                                                                    {{ trans('common.product.accepted') }}
+                                                              </span>
                                                         </i>
                                                     @elseif ($row->status == 2)
-                                                        <i class="fa fa-minus-square" id="status-rejected">
-                                                            <b>{{ trans('common.respond.rejected') }}</b>
+                                                        <i id="status-rejected">
+                                                             <span class="bg-red right badge badge-danger badge-status">
+                                                                <b>{{ trans('common.respond.rejected') }}</b>
+                                                            </span>
                                                         </i><br>
                                                         <span id="reason">{{ $row->check }}</span>
                                                         <br><br>
                                                         <a href="{{ route('accept_product', $row->id) }}" onclick="return confirm({{ trans('common.form.confirm') }})">
-                                                            <span id="status-accept">{{ trans('common.product.accept_now') }}</span>
+                                                            <span class="bg-blue right badge badge-success badge-status">{{ trans('common.product.accept_now') }}</span>
                                                         </a>
                                                     @endif
                                                 </td>

@@ -135,7 +135,7 @@ class InteractionController extends Controller implements FromCollection, WithHe
                 'Email' => $row->order->email,
                 'Phone' => $row->order->phone_number,
                 'Address' => $row->order->address . ', ' . $row->order->city->name,
-                'Product' => $row->product->name,
+                'Product' => $row->product->name ?? trans('common.interact.product_is_delete'),
                 'Quantity' => $row->quantity,
                 'Price/1' => number_format($row->price),
                 'Total' => number_format($row->price * $row->quantity),

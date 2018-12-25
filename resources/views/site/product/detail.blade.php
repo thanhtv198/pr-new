@@ -33,7 +33,7 @@
                     <div class="seller_info">
                         <h2>{{ trans('common.product.seller_info') }}</h2>
                         <br>
-                        @if(Auth::user()->id != $product->user_id)
+                        @if(Auth::check() && Auth::user()->id != $product->user_id)
                         <div style="text-align: left;">
                             <span>{{ trans('common.product_detail.send_message') }}</span>
                             <a href="{{ route('send_message', $product->user->id) }}">

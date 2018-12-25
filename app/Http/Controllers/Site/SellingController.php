@@ -177,13 +177,8 @@ class SellingController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        if (count($product->orderDetails) == 0) {
-            $product->delete();
-        } else {
-            $product->update([
-                'remove' => config('page.product.remove.inactive'),
-            ]);
-        }
+        $product->delete();
+
 
         return redirect()->route('sell.index')->with('success', trans('common.with.delete_success'));
     }

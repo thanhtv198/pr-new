@@ -169,3 +169,11 @@
 .content-cmt {
     margin-left: 50px;
 }
+#pendding{
+    color:blue;
+    font-size: 14px;
+}
+
+#status-rejected{
+    color: red;
+}

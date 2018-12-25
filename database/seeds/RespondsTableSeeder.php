@@ -12,40 +12,12 @@ class RespondsTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create('vi_VN');
-        DB::table('responds')->insert([
-            'user_id' => 2,
-            'title' => 'Mua điện thoại iPhone 8 64GB chính hãng trả góp 0%',
-            'content' =>  $faker->text(50),
-        ]);
-        DB::table('responds')->insert([
-            'user_id' => 6,
-            'title' => 'Mua điện thoại iPhone 8 64GB chính hãng trả góp 0%',
-            'content' =>  $faker->text(50),
-            'status' => 0,
-        ]);
-        DB::table('responds')->insert([
-            'user_id' => 4,
-            'title' => 'Mua điện thoại iPhone 8 64GB chính hãng trả góp 0%',
-            'content' =>  $faker->text(50),
-            'status' => 0,
-        ]);
-        DB::table('responds')->insert([
-            'user_id' => 5,
-            'title' => 'Mua điện thoại iPhone 8 64GB chính hãng trả góp 0%',
-            'content' =>  $faker->text(50),
-            'status' => 0,
-        ]);
-        DB::table('responds')->insert([
-            'user_id' => 4,
-            'title' => 'Mua điện thoại iPhone 8 64GB chính hãng trả góp 0%',
-            'content' =>  $faker->text(100),
-            'status' => 0,
-        ]);
-        DB::table('responds')->insert([
-            'user_id' => 6,
-            'title' => 'Mua điện thoại iPhone 8 64GB chính hãng trả góp 0%',
-            'content' =>  $faker->text(100),
-            'status' => 0,
-        ]);
+        for($i=1; $i< 20; $i ++) {
+            DB::table('responds')->insert([
+                'user_id' => $i,
+                'title' => $faker->sentence(10),
+                'content' =>  $faker->sentence(50),
+            ]);
+        }
     }
 }

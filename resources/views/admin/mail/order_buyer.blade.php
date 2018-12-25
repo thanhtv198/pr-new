@@ -5,7 +5,7 @@
 <h3>{{ trans('common.mail.welcome_order') }}</h3>
 <br>
 <div class="message">
-    {{ trans('common.mail.total_price') }}: <span style="color: red">{{ $order->total  }}đ</span>
+    {{ trans('common.mail.total_price') }}: <span style="color: red">{{ number_format($order->total)  }}đ</span>
     <br>
     <table class="timetable_sub table-hover">
         <thead>

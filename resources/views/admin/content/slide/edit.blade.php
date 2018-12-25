@@ -26,7 +26,7 @@
                             <label>{{ trans('common.news.image') }}</label>
                             {!! Form::file('image', null, ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
                             <div style="float:left">
-                                <img src="{{ url(config('app.slideUrl')) }}/{{ $slide->avatar }}" class="img_slide" width="500px">
+                                <img src="{{ url(config('app.slideUrl')) }}/{{ $slide->image }}" class="img_slide" width="500px">
                             </div>
                         </div>
                     </div>
