@@ -48,6 +48,7 @@ class SocketController extends Controller
         ]);
 
         $messages = Message::create($request->all());
+        event($e = new RedisEvent($messages));
 
         $receiver = User::findOrFail($request->receiver_id);
 
