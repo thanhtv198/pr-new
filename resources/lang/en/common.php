@@ -240,13 +240,19 @@ return [
         'check_now' => 'Check',
         'pendding' => 'Pendding',
         'checked' => 'Checked',
-        'handle_now' => 'Handle now',
+        'handle_now' => 'Handle Now',
+        'cancel' => 'Order is Cancel',
         'handled' => 'Handled',
         'uncheck' => 'UnCheck',
         'rejected' => 'Rejected',
         'reject_now' => 'Reject now',
         'send_respond' => 'Send Your Respond',
         'respond' => 'If you have any problem or you want to contribute to us, please put your respond for us',
+        'title' => 'Title',
+        'content' => 'Content',
+        'status' => 'Status',
+        'your_respond' => 'Your Responds',
+        'send' => 'Send',
     ],
     //site footer
     'footer' => [
@@ -300,7 +306,7 @@ return [
         'you_have_order_with' => 'You have order with',
         'write_post' => 'Write Post',
         'discuss' => 'New Post',
-        'forumn' => 'Forumn',
+        'forumn' => 'Forum',
     ],
     //aside_content
     'aside' => [
@@ -403,6 +409,7 @@ return [
         'sold' => ' Sold Products',
         'bought' => ' Bought Products',
         'respond' => 'Your Responds',
+        'product_is_delete' => 'Product is not exits',
     ],
     'post' => [
         'your_post' => 'Write New Post',

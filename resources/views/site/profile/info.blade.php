@@ -26,7 +26,6 @@
             <p>{{ trans('common.info.info_config') }}</p>
             <div class="checkout-left">
                 <div class="address_form_agile">
-
                     <div class="creditly-wrapper wthree, w3_agileits_wrapper">
                         <div class="information-wrapper">
                             <div class="first-row">
@@ -67,7 +66,6 @@
                         </div>
                         <p>{!! Form::button(trans('common.button.save'), ['type' => 'submit', 'class' => 'submit-info']) !!}</p>
                     </div>
-
                 </div>
             </div>
         </div>

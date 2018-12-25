@@ -115,7 +115,6 @@
                 <a href="">
                     <i class="nav-icon fa fa-sticky-note-o"></i>
                         {{ trans('common.sidebar.forumn') }}
-
                     <span class="pull-right-container">
                         <span class="label label-primary pull-right">2</span>
                     </span>
@@ -123,14 +122,14 @@
                 <ul class="treeview-menu">
                     <li>
                         <a href="{{ route('admin.topics.index') }}">
-                            <i class="fa fa-sticky-note-o"></i>
+                            <i class="fa fa-circle-o"></i>
                             {{ trans('common.sidebar.topic') }}
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('admin.posts.index') }}" class="nav-link">
-                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-circle-o"></i>
                             {{ trans('common.sidebar.post') }}
                         </a>
                     </li>

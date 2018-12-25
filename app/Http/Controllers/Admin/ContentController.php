@@ -45,7 +45,7 @@ class ContentController extends Controller
             $file->move(config('app.newsUrl'), $name);
 
             $request->merge([
-                'avatar' => $name,
+                'image' => $name,
             ]);
         }
 
@@ -78,7 +78,7 @@ class ContentController extends Controller
     {
         $news = News::findOrFail($id);
 
-        $imgOld = $news->avatar;
+        $imgOld = $news->image;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -92,12 +92,12 @@ class ContentController extends Controller
             $file->move(config('app.newsUrl'), $name);
 
             $request->merge([
-                'avatar' => $name,
+                'image' => $name,
             ]);
 
         } else {
             $request->merge([
-                'avatar' => $imgOld,
+                'image' => $imgOld,
             ]);
         }
         $news->update($request->all());

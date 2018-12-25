@@ -21,29 +21,12 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                            {{--<div class="row">--}}
-                                {{--<div class="col-sm-6">--}}
-                                    {{--<div id="header" view="header">--}}
-                                        {{--<div class="main">--}}
-                                            {{--{!! Form::open(['route' => 'search_slide', 'method' => 'get', 'class' => 'form-signin']) !!}--}}
-                                            {{--<div class="search-bar">--}}
-                                                {{--{!! Form::text('key', null, ['placeholder' => trans('common.tag.search')]) !!}--}}
-                                                {{--<button type="submit" class="fa fa-search"></button>--}}
-                                            {{--</div>--}}
-                                            {{--{!! Form::close() !!}--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <table id="example1" class="table table-bordered table-hover dataTable" role="grid">
+                                    <table id="example1" class="table table-bordered table-striped">
                                         {!! Form::open(['route' => ['mul_del_slide', 'method' => 'post', 'class' => 'form-signin']]) !!}
                                         <thead>
                                         <tr role="row">
-                                            {{--<th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">--}}
-                                                {{--{!! Form::button(trans('common.button.delete'), ['type' => 'submit', 'class' => 'btn btn-default', 'id' => 'confirmation']) !!}--}}
-                                            {{--</th>--}}
                                             <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">
                                                 {{ trans('common.news.title') }}
                                             </th>

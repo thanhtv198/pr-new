@@ -17,7 +17,7 @@ class OrderDetailTableSeeder extends Seeder
             \App\Models\OrderDetail::create([
                 'user_id' => $i +1,
                 'order_id' => $faker->randomElement(\App\Models\Order::pluck('id')),
-                'product_id' => $faker->randomElement(\App\Models\Product::pluck('id')),
+                'product_id' => $faker->numberBetween(1,30),
                 'quantity' => 1,
                 'price' => $i +1 .'000000',
                 'status' => 1,
@@ -30,7 +30,7 @@ class OrderDetailTableSeeder extends Seeder
             \App\Models\OrderDetail::create([
                 'user_id' => $i +1,
                 'order_id' => $faker->randomElement(\App\Models\Order::pluck('id')),
-                'product_id' => $faker->randomElement(\App\Models\Product::pluck('id')),
+                'product_id' => $faker->numberBetween(1,30),
                 'quantity' => 1,
                 'price' => $i +1 .'000000',
                 'status' => 0,
@@ -43,7 +43,7 @@ class OrderDetailTableSeeder extends Seeder
             \App\Models\OrderDetail::create([
                 'user_id' => $i +1,
                 'order_id' => $faker->randomElement(\App\Models\Order::pluck('id')),
-                'product_id' => $faker->randomElement(\App\Models\Product::pluck('id')),
+                'product_id' => $faker->numberBetween(1,30),
                 'quantity' => 1,
                 'price' => $i +1 .'000000',
                 'status' => 1,
@@ -56,7 +56,7 @@ class OrderDetailTableSeeder extends Seeder
             \App\Models\OrderDetail::create([
                 'user_id' => $i +1,
                 'order_id' => $faker->randomElement(\App\Models\Order::pluck('id')),
-                'product_id' => $faker->randomElement(\App\Models\Product::pluck('id')),
+                'product_id' => $faker->numberBetween(1,30),
                 'quantity' => 1,
                 'price' => $i + 3 .'000000',
                 'status' => 2,

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\City;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +22,7 @@ class AccountController extends Controller
      */
     public function getMember()
     {
-        $members = User::where('role_id', '3')->get();
-
+        $members = User::where('role_id', '3')->orderBy('id', 'desc')->get();
         return view('admin.account.member.index', compact('members'));
     }
 
@@ -61,11 +62,11 @@ class AccountController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $level = Role::pluck('role', 'id');
+        $role = Role::pluck('role', 'id');
 
         $city = City::pluck('name', 'id');
 
-        return view('admin/account/member/edit', compact('level', 'user', 'city'));
+        return view('admin/account/member/edit', compact('role', 'user', 'city'));
     }
 
     /**
@@ -73,7 +74,7 @@ class AccountController extends Controller
      * @param UserRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function postEditMember($id, UserRequest $request)
+    public function postEditMember($id, UpdateUserRequest $request)
     {
         $user = User::findOrFail($id);
 
@@ -155,7 +156,7 @@ class AccountController extends Controller
      */
     public function addManager()
     {
-        $level = Role::pluck('role', 'id');
+        $role = Role::pluck('role', 'id');
 
         $city = city::pluck('name', 'id');
 
@@ -186,7 +187,7 @@ class AccountController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $role = Level::pluck('role', 'id');
+        $role = Role::pluck('role', 'id');
 
         $city = city::pluck('name', 'id');
 
@@ -198,7 +199,7 @@ class AccountController extends Controller
      * @param UserRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function postEditManager($id, UserRequest $request)
+    public function postEditManager($id, UpdateUserRequest $request)
     {
         $user = User::findOrFail($id);
 
@@ -230,8 +231,10 @@ class AccountController extends Controller
             if (auth()->user()->id == $id) {
                 return back()->with('message', trans('common.with.delete_error'));
             }
-
-            User::remove($id);
+            $user = User::findOrFail($id);
+            $user->posts->delete();
+            $user->products->delete();
+            $user->delete();
 
             return redirect('admin/manager/index')->with('success', trans('common.with.delete_success'));
         } catch (ModelNotFoundException $e) {

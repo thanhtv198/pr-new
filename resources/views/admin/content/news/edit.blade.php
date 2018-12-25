@@ -30,7 +30,7 @@
                                 <label>{{ trans('common.news.image') }}</label>
                                 {!! Form::file('image', null, ['class' => 'form-control my-colorpicker1 colorpicker-element']) !!}
                                 <div style="float:left">
-                                    <img src="{{ url(config('app.newsUrl')) }}/{{ $news->avatar }}" class="img_news">
+                                    <img src="{{ url(config('app.newsUrl')) }}/{{ $news->image }}" class="img_news">
                                 </div>
                             </div>
                         </div>

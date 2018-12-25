@@ -52,7 +52,7 @@
                                         @if ($row->status == 0)
                                             <span id="pendding">{{ trans('common.respond.pendding') }}</span>
                                         @elseif ($row->status == 1)
-                                            <i class="fa fa-check-circle">{{ trans('common.respond.checked') }}</i>
+                                            <i style="color: green" class="fa fa-check-circle">{{ trans('common.respond.checked') }}</i>
                                         @elseif ($row->status == 2)
                                             <i class="fa fa-minus-square" id="status-rejected">
                                                 <b>{{ trans('common.respond.rejected') }}</b><br><br>
@@ -66,7 +66,7 @@
                                             <a href="{{ route('sell.show', $row->id) }}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a> |
-                                            <a href="{{ route('delete_sell_product', $row->id) }}" class="delete" onclick="deleteSell(this)">
+                                            <a style="color: red" href="{{ route('delete_sell_product', $row->id) }}" class="delete" onclick="deleteSell(this)">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
                                         </div>

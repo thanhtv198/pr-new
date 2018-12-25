@@ -54,11 +54,9 @@ class TopicRepositoryEloquent extends AbstractRepositoryEloquent implements Topi
 
     public function update($id, array $data)
     {
-        $topic = $this->model()->findBySlugOrFail($id)->update([
+        $topic = $this->model()->where('id', $id)->update([
             'name' => $data['name'],
             'slug' => $data['slug'],
-            'parent_id' => $data['slug'],
-            'status' => config('blog.topic.status.active'),
         ]);
 
         return $topic;

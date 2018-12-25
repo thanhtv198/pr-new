@@ -84,7 +84,8 @@ class TopicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->repository->update($id, $request->all());
+        return redirect()->route('admin.topics.index', compact('topics'))->with('success', trans('common.with.edit_success'));
     }
 
     /**

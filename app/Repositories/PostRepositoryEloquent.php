@@ -125,9 +125,9 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
     public function active($id)
     {
         $post = $this->model()->findOrFail($id);
-
+        Block::where('blockable_id', $id)->where('blockable_type', 'post')->delete();
         $post->update([
-            'status' => config('blog.post.status.active'),
+            'status' => config('model.post.status.active'),
         ]);
     }
 

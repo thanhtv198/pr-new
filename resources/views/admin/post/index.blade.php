@@ -41,23 +41,22 @@
                                         </div>
                                     </td>
                                     <td>{{ $post->view }}</td>
-                                    <td>
+                                    <td class="block-post{{ $post->id }}">
                                         @if ($post->status == 1)
-                                            <span class="right badge badge-success badge-status active-{{ $post->id }}">
+                                            <span class="bg-green right badge badge-success badge-status active-{{ $post->id }}">
                                                  {{ trans('common.post.activating') }}
                                             </span>
                                             <br>
-                                            <hr>
+                                            <hr class="hr">
                                             <i class="reject-{{ $post->id }}" id="status-reject-now">
                                                 <p class="show_input reject-font" id="reason{{ $post->id }}">
-                                                    <span class="right badge badge-danger badge-status">
+                                                    <span class="bg-yellow right badge badge-danger badge-status">
                                                         {{ trans('common.post.block_now') }}
                                                     </span>
                                                 </p>
                                             </i>
                                             <div id="show{{ $post->id }}" class="hidd" style="display: none; ">
                                                 {!! Form::text('reason', null, ['id' => "rea$post->id"]) !!}
-{{--                                                {!! Form::hidden('url', config('blog.base_url'), ['id'=> 'url']) !!}--}}
                                                 <span href="javascript:void(0)" data-url="{{ route('admin.posts.inactive', $post->id) }}"
                                                         class="reject-font send" id="re{{ $post->id }}">
                                                     <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -65,7 +64,7 @@
                                             </div>
                                         @else
                                             <p class="show_input reject-font" id="reject-{{ $post->id }}">
-                                                <span class="right badge badge-danger badge-status">
+                                                <span class="bg-red right badge badge-danger badge-status">
                                                      {{ trans('common.post.rejected') }}
                                                 </span><br>
                                                 <span id="reason">{{ $post->block->reason }}</span>
@@ -73,10 +72,10 @@
                                             </p>
                                             <br>
                                             <p>
-                                                <span class="right badge badge-success reject-font badge-status active-now"
+                                                <span class="bg-blue right badge badge-success reject-font badge-status active-now"
                                                       id="active-now-{{ $post->id }}"
                                                       data-url="{{ route('admin.posts.active', $post->id) }}">
-                                                    Active Now
+                                                    {{ trans('common.post.active_now') }}
                                                 </span>
                                             </p>
                                         @endif
@@ -85,7 +84,7 @@
                                     </td>
                                     <td>
                                         <p class="del-button" id="{{ $post->id }}" data-url="{{ route('admin.posts.destroy', $post->id) }}">
-                                            <button type="button" class="btn btn-block btn-outline-danger btn-sm">Delete</button>
+                                            <button type="button" class="btn btn-block btn-danger btn-sm">Delete</button>
                                         </p>
                                     </td>
                                 </tr>

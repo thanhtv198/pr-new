@@ -30,9 +30,8 @@
                                 <th>{{ trans('common.product.product') }}</th>
                                 <th>{{ trans('common.product.qty') }}</th>
                                 <th>{{ trans('common.product.price') }}</th>
-                                <th style="width: 10%">{{ trans('common.product.created_at') }}</th>
-                                <th>{{ trans('common.form.status') }}</th>
-{{--                                <th>{{ trans('common.form.action') }}</th>--}}
+                                <th width="10%">{{ trans('common.product.created_at') }}</th>
+                                <th width="10%">{{ trans('common.form.status') }}</th>
                             </tr>
                             </thead>
                             <tbody id="cart_table">
@@ -43,7 +42,7 @@
                                     <td class="invert">{{ $row->order->email }}</td>
                                     <td class="invert">{{ $row->order->phone_number }}</td>
                                     <td class="invert">{{ $row->order->address . ", " . $row->order->city->name }}</td>
-                                    <td class="invert"><a href="{{ route('detail_product', $row->id) }}">{{ $row->product->name }}</a></td>
+                                    <td class="invert"><a href="{{ route('detail_product', $row->id) }}">{{ $row->product->name ?? trans('common.interact.product_is_delete') }}</a></td>
                                     <td class="invert">{{ $row->quantity }}</td>
                                     <td class="invert">
                                         <span class="item_price" id="pendding">{{ number_format($row->price) }}  </span>
@@ -54,29 +53,25 @@
                                     </td>
                                     <td class="invert">
                                         @if ($row->status == 0)
-                                            <span>
+                                            <span style="color:blue">
                                             <a href="{{ route('handle_sold', $row->id) }}" id="pendding">
                                                 {{ trans('common.respond.handle_now') }}
                                             </a>
                                         </span>
                                         @elseif ($row->status == 1)
+                                            <span style="color:green">
                                             <i class="fa fa-check-circle">
                                                 {{ trans('common.respond.handled') }}
                                             </i>
+                                        </span>
                                         @elseif ($row->status == 2)
-                                            <i class="fa fa-remove" id="pendding">
-                                                {{ __('Order is Canceled') }}
-                                            </i>
+                                            <span style="color:red; font-size: 16px">
+                                                <i class="fa fa-remove" id="pendding">
+                                                    {{ trans('common.respond.cancel') }}
+                                                </i>
+                                            </span>
                                         @endif
                                     </td>
-                                    {{--<td class="invert">--}}
-                                        {{--<div class="rem">--}}
-                                            {{--<a href="{{ route('delete_order_sold', $row->id) }}" class="delete delele-order"--}}
-                                               {{--onclick="deleteSold(this)">--}}
-                                                {{--<i class="fa fa-trash" aria-hidden="true"></i>--}}
-                                            {{--</a>--}}
-                                        {{--</div>--}}
-                                    {{--</td>--}}
                                 </tr>
                             @endforeach
                             </tbody>
@@ -121,13 +116,12 @@
                                         <div class="rem">
                                             <a href="{{ route('get_order_bought_detail', $row->id) }}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i></a> |
-                                            <a href="{{ route('delete_order_bought', $row->id) }}" class="delete" onclick="deleteSold(this)">
+                                            <a style="color: red" href="{{ route('delete_order_bought', $row->id) }}" class="delete" onclick="deleteSold(this)">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
-
                             @endforeach
                             </tbody>
                         </table>
@@ -137,22 +131,46 @@
             </div>
             <div id="menu2" class="tab-pane fade">
                 <h3>{{ trans('common.interact.respond') }}</h3>
-                @foreach($responds as $row)
-                    <div class="row">
-                        <div class="col-md-3">
-                            <h4>
-                                <a href="">{{ $row->title }}</a>
-                            </h4>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="content-post">{!! $row->content !!}</p>
-                        </div>
-                        <div class="col-md-3">
-                            <p class="">{!! $row->status !!}</p>
-                        </div>
+                <div class="checkout-right">
+                    <div class="table-responsive">
+                        <h4>{{ trans('common.respond.your_respond') }}</h4>
+                        <table class="timetable_sub">
+                            <thead>
+                            <tr>
+                                <th width="40%">{{ trans('common.respond.title') }}</th>
+                                <th width="40%">{{ trans('common.respond.content') }}</th>
+                                <th width="20%">{{ trans('common.respond.status') }}</th>
+                            </tr>
+                            </thead>
+                            <tbody id="cart_table">
+                            @foreach($responds as $row)
+                                <tr class="rem1">
+                                    <td class="invert">
+                                        {{ $row->title }}
+                                    </td>
+                                    <td class="invert">
+                                        <span href="">{!! $row->content !!}</span>
+                                    </td>
+                                    <td class="invert">
+                                        @if ($row->status == 0)
+                                            <span style="color:blue">
+                                            {{ trans('common.respond.pendding') }}
+                                        </span>
+                                        @else ($row->status == 1)
+                                            <span style="color:green">
+                                            <i class="fa fa-check-circle">
+                                                {{ trans('common.respond.handled') }}
+                                            </i>
+                                         </span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <div class="clearfix"></div>
                     </div>
-                    <hr>
-                @endforeach
+                </div>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -160,9 +178,3 @@
 
     </body>
 @endsection
-
-
-{{--<div class="pull-left">--}}
-    {{--<a href="{{ route('get_order_bought') }}">{{ trans('common.info.buy_history') }}</a></br>--}}
-    {{--<a href="{{ route('get_order_sold') }}">{{ trans('common.info.order') }}</a>--}}
-{{--</div>--}}

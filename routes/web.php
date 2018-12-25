@@ -82,7 +82,7 @@ Route::group(['middleware' => ['role_manager', 'locale']], function () {
     //respond user
     Route::group(['prefix' => 'respond'], function () {
         Route::get('/index', 'InteractionController@getRespond')->name('get_respond');
-        Route::get('/delete/{id}', 'InteractionController@deleteRespond')->name('delete_respond');
+        Route::post('/delete/{id}', 'InteractionController@deleteRespond')->name('delete_respond');
         Route::get('/search', 'InteractionController@searchRespond')->name('search_respond');
         Route::get('/check/{id}', 'InteractionController@check')->name('check_respond');
     });
