@@ -54,6 +54,16 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-md-4 control-label"
+                            for="product_categorie">{{ trans('common.product.is_new') }}</label>
+                        <div class="col-md-4">
+                            <select name="myselect" id="myselect">
+                                <option value="0">{{ trans('common.product.new') }}</option>
+                                <option value="1">{{ trans('common.product.old') }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-4 control-label" for="product_name_fr">{{ trans('common.product.price') }}
                             *</label>
                         <div class="col-md-4">

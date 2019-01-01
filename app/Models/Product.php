@@ -56,6 +56,11 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function block()
+    {
+        return $this->morphMany(Block::class, 'blockable');
+    }
+
     public function manufacture()
     {
         return $this->belongsTo(Manufacture::class);

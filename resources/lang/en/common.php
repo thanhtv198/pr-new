@@ -117,7 +117,7 @@ return [
         'header_admin_user' => 'Web deverloper',
         'header_admin_sign_out' => 'Sign Out',
         'search' => 'Search',
-        'title_site' => 'Framgia Shop',
+        'title_site' => 'Comtor Shop',
         'view_news' => 'View',
         'cart_title' => 'Your Cart',
         'shop' => 'Shop',

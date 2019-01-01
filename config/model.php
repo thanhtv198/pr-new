@@ -56,6 +56,7 @@ return [
         'status' => [
             'inactive' => 0,
             'active' => 1,
+            'reject' => 2,
         ],
         'upload' => 'upload/post',
         'paginate' => 5,

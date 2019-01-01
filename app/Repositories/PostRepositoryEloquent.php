@@ -41,24 +41,10 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
     public function show($id)
     {
         $post = $this->model()->findBySlugOrFail($id);
-
-//        $tags = $post->tags;
-        $tagsName = [];
         $view = $post->view;
         $post->update([
             'view' => $view + 1,
         ]);
-
-//        foreach ($tags as $tag) {
-//            $tagsName[] = array([
-//                'id' => $tag->id,
-//                'name' => $tag->name,
-//            ]);
-//        }
-
-//        $tagsName = array_slice($tagsName, 0, config('blog.post.tagInDetail'));
-
-//        $post->setAttribute('tags_name', $tagsName);
 
         return $post;
     }
@@ -142,11 +128,8 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
         $post->update([
             'status' => config('model.post.status.inactive'),
         ]);
-
-        Block::create([
-           'blockable_id' => $id,
-           'blockable_type' => 'post',
-           'reason' => $data,
+        $post->block()->create([
+            'reason' => $data,
         ]);
     }
 

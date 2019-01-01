@@ -58,8 +58,6 @@ class ProductController extends Controller
 
         $request->merge([
             'user_id' => Auth::user()->id,
-//            'commentable_id' => $id,
-//            'commentable_type' => 'product',
         ]);
 
         $comment = $product->comments()->create($request->all());

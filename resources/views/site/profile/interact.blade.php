@@ -53,20 +53,20 @@
                                     </td>
                                     <td class="invert">
                                         @if ($row->status == 0)
-                                            <span style="color:blue">
+                                            <span style="color:blue;font-size: 16px">
                                             <a href="{{ route('handle_sold', $row->id) }}" id="pendding">
                                                 {{ trans('common.respond.handle_now') }}
                                             </a>
                                         </span>
                                         @elseif ($row->status == 1)
-                                            <span style="color:green">
+                                            <span style="color:green;font-size: 16px">
                                             <i class="fa fa-check-circle">
                                                 {{ trans('common.respond.handled') }}
                                             </i>
                                         </span>
                                         @elseif ($row->status == 2)
                                             <span style="color:red; font-size: 16px">
-                                                <i class="fa fa-remove" id="pendding">
+                                                <i class="fa fa-remove">
                                                     {{ trans('common.respond.cancel') }}
                                                 </i>
                                             </span>

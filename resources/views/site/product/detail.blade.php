@@ -5,6 +5,12 @@
             width: 200px;
 
         }
+        .clear-rating-active {
+            display:none!important;
+        }
+        .caption {
+            display: none!important;
+        }
     </style>
     @include('site.notice')
     <div view="detail">
@@ -74,7 +80,7 @@
                     <h1>{{ $product->name }} </h1>
                     <div>
                         <input id="input-5" name="rate" class="rating rating-loading" data-min="0" data-max="5"
-                               data-step="0.5" value="{{ $product->averageRating }}" data-size="xs">
+                               data-step="0.5" value="{{ $product->averageRating }}" >
                     </div>
                     <div class="info-product-price">
                         @php $price_new = $product->price - $product->promotion @endphp

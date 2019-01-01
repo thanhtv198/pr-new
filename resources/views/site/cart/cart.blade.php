@@ -1,5 +1,11 @@
 @extends('site/layouts/master')
 @section('content')
+    <style>
+        .number-in-cart{
+            text-align: center;
+            border: none;
+        }
+    </style>
     <section class="content-header">
         @include('site/notice')
     </section>
