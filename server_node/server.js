@@ -8,13 +8,12 @@ io.on('connection',function(socket){
 });
 var Redis = require('ioredis');
 
-var redis = new Redis(8888);
+var redis = new Redis(8890);
 redis.psubscribe("*",function(error,count){
-    //
+
 });
 redis.on('pmessage',function(partner,channel,message){
     console.log(channel);
-    console.log(message);
     console.log(partner);
 
     message = JSON.parse(message);

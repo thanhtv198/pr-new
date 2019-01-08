@@ -221,6 +221,8 @@
             margin-bottom: 100px;
         }
     </style>
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
     <div class="container">
         <div id="data">
             <form action="{{ route('post_message') }}" method="POST">
@@ -228,6 +230,7 @@
                 <div class="mesgs">
                     <div style="margin-bottom: 10px">{{ __('Send message to ') }}: <b>{{ $receiver->name }}</b></div>
                     <div class="msg_history" id="msg_history">
+                        <input id="auth-id"type="hidden" value="{{ auth()->user()->id }}">
                         @foreach($messages as $message)
                             @if(auth()->user()->id != $message->sender_id)
                                 <div class="incoming_msg">
@@ -262,7 +265,23 @@
             </form>
         </div>
     </div>
-
+    <script>
+        var socket = io.connect('http://localhost:6001');
+        socket.on('chat:message', function (data) {
+            let auth = $('#auth-id').attr('value');
+            console.log(auth);
+            if(auth != data.sender_id) {
+                $('.msg_history').append('<div class="incoming_msg">\n' +
+                    '                                    <div class="received_msg">\n' +
+                    '                                        <div class="received_withd_msg">\n' +
+                    '                                            <p>' + data.content  + '</p>\n' +
+                    '                                            <span class="time_date"></span>\n' +
+                    '                                        </div>\n' +
+                    '                                    </div>\n' +
+                    '                                </div>');
+            }
+        });
+    </script>
     <script type="text/javascript">
         $('#msg_history').scrollTop($('#msg_history')[0].scrollHeight);
     </script>
