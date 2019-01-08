@@ -274,7 +274,7 @@
                             </div>
                             <div class="form-group" view="city">
                                 <label>{{ trans('common.form.city') }}</label><br>
-                                {!! Form::select('city_id', $city, null, ['class' => 'my-colorpicker1colorpicker-element select-checkout-a', 'id' => 'sign-city', 'placeholder' => trans('common.sidebar.choose_location')]) !!}
+                                {!! Form::select('city_id', $city, null, ['class' => 'my-colorpicker1colorpicker-element select-checkout-a', 'id' => 'sign-city', 'placeholder' => trans('common.aside.choose_location')]) !!}
                             </div>
                             <div class="form-group">
                                 <label>{{ trans('common.form.address') }}</label>

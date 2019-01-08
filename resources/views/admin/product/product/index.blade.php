@@ -105,7 +105,7 @@
                                                                 <b>{{ trans('common.respond.rejected') }}</b>
                                                             </span>
                                                         </i><br>
-                                                        <span id="reason">{{ $row->check }}</span>
+                                                        <span id="reason">{{ isset(($row->block)[0]) ? (($row->block)[0]->reason) : '' }}</span>
                                                         <br><br>
                                                         <a href="{{ route('accept_product', $row->id) }}" onclick="return confirm({{ trans('common.form.confirm') }})">
                                                             <span class="bg-blue right badge badge-success badge-status">{{ trans('common.product.accept_now') }}</span>
@@ -114,7 +114,7 @@
                                                 </td>
                                                 <td class="textC">
                                                     <a href="{{ route('delete_product', $row->id) }}">
-                                                        <i id="trash" class="fa fa-trash" aria-hidden="true"></i>
+                                                        <button type="button" class="btn btn-block btn-danger btn-sm">Delete</button>
                                                     </a>
                                                 </td>
                                             </tr>

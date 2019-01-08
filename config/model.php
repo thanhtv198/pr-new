@@ -56,6 +56,7 @@ return [
         'status' => [
             'inactive' => 0,
             'active' => 1,
+            'reject' => 2,
         ],
         'upload' => 'upload/post',
         'paginate' => 5,
@@ -66,6 +67,10 @@ return [
         'deleted_at' => [
             'null' => null,
         ],
+        'is_new' => [
+            '1' => 'new',
+            '0' => 'old',
+        ]
     ],
 
     //question

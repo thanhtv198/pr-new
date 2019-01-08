@@ -2,7 +2,7 @@
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        @include('site/notice')
+
     </section>
 
         <h3 class="tittle-w3l">
@@ -16,6 +16,7 @@
         <div class="ads-grid">
         <div class="container
         ">
+            @include('site/notice')
             <div class="require">
                 <h2>Requires the product to be accepted</h2>
                 <hr>
@@ -51,6 +52,16 @@
                             for="product_categorie">{{ trans('common.product.manufacture') }}</label>
                         <div class="col-md-4">
                             {!! Form::select('manufacture_id', $manufactures, null, ['class' => 'form-control select2 select2-hidden-accessible']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"
+                            for="product_categorie">{{ trans('common.product.status') }}</label>
+                        <div class="col-md-4">
+                            <select name="is_new" class="form-control select2 select2-hidden-accessible">
+                                <option value="1">{{ trans('common.aside.new') }}</option>
+                                <option value="0">{{ trans('common.aside.old') }}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -167,7 +178,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="singlebutton"></label>
                         <div class="col-md-4">
-                            {!! Form::button(trans('common.button.add'), ['type' => 'submit', 'class' => 'btn-sell']) !!}
+                            {!! Form::button(trans('common.button.add'), ['type' => 'submit', 'class' => 'btn btn-info']) !!}
                         </div>
                     </div>
                 </fieldset>

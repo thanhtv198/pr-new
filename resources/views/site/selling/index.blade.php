@@ -1,7 +1,7 @@
 @extends('site/layouts/master')
 @section('content')
     <section class="content-header">
-        @include('site/notice')
+
     </section>
     <section class="content">
         <div class="privacy">
@@ -56,7 +56,7 @@
                                         @elseif ($row->status == 2)
                                             <i class="fa fa-minus-square" id="status-rejected">
                                                 <b>{{ trans('common.respond.rejected') }}</b><br><br>
-                                                <span id="reason" style="color:Red">{{ $row->check }}</span>
+                                                <span id="reason">{{ isset(($row->block)[0]) ? (($row->block)[0]->reason) : '' }}</span>
                                             </i>
                                         @endif
                                     </td>

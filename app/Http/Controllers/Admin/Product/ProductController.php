@@ -28,15 +28,7 @@ class ProductController extends Controller
     public function deleteProduct($id)
     {
         $product = Product::findOrFail($id);
-
-//        if (count($product->orderDetails) == 0) {
-            $product->delete();
-//        } else
-//            {
-//            $product->update([
-//                'remove' => '1',
-//            ]);
-//        }
+        $product->delete();
 
         return redirect('admin/product/index')->with('success', trans('common.with.delete_success'));
     }
@@ -73,10 +65,16 @@ class ProductController extends Controller
      */
     public function reject(Request $request)
     {
-        $content = $request->reason;
         $id = $request->id;
 
-        Product::reject($id, $content);
+        $product = Product::findOrFail($id);
+        $product->update([
+            'status' => config('model.product.status.reject'),
+        ]);
+
+        $product->block()->create([
+            'reason' => $request->reason,
+        ]);
     }
 
     /**
@@ -85,21 +83,9 @@ class ProductController extends Controller
      */
     public function deleteManyProduct(Request $request)
     {
-//        if ($request->check == null) {
-//            return redirect()->back()->with('success', trans('common.with.delete_success'));
-//        }
-
         for ($i = 0; $i < count($request->check); $i++) {
             $product = Product::findOrFail($request->check[$i]);
-
-//            if (count($product->orderDetails) == 0) {
-                $product->delete();
-//            }
-//            else {
-//                $product->update([
-//                    'remove' => '1',
-//                ]);
-//            }
+            $product->delete();
         }
 
         return redirect('admin/product/index')->with('success', trans('common.with.delete_success'));

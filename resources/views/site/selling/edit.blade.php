@@ -50,6 +50,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-md-4 control-label"
+                           for="product_categorie">{{ trans('common.product.status') }}</label>
+                    <div class="col-md-4">
+                        <select name="is_new"class="form-control select2 select2-hidden-accessible">
+                            <option value="1">{{ trans('common.aside.new') }}</option>
+                            <option value="0">{{ trans('common.aside.old') }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-md-4 control-label" for="product_name_fr">{{ trans('common.product.price') }}*</label>
                     <div class="col-md-4">
                         {!! Form::number('price', $product->price, ['class' => 'form-control input-md', 'placeholder' => trans('common.product.price')]) !!}

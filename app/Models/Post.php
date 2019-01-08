@@ -37,14 +37,14 @@ class Post extends Model
         return $this->belongsToMany(Topic::class)->withTimestamps();
     }
 
+    public function block()
+    {
+        return $this->morphMany(Block::class, 'blockable');
+    }
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
-    }
-
-    public function block()
-    {
-        return $this->hasOne(Block::class, 'blockable_id');
     }
 
     public function rootComments()

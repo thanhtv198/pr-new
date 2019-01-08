@@ -6,7 +6,7 @@
         }
     </style>
     <section class="content-header">
-        @include('site/notice')
+
     </section>
     <!-- Main content -->
         <h3 class="tittle-w3l">
@@ -19,6 +19,7 @@
         </h3>
     <div class="container">
         <div class="" style="width: 90%; margin-left: 5%">
+            @include('site/notice')
             {!! Form::open(['route' => ['posts.store'] , 'method' => 'POST', 'files' => true]) !!}
             <div>
                 <h2>{{ trans('common.tag.title_add_post') }}</h2>

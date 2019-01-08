@@ -41,24 +41,10 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
     public function show($id)
     {
         $post = $this->model()->findBySlugOrFail($id);
-
-//        $tags = $post->tags;
-        $tagsName = [];
         $view = $post->view;
         $post->update([
             'view' => $view + 1,
         ]);
-
-//        foreach ($tags as $tag) {
-//            $tagsName[] = array([
-//                'id' => $tag->id,
-//                'name' => $tag->name,
-//            ]);
-//        }
-
-//        $tagsName = array_slice($tagsName, 0, config('blog.post.tagInDetail'));
-
-//        $post->setAttribute('tags_name', $tagsName);
 
         return $post;
     }
@@ -80,6 +66,23 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
         ]);
 
         return $post;
+    }
+    public function toSlug ($string) {
+
+        $table = array(
+            'Š'=>'S', 'ı'=>'i', 'ğ'=>'g', 'ü'=>'u', 'ş'=>'s', 'ö'=>'o', 'ç'=>'c', 'Ğ'=>'G', 'Ü'=>'U', 'Ş'=>'S',
+            'İ'=>'I', 'Ö'=>'O', 'Ç'=>'C',
+            'š'=>'s', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'ž'=>'z', 'Č'=>'C', 'č'=>'c', 'Ć'=>'C', 'ć'=>'c',
+            'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+            'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O',
+            'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss',
+            'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e',
+            'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o',
+            'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b',
+            'ÿ'=>'y', 'Ŕ'=>'R', 'ŕ'=>'r',
+        );
+
+        return preg_replace('/[^A-Za-z0-9-]+/', '-',  strtr($string, $table) );
     }
 
     public function edit($id)
@@ -142,11 +145,8 @@ class PostRepositoryEloquent extends AbstractRepositoryEloquent implements PostR
         $post->update([
             'status' => config('model.post.status.inactive'),
         ]);
-
-        Block::create([
-           'blockable_id' => $id,
-           'blockable_type' => 'post',
-           'reason' => $data,
+        $post->block()->create([
+            'reason' => $data,
         ]);
     }
 

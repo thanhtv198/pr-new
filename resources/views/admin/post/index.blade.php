@@ -67,7 +67,7 @@
                                                 <span class="bg-red right badge badge-danger badge-status">
                                                      {{ trans('common.post.rejected') }}
                                                 </span><br>
-                                                <span id="reason">{{ $post->block->reason }}</span>
+                                                <span id="reason">{{ isset(($post->block)[0]) ? (($post->block)[0]->reason) : '' }}</span>
                                             <hr>
                                             </p>
                                             <br>

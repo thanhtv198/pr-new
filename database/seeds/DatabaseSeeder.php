@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\OrderDetail::query()->truncate();
         \App\Models\Order::query()->truncate();
         \App\Models\Comment::query()->truncate();
+        \App\Models\Block::query()->truncate();
 
         $this->call(TopicsTableSeeder::class);
         $this->call(TagsTableSeeder::class);
@@ -52,5 +53,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RatingsTableSeeder::class);
         $this->call(OrdersTableSeeder::class);
         $this->call(OrderDetailTableSeeder::class);
+        $this->call(BlocksTableSeeder::class);
     }
 }

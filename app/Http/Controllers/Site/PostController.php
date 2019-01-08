@@ -86,7 +86,7 @@ class PostController extends Controller
 
         $this->repository->store($data);
 
-        return redirect()->route('posts');
+        return redirect()->back()->with('success', trans('common.with.add_success'));;
     }
 
     /**
