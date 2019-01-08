@@ -51,11 +51,11 @@
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label"
-                           for="product_categorie">{{ trans('common.product.is_new') }}</label>
+                           for="product_categorie">{{ trans('common.product.status') }}</label>
                     <div class="col-md-4">
-                        <select name="myselect" id="myselect">
-                            <option value="0">{{ trans('common.product.new') }}</option>
-                            <option value="1">{{ trans('common.product.old') }}</option>
+                        <select name="is_new"class="form-control select2 select2-hidden-accessible">
+                            <option value="1">{{ trans('common.aside.new') }}</option>
+                            <option value="0">{{ trans('common.aside.old') }}</option>
                         </select>
                     </div>
                 </div>

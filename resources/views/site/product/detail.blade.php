@@ -109,6 +109,14 @@
                         <b>{{ trans('common.product_detail.date_manufacture') }}</b>
                         {{$product->date_manufacture}}
                     </p>
+                    <p>
+                        <b>{{ trans('common.product_detail.status') }}</b>
+                        @if($product->is_new == 0)
+                            {{ trans('common.product_detail.old') }}
+                        @else
+                            {{ trans('common.product_detail.new') }}
+                        @endif
+                    </p>
                     <hr>
                     <h2>{{ trans('common.product_detail.detail_head') }}</h2>
                     <table class="table table-hover table-bordered">

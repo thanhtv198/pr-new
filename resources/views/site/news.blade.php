@@ -4,7 +4,7 @@
     <div class="ads-grid">
         <div class="container" id="thanh-container">
             <!-- tittle heading -->
-            <h3 class="tittle-w3l">
+            <h3 class="tittle-w3l" style="margin-top: -10px">
                 {{ trans('common.home_page.news_detail') }}
                 <span class="heading-style">
                     <i></i>

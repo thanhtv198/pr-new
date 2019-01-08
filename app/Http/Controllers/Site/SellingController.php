@@ -51,7 +51,6 @@ class SellingController extends Controller
             'remove' => 0,
             'user_id' => Auth::user()->id,
         ]);
-
         $product = Product::create($request->all());
 
         $prop = json_encode($request->property);
@@ -75,7 +74,7 @@ class SellingController extends Controller
 
                 Image::create([
                     'image' => $fileName,
-                    'stt' => $i,
+                    'number' => $i,
                     'product_id' =>$idPro
                 ]);
             }

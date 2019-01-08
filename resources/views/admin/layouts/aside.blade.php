@@ -2,7 +2,9 @@
     <section class="sidebar">
         <div class="user-panel" style="height:90px">
             <div class="pull-left image">
-                <img src="{{ asset('source/admin/assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                @if(Auth::user()->avatar)
+                    <img src="{{ url(config('model.user.upload')) }}/{{ Auth::user()->avatar }}" class="img-circle" alt="User Image">
+                @endif
             </div>
             <div class="pull-left info">
                 <p>{{ Auth::user()->name }}</p>

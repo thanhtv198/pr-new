@@ -1,7 +1,7 @@
 @extends('site/layouts/master')
 @section('content')
     <section class="content-header">
-        @include('site/notice')
+
     </section>
     <section class="content">
         <div class="privacy">

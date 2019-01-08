@@ -30,6 +30,7 @@ class InteractionController extends Controller implements FromCollection, WithHe
     {
         $orderBoughts = $this->getOrderBought();
         $orderSolds = $this->getOrderSold();
+        $orderSolds = $this->getOrderSold();
         $responds = $this->getRespond();
 
         return view('site.profile.interact', compact('orderBoughts', 'orderSolds', 'responds'));
@@ -99,18 +100,11 @@ class InteractionController extends Controller implements FromCollection, WithHe
      */
     public function getOrderSold()
     {
-        $id = Auth::id();
-
         $orderdetails = OrderDetail::getSold();
-
-        if (count($orderdetails) == 0) {
-            return redirect()->route('get_profile', $id)->with('message', trans('common.with.no_order'));
-        }
 
         \App\Models\Notification::where('notifiable_id', '>', 0)->update(['read_at' => Carbon::now()]);
 
         return $orderdetails;
-//        return view('site.interaction.order_sold', compact('orderdetails'));
     }
 
     /**
@@ -123,10 +117,12 @@ class InteractionController extends Controller implements FromCollection, WithHe
         foreach ($orderdetails as $row) {
             $status = $row->status;
 
-            if ($status == config('page.order_detail.status.active')) {
-                $status = 'Delivery now';
+            if ($status == 0) {
+                $status = 'Handle now';
+            } elseif ($status == 1) {
+                $status = 'Handled';
             } else {
-                $status = 'Handle';
+                $status = 'Canceled';
             }
 
             $order[] = array(

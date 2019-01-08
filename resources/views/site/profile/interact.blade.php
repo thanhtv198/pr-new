@@ -1,11 +1,12 @@
 @extends('site/layouts/master')
 @section('content')
     <section class="content-header">
-        @include('site/notice')
+
     </section>
     <!-- Main content -->
     <body>
     <div class="container time-line" id=" thanh-container" view="time-line">
+        @include('site/notice')
         <h2 class="time-line-head">{{ trans('common.interact.title') }}</h2>
         <ul class="nav nav-tabs" style="margin-top: 70px;">
             <li class="active"><a data-toggle="tab" href="#home">{{ trans('common.interact.sold') }}</a></li>
@@ -16,6 +17,7 @@
         <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
                 <h3>{{ trans('common.interact.sold') }}</h3>
+                @if(count($orderSolds) > 0 )
                 <div class="checkout-right">
                     <h4>{{ trans('common.sold.your_product_sold') }}</h4>
                     <div class="table-responsive">
@@ -85,11 +87,13 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
             <div id="menu1" class="tab-pane fade">
                 <h3>{{ trans('common.interact.bought') }}</h3>
+                @if(count($orderBoughts) > 0 )
                 <div class="checkout-right">
-                    <h4>{{ trans('common.bought.your_product_bought') }}</h4>
+                    <h4>{{ trans('common.bought.your_order') }}</h4>
                     <div class="table-responsive">
                         <table class="timetable_sub">
                             <thead>
@@ -128,9 +132,11 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
+                @endif
             </div>
             <div id="menu2" class="tab-pane fade">
                 <h3>{{ trans('common.interact.respond') }}</h3>
+                @if(count($responds) > 0)
                 <div class="checkout-right">
                     <div class="table-responsive">
                         <h4>{{ trans('common.respond.your_respond') }}</h4>
@@ -171,6 +177,7 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
         <div class="clearfix"></div>

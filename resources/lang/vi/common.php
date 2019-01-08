@@ -51,6 +51,7 @@ return [
         'news_ext' => 'Đuôi ảnh không hợp lệ',
         'content' => 'Nội dung không thể trống',
         'local_id' => 'Thành phố không được trống',
+        'price' => 'Giá sản phẩm không được trống',
     ],
     //login
     'login' => [
@@ -266,7 +267,7 @@ return [
     ],
     //home page
     'home_page' => [
-        'head' => 'Sản phẩm đề xuất cho bạn',
+        'head' => 'Sản phẩm',
         'title11' => 'Sản phẩm mới',
         'title12' => 'Tốt nhất cho bạn',
         'title13' => 'Sản phẩm nổi bật',
@@ -350,6 +351,9 @@ return [
         'replies' => 'Trả lời',
         'seller' => 'Người bán',
         'send_message' => 'Gửi tin nhắn: ',
+        'status' => 'Trạng thái: ',
+        'new' => 'Mới',
+        'old' => 'Cũ',
     ],
     //info
     'info' => [
@@ -368,6 +372,7 @@ return [
 
     //sell
     'sell' => [
+        'add' => 'Đăng sản phẩm mới',
         'your_product' => 'Sản phẩm của bạn',
         'your_sold' => 'Sản phẩm đã đăng bán',
         'price_promotion' => 'Giá khuyến mại',
@@ -399,6 +404,7 @@ return [
     'bought' => [
         'order_bought' => 'Đơn hàng mua vào',
         'your_product_bought' => 'Sản phẩm đã mua',
+        'your_order' => 'Đơn hàng của bạn',
     ],
 
     'interact' => [

@@ -52,6 +52,7 @@ return [
         'news_ext' => 'Image extention invalid',
         'content' => 'The :attribute field must have a value.',
         'local_id' => 'The city field must have a value.',
+        'price' => 'The :attribute field must have a value.',
     ],
     //login
     'login' => [
@@ -268,7 +269,7 @@ return [
     ],
     //home page
     'home_page' => [
-        'head' => 'Product recommended for you',
+        'head' => 'Products',
         'title11' => 'New Products',
         'title12' => 'The best for you',
         'title13' => 'List of featured products',
@@ -352,6 +353,9 @@ return [
         'replies' => 'replies',
         'seller' => 'Seller',
         'send_message' => 'Send message: ',
+        'status' => 'Status: ',
+        'new' => 'New',
+        'old' => 'Old',
     ],
     //info
     'info' => [
@@ -372,6 +376,7 @@ return [
     //sell
     'sell' => [
         'your_product' => 'Your pruduct',
+        'add' => 'Post New Product',
         'your_sold' => 'Your pruduct posted',
         'price_promotion' => 'Price - Discount',
         'date_create' => 'Date of post',
@@ -402,6 +407,7 @@ return [
     'bought' => [
         'order_bought' => 'Bought orders',
         'your_product_bought' => 'Your bought products',
+        'your_order' => 'Your orders',
     ],
 
     'interact' => [
