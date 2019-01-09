@@ -56,3 +56,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+/var/www/html/Laravel/pr-new$ redis-server --port 8890
+/var/www/html/Laravel/pr-new/server_node$ node server
+/var/www/html/Laravel/pr-new$ php artisan queue:list

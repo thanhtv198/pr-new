@@ -47,8 +47,8 @@
 
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        CKEDITOR.replace( 'description' );
-    });
-</script>
+{{--<script>--}}
+    {{--$(document).ready(function () {--}}
+        {{--CKEDITOR.replace( 'content' );--}}
+    {{--});--}}
+{{--</script>--}}

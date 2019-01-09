@@ -50,12 +50,14 @@
                                             </a>
                                         </span>
                                     @elseif ($row->status == 1)
-                                        <i class="fa fa-check-circle">
-                                            {{ trans('common.respond.handled') }}
-                                        </i>
+                                        <span style="color:green; font-size: 17px">
+                                            <i class="fa fa-check-circle">
+                                                {{ trans('common.respond.handled') }}
+                                            </i>
+                                        </span>
                                     @elseif ($row->status == 2)
                                         <span style="color:red; font-size: 16px">
-                                            <i class="fa fa-remove" id="pendding">
+                                            <i class="fa fa-remove">
                                                 {{ trans('common.respond.cancel') }}
                                             </i>
                                         </span>

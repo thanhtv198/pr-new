@@ -246,6 +246,7 @@ return [
         'handled' => 'Handled',
         'uncheck' => 'UnCheck',
         'rejected' => 'Rejected',
+        'reject' => 'Rejected',
         'reject_now' => 'Reject now',
         'send_respond' => 'Send Your Respond',
         'respond' => 'If you have any problem or you want to contribute to us, please put your respond for us',
@@ -377,14 +378,16 @@ return [
     'sell' => [
         'your_product' => 'Your pruduct',
         'add' => 'Post New Product',
+        'edit' => 'Edit Your Product',
         'your_sold' => 'Your pruduct posted',
         'price_promotion' => 'Price - Discount',
         'date_create' => 'Date of post',
         'correct_photo' => 'The product has correct photo',
         'resonable_price' => 'The product is reasonably priced',
         'resonable_name' => 'The product is reasonably named',
+        'require' => 'Requires the product to be accepted ',
     ],
-     //cart
+    //cart
     'cart' => [
         'product_in_cart' => 'Products in your cart',
         'cart' => 'Your Cart',
@@ -435,6 +438,7 @@ return [
         'activating' => 'Activating',
         'block_now' => 'Block now',
         'rejected' => 'Rejected',
+        'active_now' => 'Active now',
     ],
     'dashboard' => [
         'chart_user' => 'User statistics chart for the year',
@@ -466,7 +470,13 @@ return [
         'order_from' => 'Order from: ',
     ],
 
-    'forumn'=> [
-      'head' => 'All Posts',
+    'forumn' => [
+        'head' => 'All Posts',
+    ],
+
+    'chart' => [
+        'pendding' => 'Pendding',
+        'success' => 'Success',
+        'cancel' => 'Cancel',
     ],
 ];

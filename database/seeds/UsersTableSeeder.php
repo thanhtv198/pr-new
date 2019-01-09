@@ -38,14 +38,14 @@ class UsersTableSeeder extends Seeder
             'updated_at' => '2018-09-08 01:14:01',
         ]);
         DB::table('users')->insert([
-            'name' => 'Nam hà',
+            'name' => 'Nam Hà',
             'email' => 'thanh3@gmail.com',
             'phone_number' => '0982682632',
             'birthday' => '1994-11-12',
             'address' => 'Hà Na',
             'city_id' => 4,
             'avatar' => '4.jpg',
-            'role_id' => 2,
+            'role_id' => 3,
             'password' => bcrypt('123456'),
             'created_at' => '2018-11-08 01:14:01',
             'updated_at' => '2018-11-08 01:14:01',

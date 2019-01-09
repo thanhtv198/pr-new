@@ -19,6 +19,7 @@
                     <i class="fa fa-dashboard"></i> <span>{{trans('common.tag.aside_admin_dashboard')}}</span>
                 </a>
             </li>
+            @if(auth()->user()->role_id == 2)
             <li class="treeview">
                 <a href="">
                     <i class="fa fa-align-justify"></i>
@@ -27,6 +28,7 @@
                         <span class="label label-primary pull-right">3</span>
                     </span>
                 </a>
+
                 <ul class="treeview-menu">
                     <i class="fa fa-th-large"></i>
                     <li>
@@ -49,6 +51,8 @@
                     </li>
                 </ul>
             </li>
+            @endif
+            @if(auth()->user()->role_id == 1)
             <li class="treeview">
                 <a href="">
                     <i class="fa fa-user"></i>
@@ -72,6 +76,8 @@
                     </li>
                 </ul>
             </li>
+            @endif
+            @if(auth()->user()->role_id == 2)
             <li class="treeview">
                 <a href="">
                     <i class="fa fa-files-o"></i>
@@ -95,6 +101,8 @@
                     </li>
                 </ul>
             </li>
+            @endif
+            @if(auth()->user()->role_id == 1)
             <li class="treeview">
                 <a href="">
                     <i class="fa fa-newspaper-o"></i>
@@ -112,7 +120,8 @@
                     </li>
                 </ul>
             </li>
-
+            @endif
+            @if(auth()->user()->role_id == 2)
             <li class="treeview">
                 <a href="">
                     <i class="nav-icon fa fa-sticky-note-o"></i>
@@ -137,6 +146,7 @@
                     </li>
                 </ul>
             </li>
+            @endif
         </ul>
         <!-- /.sidebar-menu -->
     </section>

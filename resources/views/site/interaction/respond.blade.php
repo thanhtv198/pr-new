@@ -44,10 +44,10 @@
         </div>
         <div class="clearfix"></div>
     </div>
-    <script>
-        $(document).ready(function () {
-            CKEDITOR.replace( 'description' );
-        });
-    </script>
+    {{--<script>--}}
+        {{--$(document).ready(function () {--}}
+            {{--CKEDITOR.replace( 'content' );--}}
+        {{--});--}}
+    {{--</script>--}}
 @endsection
 

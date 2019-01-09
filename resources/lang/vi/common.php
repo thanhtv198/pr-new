@@ -373,6 +373,7 @@ return [
     //sell
     'sell' => [
         'add' => 'Đăng sản phẩm mới',
+        'edit' => 'Sửa sản phẩm',
         'your_product' => 'Sản phẩm của bạn',
         'your_sold' => 'Sản phẩm đã đăng bán',
         'price_promotion' => 'Giá khuyến mại',
@@ -380,6 +381,7 @@ return [
         'correct_photo' => 'Ảnh không hợp lệ',
         'resonable_price' => 'Giá không hợp lệ',
         'resonable_name' => 'Tên sản phẩm không hợp lệ',
+        'require' => 'Yêu cầu sản phẩm hợp lệ',
     ],
      //cart
     'cart' => [
@@ -432,6 +434,7 @@ return [
         'activating' => 'Đang hoạt động',
         'block_now' => 'Chặn ngay',
         'rejected' => 'Đã từ chối',
+        'active_now' => 'Đăng ngay',
     ],
 
     'dashboard' => [
@@ -466,5 +469,11 @@ return [
 
     'forumn'=> [
         'head' => 'Tất Cả Bài Đăng',
+    ],
+
+    'chart' => [
+        'pendding' => 'Đang chờ',
+        'success' => 'Thanh công',
+        'cancel' => 'Hủy',
     ],
 ];

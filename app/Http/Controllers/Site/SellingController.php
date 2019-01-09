@@ -36,7 +36,8 @@ class SellingController extends Controller
 
         $manufactures = Manufacture::pluck('name', 'id');
 
-        return view('site.selling.add', compact('categories', 'manufactures'));
+
+        return view('site.selling.index', compact('categories', 'manufactures'));
     }
 
     /**

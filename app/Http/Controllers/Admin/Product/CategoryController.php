@@ -49,7 +49,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        $categories = Category::pluck('name', 'id');
+        $categories = Category::whereNotNull('parent_id')->pluck('name', 'id');
 
         return view('admin/product/category/edit', compact('category', 'categories'));
     }

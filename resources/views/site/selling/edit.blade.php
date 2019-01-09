@@ -15,7 +15,7 @@
         <div class="ads-grid">
         <div class="container">
         <div class="require">
-            <h2 class="h2-edit-sell">Requires the product to be accepted</h2>
+            <h2 class="h2-edit-sell"> {{ trans('common.sell.require') }}</h2>
             <hr>
             <ol>
                 <li><span>{{ trans('common.sell.correct_photo') }}</span></li>

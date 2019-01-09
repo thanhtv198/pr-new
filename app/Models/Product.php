@@ -160,7 +160,6 @@ class Product extends Model
         return $query->where('id', $id)
             ->update([
                 'status' => config('model.product.status.active'),
-                'check' => ''
             ]);
     }
 

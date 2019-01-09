@@ -17,7 +17,7 @@ class NewsTableSeeder extends Seeder
             DB::table('news')->insert([
                 'title' =>  $faker->unique()->sentence($nbWords = 12),
                 'image' => $i . '.jpg',
-                'content' =>  $faker->unique()->sentence($nbWords = 700),
+                'content' =>  $faker->unique()->sentence($nbWords = 500),
                 'view' => $i,
             ]);
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Product;
 
+use App\Models\Block;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth\AuthController;
@@ -50,13 +51,14 @@ class ProductController extends Controller
      */
     public function accept($id)
     {
-        Product::accept($id);
 
         Product::where('id', $id)->update([
+            'status' => config('model.product.status.active'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
 
+        Block::where('blockable_id', $id)->where('blockable_type', 'App\\Models\\Product')->delete();
         return redirect()->back();
     }
 

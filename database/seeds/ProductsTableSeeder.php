@@ -39,6 +39,32 @@ class ProductsTableSeeder extends Seeder
                     'created_at' => '2018-05-08 01:14:0' . $i,
                     'updated_at' => '2018-05-08 01:14:0' . ($i + 15),
                 ]);
+
+            DB::table('products')->insert(
+                [
+                    'name' => 'Xiaomi' . ' ' . str_random(7),
+                    'price' => ($i + 12) . '000000',
+                    'description' => $faker->text(200),
+                    'promotion' => 400000,
+                    'date_manufacture' => $faker->date(),
+                    'user_id' => 1,
+                    'manufacture_id' => 2,
+                    'category_id' => 9,
+                    'back_camera' => $i + 2,
+                    'front_camera' => 8,
+                    'ram' => 4,
+                    'cpu' => 'Apple A11 Bionic 6',
+                    'sim' => '1 nano sim',
+                    'memory' => 32,
+                    'battery' => 3400,
+                    'screen' => 'LED-backlit IPS LCD, 5.0, Retina HD',
+                    'os' => 'IOS 10',
+                    'status' => 1,
+                    'is_new' => 1,
+                    'views' => $i + 2,
+                    'created_at' => '2018-05-08 01:14:0' . $i,
+                    'updated_at' => '2018-05-08 01:14:0' . ($i + 5),
+                ]);
         }
 
         for ($i = 0; $i < $limit; $i++) {
@@ -67,13 +93,38 @@ class ProductsTableSeeder extends Seeder
                     'created_at' => '2018-08-08 01:14:0' . $i,
                     'updated_at' => '2018-08-08 01:14:0' . ($i + 15),
                 ]);
+            DB::table('products')->insert(
+                [
+                    'name' => 'Oppo' . ' ' . str_random(7),
+                    'price' => ($i + 12) . '000000',
+                    'description' => $faker->text(200),
+                    'promotion' => 400000,
+                    'date_manufacture' => $faker->date(),
+                    'user_id' => 1,
+                    'manufacture_id' => 2,
+                    'category_id' => 9,
+                    'back_camera' => $i + 2,
+                    'front_camera' => 8,
+                    'ram' => 4,
+                    'cpu' => 'Apple A11 Bionic 6',
+                    'sim' => '1 nano sim',
+                    'memory' => 32,
+                    'battery' => 3400,
+                    'screen' => 'LED-backlit IPS LCD, 5.0, Retina HD',
+                    'os' => 'IOS 10',
+                    'status' => 1,
+                    'is_new' => 1,
+                    'views' => $i + 2,
+                    'created_at' => '2018-05-08 01:14:0' . $i,
+                    'updated_at' => '2018-05-08 01:14:0' . ($i + 5),
+                ]);
         }
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('products')->insert(
                 [
                     'name' => 'Samsung' . ' ' . str_random(7),
-                    'price' => ($i + 1) . '000000',
+                    'price' => ($i + 15) . '000000',
                     'description' => $faker->text(150),
                     'promotion' => 300000,
                     'date_manufacture' => $faker->date(),
@@ -89,6 +140,32 @@ class ProductsTableSeeder extends Seeder
                     'battery' => 4000,
                     'screen' => 'LED-backlit IPS LCD, 4.7, Retina HD',
                     'os' => 'Andorid 7.0',
+                    'status' => 1,
+                    'is_new' => 1,
+                    'views' => $i + 5,
+                    'created_at' => '2018-10-08 01:14:0' . $i,
+                    'updated_at' => '2018-10-08 01:14:0' . ($i + 15),
+                ]);
+
+            DB::table('products')->insert(
+                [
+                    'name' => 'Samsung' . ' ' . str_random(7),
+                    'price' => ($i + 3) . '000000',
+                    'description' => $faker->text(150),
+                    'promotion' => 300000,
+                    'date_manufacture' => $faker->date(),
+                    'user_id' => 4,
+                    'manufacture_id' => 3,
+                    'category_id' => 11,
+                    'back_camera' => $i + 2,
+                    'front_camera' => 8,
+                    'ram' => 4,
+                    'cpu' => 'Apple A11 Bionic 6 nhân',
+                    'sim' => '1 nano sim',
+                    'memory' => 64,
+                    'battery' => 2500,
+                    'screen' => 'LED-backlit IPS LCD, 4.7, Retina HD',
+                    'os' => 'Andorid 8.0',
                     'status' => 1,
                     'is_new' => 1,
                     'views' => $i + 5,
@@ -146,10 +223,36 @@ class ProductsTableSeeder extends Seeder
                     'screen' => 'LED-backlit IPS LCD, 4.7, Retina HD',
                     'os' => 'Andorid 7.0',
                     'status' => 0,
-                    'is_new' => 1,
+                    'is_new' => 0,
                     'views' => 0,
                     'created_at' => '2018-08-08 01:14:0' . $i,
                     'updated_at' => '2018-08-08 01:14:0' . ($i + 15),
+                ]);
+
+                DB::table('products')->insert(
+                [
+                    'name' => 'Meizu' . ' ' . str_random(7),
+                    'price' => ($i + 5) . '000000',
+                    'description' => $faker->text(150),
+                    'promotion' => 700000,
+                    'date_manufacture' => $faker->date(),
+                    'user_id' => $i + 1,
+                    'manufacture_id' => 2,
+                    'category_id' => 9,
+                    'back_camera' => $i + 2,
+                    'front_camera' => 8,
+                    'ram' => 3,
+                    'cpu' => 'Apple A11 Bionic 6 nhân',
+                    'sim' => '2 nano sim',
+                    'memory' => 128,
+                    'battery' => 4000,
+                    'screen' => 'LED-backlit IPS LCD, 4.7, Retina HD',
+                    'os' => 'Andorid 9.0',
+                    'status' => 2,
+                    'is_new' => 1,
+                    'views' => 0,
+                    'created_at' => '2018-08-08 01:14:0' . $i,
+                    'updated_at' => '2018-08-08 01:14:0' . ($i + 5),
                 ]);
         }
 

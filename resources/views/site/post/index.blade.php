@@ -47,14 +47,16 @@
                                     </td>
                                 
                                     <td class="invert col-md-1">
-                                        @if ($row->status == 0)
-                                            <span id="pendding">{{ trans('common.post.pendding') }}</span>
-                                        @elseif ($row->status == 1)
-                                            <i class="fa fa-check-circle">{{ trans('common.post.checked') }}</i>
-                                        @elseif ($row->status == 2)
+                                        @if ($row->status == 1)
+                                            <span id="reason" style="color:green; font-size:16px">
+                                            <i class="fa fa-check-circle">
+                                               {{ trans('common.post.checked') }}
+                                            </i>
+                                            </span>
+                                        @else
                                             <i class="fa fa-minus-square" id="status-rejected">
                                                   <b>{{ trans('common.post.rejected') }}</b><br><br>
-                                                {{--<span id="reason" style="color:Red">{{ $row->check }}</span>  --}}
+                                                <span id="reason">{{ isset(($row->block)[0]) ? (($row->block)[0]->reason) : '' }}</span>
                                             </i>
                                         @endif
                                     </td>
@@ -64,10 +66,8 @@
                                             <a href="{{ route('posts.edit', $row->id) }}">
                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                             </a> |
-                                            {{--<a class="del-post-button" href="{{ route('posts.delete_post', ['id' => $row->id]) }}" data-url="{{ route('posts.delete_post', $row->id) }}" class=".del-post-button" onclick="deleteSell(this)">--}}
-                                                {{--<i class="fa fa-trash" aria-hidden="true"></i>--}}
-                                            {{--</a>--}}
-                                            <a class="del-button-post" id="{{ $row->id }}" data-url="{{ route('posts.destroy', $row->id) }}">
+
+                                            <a class="del-button-post" style="color:Red" id="{{ $row->id }}" data-url="{{ route('posts.destroy', $row->id) }}">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
                                         </div>

@@ -49,19 +49,23 @@ class HomeController extends Controller
             ->title(trans('common.dashboard.chart_order'))
             ->dimensions(900, 500)
             ->responsive(false)
-            ->groupBy('status', null, array('Đang chờ', 'Thành công', 'Hủy bỏ'));
+            ->groupBy('status', null,
+                array( trans('common.chart.pendding'),
+                    trans('common.chart.success'),
+                    trans('common.chart.cancel')));
+
 
         $chartUser = Charts::database(User::where('role_id', 3)->get(), 'bar', 'google')
             ->title(trans('common.dashboard.chart_user'))
             ->dimensions(900, 500)
             ->responsive(false)
-            ->groupByMonth(date('Y'), true);
+            ->groupByMonth(2018, true);
 
         $chartProduct = Charts::database(Product::all(), 'line', 'google')
             ->title(trans('common.dashboard.chart_product'))
             ->dimensions(900, 500)
             ->responsive(false)
-            ->groupByMonth(date('Y'), true);
+            ->groupByMonth(2018, true);
 
 //
         return view('admin.home', compact( 'data',  'chartUser', 'chartOrder','chartProduct', 'products'));

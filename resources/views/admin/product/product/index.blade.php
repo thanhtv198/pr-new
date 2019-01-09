@@ -94,17 +94,39 @@
                                                         <div id="text-show{{ $row->id }}">
                                                         </div>
                                                     @elseif ($row->status == 1)
-                                                        <i class="fa fa-check-circle" id="status-accepted">
+                                                        <i id="status-accepted">
                                                               <span class="bg-green right badge badge-success badge-status active-{{ $row->id }}">
                                                                     {{ trans('common.product.accepted') }}
                                                               </span>
+                                                        </i>
+                                                        <br><br>
+                                                        <hr>
+                                                        <i class="reject-0{{ $row->id }}" id="status-reject-now">
+                                                            <span class="bg-yellow right badge badge-danger badge-status show_input"
+                                                                  id="reject{{ $row->id }}" href=""
+                                                                  style="cursor: pointer">{{ trans('common.respond.reject_now') }}</span>
+                                                        </i>
+                                                        <div id="show{{ $row->id }}" class="hidd" style="display: none; ">
+                                                            {!! Form::text('reason', null, ['id' => "rea$row->id"]) !!}
+                                                            {!! Form::hidden('_token', csrf_token(), ['id' => 'token']) !!}
+                                                            {!! Form::hidden('url', config('app.url_base'), ['id' => 'url']) !!}
+                                                            <br>
+                                                            <span href="javascript:void(0)" data-url="{{ route('reject_product') }}" class="reject"
+                                                                  id="re{{ $row->id }}">
+                                                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div id="text-show{{ $row->id }}">
+                                                        </div>
+
                                                         </i>
                                                     @elseif ($row->status == 2)
                                                         <i id="status-rejected">
                                                              <span class="bg-red right badge badge-danger badge-status">
                                                                 <b>{{ trans('common.respond.rejected') }}</b>
                                                             </span>
-                                                        </i><br>
+                                                        </i>
+                                                        <br>
                                                         <span id="reason">{{ isset(($row->block)[0]) ? (($row->block)[0]->reason) : '' }}</span>
                                                         <br><br>
                                                         <a href="{{ route('accept_product', $row->id) }}" onclick="return confirm({{ trans('common.form.confirm') }})">

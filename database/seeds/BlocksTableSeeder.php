@@ -15,6 +15,13 @@ class BlocksTableSeeder extends Seeder
 
         for ($i = 0; $i < 5; $i++) {
             \App\Models\Block::create([
+                'blockable_id' => $i + 46,
+                'blockable_type' => 'App\Models\Product',
+                'reason' => 'sorry, your image is not right',
+            ]);
+        }
+        for ($i = 0; $i < 5; $i++) {
+            \App\Models\Block::create([
                 'blockable_id' => $i + 25,
                 'blockable_type' => 'App\Models\Product',
                 'reason' => 'sorry, your image is not right',
