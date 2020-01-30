@@ -11,6 +11,7 @@ use App\Http\Requests\CommentRequest;
 use App\Http\Requests\PostRequest;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Topic;
 use App\Notifications\NewPostNotification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -95,15 +96,15 @@ class PostController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
+        $topicSidebar = Post::findBySlug($id)->topics()->first()->id;
+
         $post = $this->repository->show($id);
         $id = $post->id;
-//        $tags = $this->repository->getTags($id);
 
         $comments = Comment::getByIdPost($id);
 
-        return view('site.forumn.detail', compact('post',  'comments'));
+        return view('site.forumn.detail', compact('post',  'comments', 'topicSidebar'));
     }
 
     /**

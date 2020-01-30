@@ -103,7 +103,15 @@ class AccountController extends Controller
     public function deleteMember($id)
     {
         try {
-            User::remove($id);
+            $user = User::findOrFail($id);
+            if(count($user->posts)) {
+                $user->posts->delete();
+            }
+
+            if(count($user->products)) {
+                $user->products->delete();
+            }
+            $user->delete();
 
             return redirect('admin/member/index')->with('success', trans('common.with.delete_success'));
         } catch (ModelNotFoundException $e) {
@@ -232,10 +240,16 @@ class AccountController extends Controller
                 return back()->with('message', trans('common.with.delete_error'));
             }
             $user = User::findOrFail($id);
-            $user->posts->delete();
-            $user->products->delete();
-            $user->delete();
 
+            if(count($user->posts)) {
+                $user->posts->delete();
+            }
+
+            if(count($user->products)) {
+                $user->products->delete();
+            }
+
+            $user->delete();
             return redirect('admin/manager/index')->with('success', trans('common.with.delete_success'));
         } catch (ModelNotFoundException $e) {
             return view('admin.404');

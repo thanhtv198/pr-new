@@ -54,11 +54,11 @@
     <link rel="stylesheet" href="{{ asset('source/site/css//star-rating.css') }}" type="text/css">
     <script src="{{ asset('source/site/js/star-rating.js') }}"></script>
     <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            CKEDITOR.replace( 'content' );
-        });
-    </script>
+    {{--<script>--}}
+        {{--$(document).ready(function () {--}}
+            {{--CKEDITOR.replace( 'content' );--}}
+        {{--});--}}
+    {{--</script>--}}
     <!-- fonts -->
     <script>
         (function(d, s, id) {

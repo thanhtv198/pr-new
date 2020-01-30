@@ -472,6 +472,7 @@ return [
 
     'forumn' => [
         'head' => 'All Posts',
+        'detail' => 'Post Detail',
     ],
 
     'chart' => [

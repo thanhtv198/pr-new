@@ -3,7 +3,7 @@
     @include('site.notice')
     <div view="detail">
         <h3 class="tittle-w3l">
-            {{ trans('common.product_detail.head') }}
+            {{ trans('common.forumn.detail') }}
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -49,7 +49,7 @@
                                         <button class="btn btn-primary parent-comment" data-url="{{ url('posts/'.$post->id.'/comments') }}">
                                             {{ trans('common.button.comment') }}
                                         </button>
-                                        ({{ count($comments) }} {{ trans('common.button.comment') }})
+                                        {{--({{ count($comments) }} {{ trans('common.button.comment') }})--}}
                                     </p>
                                 @else
                                     <br>

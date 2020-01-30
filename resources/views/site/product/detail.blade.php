@@ -225,7 +225,7 @@
                                         <button  style="margin: 10px" class="btn btn-primary parent-comment" data-url="{{ url('product/'.$product->id.'/comments') }}">
                                             {{ trans('common.button.comment') }}
                                         </button>
-                                        ({{ count($comments) }} {{ trans('common.button.comment') }})
+{{--                                        ({{ count($comments) }} {{ trans('common.button.comment') }})--}}
                                     </p>
                                 @else
                                     <br>
@@ -431,7 +431,7 @@
                             '<img src="'+ data.base_url + '/' + data.avatar +'" ' +
                             'width="37px" style="border-radius: 50%; border:1px solid #2196f3">\n' +
                             '                     <strong>' + data.name + '</strong>\n' +
-                            '                     <spanstyle="font-size: 15px">' + data.time + '</span></h4>\n' +
+                            '                     <span style="font-size: 15px">' + data.time + '</span></h4>\n' +
                             '                   <p  class="content-cmt">' + content + '</p>\n' +
                             '            </div>\n' +
                             '        </div>'

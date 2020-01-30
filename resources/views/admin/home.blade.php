@@ -6,7 +6,6 @@
     <section class="content">
         @include('admin/notice')
         <div class="row">
-            @if(auth()->user()->role_id == 1)
             <div class="chart-user col-xs-12">
                 <div class="box">
                     <div class="box-header">
@@ -23,7 +22,6 @@
                     </div>
                 </div>
             </div>
-            @endif
             <div class="chart-user col-xs-12">
                 <div class="box">
                     <div class="box-header">

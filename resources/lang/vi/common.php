@@ -469,6 +469,7 @@ return [
 
     'forumn'=> [
         'head' => 'Tất Cả Bài Đăng',
+        'detail' => 'Chi Tiết Bài Đăng',
     ],
 
     'chart' => [

@@ -46,6 +46,9 @@ class SocketController extends Controller
         $request->merge([
             'sender_id' => auth()->user()->id,
         ]);
+        $request->merge([
+           'content' => $request->content_msg,
+        ]);
 
         $messages = Message::create($request->all());
 

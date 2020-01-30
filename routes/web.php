@@ -35,27 +35,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'locale'], 'namespa
     //manage manager
     Route::group(['prefix' => 'manager', 'middleware' => 'role_admin'], function () {
         Route::get('/index', 'AccountController@getManager')->name('get_manager');
-        Route::get('/add', 'AccountController@addManager')->name('add_manager')->middleware('role_admin');
-        Route::post('/add', 'AccountController@postAddManager')->name('postAdd_manager')->middleware('role_admin');
+        Route::get('/add', 'AccountController@addManager')->name('add_manager');
+        Route::post('/add', 'AccountController@postAddManager')->name('postAdd_manager');
         Route::get('/edit/{id}', 'AccountController@editManager')->name('edit_manager');
         Route::post('edit/{id}', 'AccountController@postEditManager')->name('postEdit_manager');
-        Route::get('/delete/{id}', 'AccountController@deleteManager')->name('delete_manager')->middleware('role_admin');
+        Route::get('/delete/{id}', 'AccountController@deleteManager')->name('delete_manager');
         Route::get('/search', 'AccountController@searchManager')->name('search_manager');
-        Route::post('/delete', 'AccountController@deleteMulManager')->name('mul_del_manager')->middleware('role_admin');
+        Route::post('/delete', 'AccountController@deleteMulManager')->name('mul_del_manager');
     });
 
-    //manage category admin
-    Route::group(['namespace' => 'Product', 'middleware' => 'role_manager'], function () {
-        Route::resource('category', 'CategoryController', ['except' => ['destroy', 'edit']]);
-        Route::get('/search/category', 'CategoryController@search')->name('search_category');
-        Route::get('/category/delete/{id}', 'CategoryController@delete')->name('category.delete');
-    });
-
-    //manage manufacture admin
-    Route::group(['namespace' => 'Product', 'middleware' => 'role_manager'], function () {
-        Route::resource('manufacture', 'ManufactureController', ['except' => ['destroy', 'edit']]);
-        Route::get('/search/manufacture', 'ManufactureController@searchManufacture')->name('search_manufacture');
-        Route::get('/manufacture/delete/{id}', 'ManufactureController@delete')->name('manufacture.delete');
+    //respond user
+    Route::group(['prefix' => 'respond'], function () {
+        Route::get('/index', 'InteractionController@getRespond')->name('get_respond');
+        Route::post('/delete/{id}', 'InteractionController@deleteRespond')->name('delete_respond');
+        Route::get('/search', 'InteractionController@searchRespond')->name('search_respond');
+        Route::get('/check/{id}', 'InteractionController@check')->name('check_respond');
     });
 Route::group(['middleware' => ['role_manager', 'locale']], function () {
     //manage product admin
@@ -66,6 +60,19 @@ Route::group(['middleware' => ['role_manager', 'locale']], function () {
         Route::get('/accept/{id}', 'ProductController@accept')->name('accept_product');
         Route::post('/reject', 'ProductController@reject')->name('reject_product');
         Route::post('/delete', 'ProductController@deleteManyProduct')->name('mul_del_product');
+    });
+    //manage category admin
+    Route::group(['namespace' => 'Product'], function () {
+        Route::resource('category', 'CategoryController', ['except' => ['destroy', 'edit']]);
+        Route::get('/search/category', 'CategoryController@search')->name('search_category');
+        Route::get('/category/delete/{id}', 'CategoryController@delete')->name('category.delete');
+    });
+
+    //manage manufacture admin
+    Route::group(['namespace' => 'Product'], function () {
+        Route::resource('manufacture', 'ManufactureController', ['except' => ['destroy', 'edit']]);
+        Route::get('/search/manufacture', 'ManufactureController@searchManufacture')->name('search_manufacture');
+        Route::get('/manufacture/delete/{id}', 'ManufactureController@delete')->name('manufacture.delete');
     });
     //route admin manage news
     Route::resource('news', 'ContentController', ['except' => ['destroy', 'edit']]);
@@ -78,14 +85,6 @@ Route::group(['middleware' => ['role_manager', 'locale']], function () {
     Route::get('/slide/delete/{id}', 'SlideController@deleteSlide')->name('delete_slide');
     Route::get('search/slide', 'SlideController@searchSlide')->name('search_slide');
     Route::post('/delete', 'SlideController@deleteManySlide')->name('mul_del_slide');
-
-    //respond user
-    Route::group(['prefix' => 'respond'], function () {
-        Route::get('/index', 'InteractionController@getRespond')->name('get_respond');
-        Route::post('/delete/{id}', 'InteractionController@deleteRespond')->name('delete_respond');
-        Route::get('/search', 'InteractionController@searchRespond')->name('search_respond');
-        Route::get('/check/{id}', 'InteractionController@check')->name('check_respond');
-    });
 
     //route resource post
     Route::group(['as' => 'admin.'], function () {

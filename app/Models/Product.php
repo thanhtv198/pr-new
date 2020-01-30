@@ -138,7 +138,11 @@ class Product extends Model
 
     public function scopeGetProduct($query)
     {
-        return $query->where('deleted_at', config('model.product.deleted_at.null'))
+        return $query
+            ->join('blocks', 'blocks.blockable_id', '=', 'products.id')
+            ->where('blockable_id', '<>', 'products.id')
+            ->where('blockable_type', 'App\Models\Products')
+        ->where('deleted_at', config('model.product.deleted_at.null'))
             ->where('status', config('model.product.status.active'))
             ->orderBy('created_at', 'DESC')
             ->paginate(config('app.paginateProductSearch'));

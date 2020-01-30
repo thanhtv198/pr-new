@@ -252,7 +252,7 @@
                     </div>
                     <div class="type_msg">
                         <div class="input_msg_write">
-                            <input type="text" class="write_msg" name="content" placeholder="Type a message"/>
+                            <input type="text" class="write_msg" name="content_msg" placeholder="Type a message"/>
                             <input type="hidden" name="receiver_id" value="{{ $receive }}">
                             <input type="hidden" name="key" value="{{ $key }}">
                             <input type="hidden" name="key1" value="{{ $key1 }}">
